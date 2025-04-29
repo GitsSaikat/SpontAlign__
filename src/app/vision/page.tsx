@@ -1,5 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
+import Link from "next/link"; // Added Link import
+import { Button } from "@/components/ui/button"; // Added Button import
 
 export default function VisionPage() {
   return (
