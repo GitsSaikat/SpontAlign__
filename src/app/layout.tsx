@@ -5,6 +5,7 @@ import {Header} from '@/components/layout/header';
 import {Footer} from '@/components/layout/footer';
 import {Toaster} from '@/components/ui/toaster';
 import {Background} from '@/components/layout/background'; // Import Background component
+import { cn } from '@/lib/utils'; // Import cn utility
 
 const inter = Inter({
   subsets: ['latin'],
@@ -25,9 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body
-        className={`${inter.variable} font-sans antialiased relative min-h-screen flex flex-col`}
+        // Apply font-sans and antialiased using cn
+        className={cn(
+          'font-sans antialiased relative min-h-screen flex flex-col',
+          inter.variable // Ensure font variable is applied if needed elsewhere, though Inter() already does this globally usually
+        )}
+        suppressHydrationWarning // Moved here to target potential body attribute mismatches
       >
         {/* Add the Background component here */}
         <Background />
