@@ -1,61 +1,66 @@
+/* Optional: Add imports for elegant fonts if needed */
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:wght@300;400;700&display=swap'); */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%; /* White */
+    /* Art Museum - Light Theme */
+    --background: 0 0% 98%; /* Slightly Off-white */
     --foreground: 240 10% 3.9%; /* Dark Gray */
     --card: 0 0% 100%; /* White */
     --card-foreground: 240 10% 3.9%; /* Dark Gray */
     --popover: 0 0% 100%; /* White */
     --popover-foreground: 240 10% 3.9%; /* Dark Gray */
-    --primary: 220 70% 50%; /* Deep Blue */
+    --primary: 210 15% 45%; /* Muted Blue/Gray */
     --primary-foreground: 0 0% 100%; /* White */
-    --secondary: 240 4.8% 95.9%; /* Light Gray */
+    --secondary: 240 5% 96%; /* Very Light Gray */
     --secondary-foreground: 240 10% 3.9%; /* Dark Gray */
-    --muted: 240 4.8% 95.9%; /* Light Gray */
+    --muted: 240 5% 90%; /* Light Gray */
     --muted-foreground: 240 3.8% 46.1%; /* Medium Gray */
-    --accent: 180 100% 25%; /* Teal */
-    --accent-foreground: 0 0% 100%; /* White */
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%; /* Light Gray Border */
-    --input: 240 5.9% 90%; /* Light Gray Input */
-    --ring: 180 100% 25%; /* Teal Ring */
-    --chart-1: 220 70% 50%; /* Deep Blue */
-    --chart-2: 180 100% 25%; /* Teal */
-    --chart-3: 240 4.8% 95.9%; /* Light Gray */
-    --chart-4: 240 10% 3.9%; /* Dark Gray */
-    --chart-5: 30 80% 55%;
-    --radius: 0.5rem;
+    --accent: 210 10% 60%; /* Lighter Muted Blue/Gray */
+    --accent-foreground: 240 10% 3.9%; /* Dark Gray */
+    --destructive: 0 70% 50%; /* Muted Red */
+    --destructive-foreground: 0 0% 100%; /* White */
+    --border: 240 5% 90%; /* Light Gray Border */
+    --input: 240 5% 90%; /* Light Gray Input */
+    --ring: 210 15% 45%; /* Muted Blue/Gray Ring */
+    --chart-1: 210 15% 45%; /* Muted Blue/Gray */
+    --chart-2: 210 10% 60%; /* Lighter Muted Blue/Gray */
+    --chart-3: 240 5% 80%; /* Medium Gray */
+    --chart-4: 240 10% 20%; /* Darker Gray */
+    --chart-5: 0 0% 60%; /* Gray */
+    --radius: 0.3rem; /* Slightly reduced radius for cleaner lines */
   }
 
   .dark {
-    --background: 220 15% 10%; /* Very Dark Blue/Gray */
-    --foreground: 210 20% 95%; /* Light Gray/Off-white */
-    --card: 220 15% 15%; /* Slightly Lighter Dark Blue/Gray */
-    --card-foreground: 210 20% 95%; /* Light Gray/Off-white */
-    --popover: 220 15% 10%; /* Very Dark Blue/Gray */
-    --popover-foreground: 210 20% 95%; /* Light Gray/Off-white */
-    --primary: 210 80% 65%; /* Brighter Blue */
-    --primary-foreground: 220 15% 10%; /* Very Dark Blue/Gray */
-    --secondary: 220 15% 25%; /* Medium Dark Blue/Gray */
-    --secondary-foreground: 210 20% 95%; /* Light Gray/Off-white */
-    --muted: 220 15% 25%; /* Medium Dark Blue/Gray */
-    --muted-foreground: 210 15% 65%; /* Medium Light Gray */
-    --accent: 180 70% 55%; /* Brighter Teal */
-    --accent-foreground: 220 15% 10%; /* Very Dark Blue/Gray */
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 220 15% 20%; /* Medium Dark Blue/Gray Border */
-    --input: 220 15% 20%; /* Medium Dark Blue/Gray Input */
-    --ring: 180 70% 55%; /* Brighter Teal Ring */
-    --chart-1: 210 80% 65%; /* Brighter Blue */
-    --chart-2: 180 70% 55%; /* Brighter Teal */
-    --chart-3: 220 15% 25%; /* Medium Dark Blue/Gray */
-    --chart-4: 210 20% 95%; /* Light Gray/Off-white */
-    --chart-5: 340 75% 55%;
+    /* Art Museum - Dark Theme */
+    --background: 240 10% 4%; /* Very Dark Gray/Almost Black */
+    --foreground: 0 0% 95%; /* Light Gray/Off-white */
+    --card: 240 8% 10%; /* Slightly Lighter Dark Gray */
+    --card-foreground: 0 0% 95%; /* Light Gray/Off-white */
+    --popover: 240 10% 4%; /* Very Dark Gray/Almost Black */
+    --popover-foreground: 0 0% 95%; /* Light Gray/Off-white */
+    --primary: 210 20% 75%; /* Lighter Muted Blue */
+    --primary-foreground: 240 10% 4%; /* Very Dark Gray */
+    --secondary: 240 5% 15%; /* Dark Gray */
+    --secondary-foreground: 0 0% 95%; /* Light Gray/Off-white */
+    --muted: 240 5% 25%; /* Medium Dark Gray */
+    --muted-foreground: 0 0% 60%; /* Medium Light Gray */
+    --accent: 210 15% 65%; /* Medium Light Muted Blue */
+    --accent-foreground: 240 10% 4%; /* Very Dark Gray */
+    --destructive: 0 50% 55%; /* Muted Red */
+    --destructive-foreground: 0 0% 95%; /* Light Gray/Off-white */
+    --border: 240 5% 20%; /* Medium Dark Gray Border */
+    --input: 240 5% 20%; /* Medium Dark Gray Input */
+    --ring: 210 20% 75%; /* Lighter Muted Blue Ring */
+    --chart-1: 210 20% 75%; /* Lighter Muted Blue */
+    --chart-2: 210 15% 65%; /* Medium Light Muted Blue */
+    --chart-3: 240 5% 40%; /* Medium Gray */
+    --chart-4: 0 0% 80%; /* Lighter Gray */
+    --chart-5: 0 0% 60%; /* Gray */
   }
 }
 
@@ -64,24 +69,31 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    /* Apply the elegant sans-serif font by default */
+    @apply bg-background text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1; /* Enable common ligatures */
+  }
+  /* Apply the elegant serif font to headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
   }
 }
 
 @layer components {
-  /* Add subtle transitions to buttons */
+  /* More subtle transitions */
   .btn-transition {
-    @apply transition-all duration-200 ease-in-out;
+    @apply transition-colors duration-200 ease-in-out;
   }
 
-  /* Define button hover state */
+  /* More subtle hover state - perhaps just a slight color change */
   .btn-hover:hover {
-    @apply brightness-110 scale-[1.02];
+     /* Example: Slightly darken/lighten background or change text color */
+     /* This depends heavily on the specific button styles */
   }
 
-  /* Define button active/press state */
+  /* More subtle active/press state */
   .btn-active:active {
-    @apply brightness-90 scale-[0.98];
+    /* Example: Slightly more pronounced color change or subtle scale */
+     transform: scale(0.99);
   }
 }

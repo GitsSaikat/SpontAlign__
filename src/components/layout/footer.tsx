@@ -1,33 +1,39 @@
 import Link from 'next/link';
-import { Github, Linkedin, Twitter } from 'lucide-react'; // Example social icons
+import { Github, Linkedin, Twitter } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background">
-      <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between text-sm text-muted-foreground">
-        <div className="mb-4 md:mb-0">
-          © {new Date().getFullYear()} SpontAlign. All rights reserved.
+    // Subtle top border, generous padding
+    <footer className="border-t border-border/50 bg-background mt-16"> {/* Added margin-top */}
+      <div className="container mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between max-w-screen-xl">
+        {/* Copyright - Use sans-serif, muted color */}
+        <div className="text-sm font-sans text-muted-foreground mb-6 md:mb-0 text-center md:text-left">
+          © {new Date().getFullYear()} SpontAlign AI Research Lab. All rights reserved.
         </div>
-        <nav className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 mb-4 md:mb-0">
-          <Link href="/privacy-policy" className="hover:text-primary transition-colors">
+
+        {/* Navigation Links - Use sans-serif, increased gap, subtle hover */}
+        <nav className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-6 md:mb-0">
+          <Link href="/privacy-policy" className="text-sm font-sans text-muted-foreground hover:text-foreground transition-colors">
             Privacy Policy
           </Link>
-          <Link href="/terms-of-service" className="hover:text-primary transition-colors">
+          <Link href="/terms-of-service" className="text-sm font-sans text-muted-foreground hover:text-foreground transition-colors">
             Terms of Service
           </Link>
-           <Link href="/contact" className="hover:text-primary transition-colors">
+           <Link href="/contact" className="text-sm font-sans text-muted-foreground hover:text-foreground transition-colors">
             Contact Us
           </Link>
         </nav>
-        <div className="flex items-center space-x-4">
+
+        {/* Social Icons - Muted color, subtle hover */}
+        <div className="flex items-center space-x-5">
           {/* Replace # with actual social media links */}
-          <Link href="#" aria-label="SpontAlign on Twitter" className="hover:text-primary transition-colors">
+          <Link href="#" aria-label="SpontAlign on Twitter" className="text-muted-foreground hover:text-foreground transition-colors">
             <Twitter className="h-5 w-5" />
           </Link>
-          <Link href="#" aria-label="SpontAlign on LinkedIn" className="hover:text-primary transition-colors">
+          <Link href="#" aria-label="SpontAlign on LinkedIn" className="text-muted-foreground hover:text-foreground transition-colors">
             <Linkedin className="h-5 w-5" />
           </Link>
-          <Link href="#" aria-label="SpontAlign on GitHub" className="hover:text-primary transition-colors">
+          <Link href="#" aria-label="SpontAlign on GitHub" className="text-muted-foreground hover:text-foreground transition-colors">
             <Github className="h-5 w-5" />
           </Link>
         </div>
