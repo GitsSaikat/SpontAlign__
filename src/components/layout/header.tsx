@@ -28,7 +28,8 @@ export function Header() {
       {/* Increased padding in container (py-4), max width for content */}
       <div className="container flex h-auto items-center justify-between py-4 max-w-screen-xl">
         {/* Logo - Potentially make it a bit larger or just give it space */}
-        <Link href="/" className="flex items-center mr-8"> {/* Increased margin */}
+        {/* Added ml-6 for left spacing */}
+        <Link href="/" className="flex items-center mr-8 ml-6">
            <Image
               src="/images/SpontAlign_LOGO_M_nbg.png" // Path relative to public directory
               alt="SpontAlign Logo"
