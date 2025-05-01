@@ -29,10 +29,10 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center mr-6"> {/* Added mr-6 for spacing */}
            <Image
-              src="/images/SpontAlign_LOGO_2 - Nbg.png" // Path relative to public directory
+              src="/images/SpontAlign_LOGO_M_nbg.png" // Path relative to public directory
               alt="SpontAlign Logo"
-              width={180} // Set the width of your logo
-              height={30} // Adjust height for aspect ratio
+              width={150} // Set the width of your logo
+              height={20} // Adjust height for aspect ratio
               priority // Load logo quickly
               style={{ objectFit: 'contain', height: 'auto' }} // Maintain aspect ratio
               quality={100}
@@ -40,7 +40,7 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className="hidden md:flex flex-grow items-center space-x-6 justify-start">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -64,10 +64,10 @@ export function Header() {
              <div className="flex justify-between items-center mb-6">
                  <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
                   <Image
-                    src="/images/SpontAlign_LOGO_2 - Nbg.png" // Path relative to public directory
+                    src="/images/SpontAlign_LOGO_M_nbg.png" // Use the same logo as desktop
                     alt="SpontAlign Logo"
-                    width={180} // Set the width of your logo
-                    height={30} // Adjusted height slightly for aspect ratio
+                    width={150} // Consistent width
+                    height={20} // Consistent height
                     style={{ objectFit: 'contain', height: 'auto' }} // Maintain aspect ratio
                     quality={100}
                     />
