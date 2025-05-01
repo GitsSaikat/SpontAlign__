@@ -27,13 +27,15 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center mr-6"> {/* Added mr-6 for spacing */}
            <Image
-              src="/images/SpontAlign_LOGO_2 - Nbg.png" // Updated path relative to public directory
+              src="/images/SpontAlign_LOGO_2 - Nbg.png" // Path relative to public directory
               alt="SpontAlign Logo"
               width={180} // Set the width of your logo
-              height={40} // Adjusted height slightly for aspect ratio
-              priority // Prioritize loading the logo
+              height={30} // Adjust height for aspect ratio
+              priority // Load logo quickly
+              style={{ objectFit: 'contain', height: 'auto' }} // Maintain aspect ratio
+              quality={100}
            />
         </Link>
 
@@ -62,10 +64,12 @@ export function Header() {
              <div className="flex justify-between items-center mb-6">
                  <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
                   <Image
-                      src="/images/SpontAlign_LOGO_2 - Nbg.png" // Updated path relative to public directory
-                      alt="SpontAlign Logo"
-                      width={180} // Set the width of your logo
-                      height={40} // Adjusted height slightly for aspect ratio
+                    src="/images/SpontAlign_LOGO_2 - Nbg.png" // Path relative to public directory
+                    alt="SpontAlign Logo"
+                    width={180} // Set the width of your logo
+                    height={30} // Adjusted height slightly for aspect ratio
+                    style={{ objectFit: 'contain', height: 'auto' }} // Maintain aspect ratio
+                    quality={100}
                     />
                  </Link>
                  <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
