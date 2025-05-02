@@ -14,20 +14,23 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
   const [hasMounted, setHasMounted] = useState(false);
   const previousPathnameRef = useRef<string | null>(null);
-  const [direction, setDirection] = useState<'forward' | 'backward' | 'default'>('default');
+  // Default direction can be 'forward' or based on initial load logic if needed
+  const [direction, setDirection] = useState<'forward' | 'backward' | 'default'>('forward');
+
 
   useEffect(() => {
     setHasMounted(true); // Component has mounted, safe to use browser APIs
   }, []);
-
 
   useEffect(() => {
     // Only run transition logic on the client after mount
     if (!hasMounted) return;
 
     if (previousPathnameRef.current === null) {
-      // Initial load, no animation direction needed yet
+      // Initial load, set initial pathname
       previousPathnameRef.current = pathname;
+      // Optionally set initial direction to 'default' or 'forward' based on desired first load behavior
+      setDirection('forward'); // Example: Default initial load slides in from right
       return;
     }
 
@@ -41,10 +44,10 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
       } else if (currentIndex < previousIndex) {
         setDirection('backward'); // Moving left in nav -> Enter from LEFT
       } else {
-        setDirection('default'); // Same page or not in nav
+        setDirection('default'); // Same page or not in nav (uses forward logic)
       }
     } else {
-      setDirection('default'); // Default if either path is not in primary nav
+      setDirection('default'); // Default if either path is not in primary nav (uses forward logic)
     }
 
     // Update previous pathname for next transition
@@ -54,39 +57,39 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
 
 
   // Define animation variants based on the determined direction
-  // - Forward (move right in nav): New page slides in from RIGHT, Old page slides out to LEFT
-  // - Backward (move left in nav): New page slides in from LEFT, Old page slides out to RIGHT
   const variants = {
-    forward: { // Slides in from RIGHT
+    forward: { // Enter from RIGHT
       initial: { x: '100%', opacity: 0 },
-      animate: { x: 0, opacity: 1, transition: { duration: 1, ease: 'easeInOut' } }, // 1s duration
+      animate: { x: 0, opacity: 1, transition: { duration: 1, ease: 'easeInOut' } },
       exit: { x: '-100%', opacity: 0, transition: { duration: 1, ease: 'easeInOut' } }, // Exit to LEFT
     },
-    backward: { // Slides in from LEFT
+    backward: { // Enter from LEFT
       initial: { x: '-100%', opacity: 0 },
-      animate: { x: 0, opacity: 1, transition: { duration: 1, ease: 'easeInOut' } }, // 1s duration
+      animate: { x: 0, opacity: 1, transition: { duration: 1, ease: 'easeInOut' } },
       exit: { x: '100%', opacity: 0, transition: { duration: 1, ease: 'easeInOut' } }, // Exit to RIGHT
     },
-    default: { // Fallback (simple fade or default slide LTR)
-      initial: { x: '100%', opacity: 0 }, // Default enter from right
-      animate: { x: 0, opacity: 1, transition: { duration: 1, ease: 'easeInOut' } }, // 1s duration
-      exit: { x: '-100%', opacity: 0, transition: { duration: 1, ease: 'easeInOut' } }, // Default exit to left
+    default: { // Fallback (same as forward)
+      initial: { x: '100%', opacity: 0 },
+      animate: { x: 0, opacity: 1, transition: { duration: 1, ease: 'easeInOut' } },
+      exit: { x: '-100%', opacity: 0, transition: { duration: 1, ease: 'easeInOut' } },
     },
   };
 
   // Select the correct animation variant
-  const currentVariants = variants[direction];
+  const currentVariants = direction === 'backward' ? variants.backward : variants.forward; // Use forward for 'default' as well
 
   // Render children directly until mounted to avoid hydration mismatch on initial load
   if (!hasMounted) {
      // Avoid rendering AnimatePresence and motion.div on the server or before mount
-    return <main className="flex-grow container mx-auto px-4 py-8">{children}</main>;
+     // Render structure that matches client-side to avoid layout shifts if possible
+     return <div style={{ position: 'relative', width: '100%' }}><main className="flex-grow container mx-auto px-4 py-8">{children}</main></div>;
   }
+
 
   return (
     // The outer div provides relative positioning context and prevents layout shifts.
-    // Added overflow: 'hidden' to ensure content is clipped during transition.
-    <div style={{ position: 'relative', overflow: 'hidden' }}>
+    // Ensure it takes full width and clips overflow.
+    <div style={{ position: 'relative', overflow: 'hidden', width: '100%' }}>
       <AnimatePresence
         mode="wait" // Ensures exit animation completes before enter animation starts
         initial={false} // Don't animate initial component mount
@@ -97,8 +100,7 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
           animate="animate"
           exit="exit"
           variants={currentVariants}
-          // Applying suppressHydrationWarning here just in case, although the !hasMounted check should prevent issues
-          suppressHydrationWarning
+          suppressHydrationWarning // Add suppressHydrationWarning
         >
           {/* Wrap children in the main tag to maintain layout structure */}
            <main className="flex-grow container mx-auto px-4 py-8">
