@@ -29,7 +29,7 @@ export function Header() {
       <div className="container flex h-auto items-center justify-between py-4 max-w-screen-xl">
         {/* Logo */}
         {/* Added ml-6 for left spacing */}
-        <Link href="/" className="flex items-center mr-8 ml-6"> {/* Added ml-6 */}
+        <Link href="/" className="flex items-center mr-8 ml-6" suppressHydrationWarning> {/* Added ml-6 and suppressHydrationWarning */}
            <Image
               src="/images/SpontAlign_LOGO_M_nbg.png" // Path relative to public directory
               alt="SpontAlign Logo"
