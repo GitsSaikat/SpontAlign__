@@ -16,20 +16,25 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
   const variants = {
     initial: {
       opacity: 0,
-      x: '100%', // Start off-screen to the right
+      y: '50px', // Start slightly below the final position
     },
     animate: {
       opacity: 1,
-      x: 0, // Slide in to the center
-      transition: { duration: 0.5, ease: 'easeInOut' }, // Faster transition
+      y: 0, // Slide up to the final position
+      transition: {
+        duration: 0.5, // Animation duration for entering page
+        ease: 'easeInOut',
+        // No explicit delay needed here if mode="wait" and exit duration provide the pause
+      },
     },
     exit: {
       opacity: 0,
-      x: '-100%', // Slide out to the left
-      position: 'absolute', // Keep exiting element in flow briefly
-      width: '100%', // Prevent layout shift
-      top: 0, // Ensure it stays positioned correctly during exit
-      transition: { duration: 0.3, ease: 'easeInOut' }, // Slightly faster exit
+      // Optional: Add a slight downward movement on exit if desired
+      // y: '20px',
+      transition: {
+        duration: 0.3, // Duration for the disappearing animation (acts as the pause)
+        ease: 'easeInOut',
+      },
     },
   };
 
