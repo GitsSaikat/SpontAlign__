@@ -27,7 +27,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/60 mb-8">
       {/* Increased padding in container (py-4), max width for content */}
       <div className="container flex h-auto items-center justify-between py-4 max-w-screen-xl">
-        {/* Logo - Potentially make it a bit larger or just give it space */}
+        {/* Logo */}
         {/* Added ml-6 for left spacing */}
         <Link href="/" className="flex items-center mr-8 ml-6"> {/* Added ml-6 */}
            <Image
@@ -35,12 +35,10 @@ export function Header() {
               alt="SpontAlign Logo"
               width={180} // Slightly larger? Adjust as needed
               height={24}
-              priority // Load logo quickly
+              // priority // Removed priority prop
               style={{ objectFit: 'contain', height: 'auto' }} // Maintain aspect ratio
               quality={100}
            />
-           {/* Optional: Use text logo with serif font for elegance */}
-           {/* <span className="text-xl font-serif font-medium ml-2">SpontAlign AI</span> */}
         </Link>
 
         {/* Desktop Navigation - Increased spacing (space-x-8), use sans-serif font */}
@@ -78,6 +76,7 @@ export function Header() {
                     height={20}
                     style={{ objectFit: 'contain', height: 'auto' }} // Maintain aspect ratio
                     quality={100}
+                    // priority prop removed here as well if needed, but likely fine for mobile menu
                     />
                  </Link>
                  <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)} className="text-muted-foreground hover:text-foreground">
