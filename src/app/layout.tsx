@@ -8,6 +8,7 @@ import {Background} from '@/components/layout/background'; // Import Background 
 import { cn } from '@/lib/utils'; // Import cn utility
 import React from 'react'; // Import React for Suspense
 import Loading from './loading'; // Import the loading component
+import { PageTransition } from '@/components/layout/page-transition'; // Import PageTransition
 
 const inter = Inter({
   subsets: ['latin'],
@@ -44,9 +45,11 @@ export default function RootLayout({
           <Header />
           {/* Use Suspense to show loading UI during navigation */}
           <React.Suspense fallback={<Loading />}>
-            <main className="flex-grow container mx-auto px-4 py-8">
-              {children}
-            </main>
+            <PageTransition>
+              <main className="flex-grow container mx-auto px-4 py-8">
+                {children}
+              </main>
+            </PageTransition>
           </React.Suspense>
           <Footer />
         </div>
