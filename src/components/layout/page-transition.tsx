@@ -56,18 +56,18 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
   const variants = {
     forward: { // Slides in from RIGHT
       initial: { x: '100%', opacity: 0 }, // Start from right
-      animate: { x: 0, opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } },
-      exit: { x: '-100%', opacity: 0, transition: { duration: 0.2, ease: 'easeIn' } }, // Exit to left
+      animate: { x: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } }, // 0.5s duration
+      exit: { x: '-100%', opacity: 0, transition: { duration: 0.5, ease: 'easeIn' } }, // 0.5s duration
     },
     backward: { // Slides in from LEFT
       initial: { x: '-100%', opacity: 0 }, // Start from left
-      animate: { x: 0, opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } },
-      exit: { x: '100%', opacity: 0, transition: { duration: 0.2, ease: 'easeIn' } }, // Exit to right
+      animate: { x: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } }, // 0.5s duration
+      exit: { x: '100%', opacity: 0, transition: { duration: 0.5, ease: 'easeIn' } }, // 0.5s duration
     },
     default: { // Fallback (e.g., simple slide LTR like original forward)
       initial: { x: '-100%', opacity: 0 },
-      animate: { x: 0, opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } },
-      exit: { x: '100%', opacity: 0, transition: { duration: 0.2, ease: 'easeIn' } },
+      animate: { x: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } }, // 0.5s duration
+      exit: { x: '100%', opacity: 0, transition: { duration: 0.5, ease: 'easeIn' } }, // 0.5s duration
     },
   };
 
