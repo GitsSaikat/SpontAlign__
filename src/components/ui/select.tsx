@@ -22,6 +22,12 @@ const SelectTrigger = React.forwardRef<
       "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
       className
     )}
+    // Add suppressHydrationWarning directly to the underlying button rendered by Trigger
+    // Note: Radix Trigger often renders a button, this prop should ideally pass down.
+    // If this doesn't work directly, inspect the rendered HTML to confirm where to apply it,
+    // potentially needing to wrap or modify how the trigger is used.
+    // For now, applying it here is the most direct ShadCN approach.
+    suppressHydrationWarning
     {...props}
   >
     {children}
