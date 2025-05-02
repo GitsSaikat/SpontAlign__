@@ -1,5 +1,5 @@
-/* Optional: Add imports for elegant fonts if needed */
-/* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:wght@300;400;700&display=swap'); */
+/* Optional: Google Fonts are now imported via next/font in layout.tsx */
+/* @import url('https://fonts.googleapis.com/css2?family=Anton&family=Abel&display=swap'); */
 
 @tailwind base;
 @tailwind components;
@@ -7,93 +7,127 @@
 
 @layer base {
   :root {
-    /* Art Museum - Light Theme */
-    --background: 0 0% 98%; /* Slightly Off-white */
-    --foreground: 240 10% 3.9%; /* Dark Gray */
+    /* SpontAlign - Teal Accent - Light Theme */
+    --background: 0 0% 98%; /* Almost White */
+    --foreground: 225 10% 10%; /* Dark Blue/Gray */
+
     --card: 0 0% 100%; /* White */
-    --card-foreground: 240 10% 3.9%; /* Dark Gray */
+    --card-foreground: 225 10% 10%; /* Dark Blue/Gray */
+
     --popover: 0 0% 100%; /* White */
-    --popover-foreground: 240 10% 3.9%; /* Dark Gray */
-    --primary: 210 15% 45%; /* Muted Blue/Gray */
+    --popover-foreground: 225 10% 10%; /* Dark Blue/Gray */
+
+    --primary: 215 30% 35%; /* Deep Blue */
     --primary-foreground: 0 0% 100%; /* White */
-    --secondary: 240 5% 96%; /* Very Light Gray */
-    --secondary-foreground: 240 10% 3.9%; /* Dark Gray */
-    --muted: 240 5% 90%; /* Light Gray */
-    --muted-foreground: 240 3.8% 46.1%; /* Medium Gray */
-    --accent: 210 10% 60%; /* Lighter Muted Blue/Gray */
-    --accent-foreground: 240 10% 3.9%; /* Dark Gray */
+
+    --secondary: 220 15% 96%; /* Very Light Gray/Blue tint */
+    --secondary-foreground: 225 10% 10%; /* Dark Blue/Gray */
+
+    --muted: 220 15% 90%; /* Light Gray/Blue tint */
+    --muted-foreground: 220 10% 45%; /* Medium Gray/Blue tint */
+
+    --accent: 180 100% 25%; /* Teal */
+    --accent-foreground: 0 0% 100%; /* White */
+
     --destructive: 0 70% 50%; /* Muted Red */
     --destructive-foreground: 0 0% 100%; /* White */
-    --border: 240 5% 90%; /* Light Gray Border */
-    --input: 240 5% 90%; /* Light Gray Input */
-    --ring: 210 15% 45%; /* Muted Blue/Gray Ring */
-    --chart-1: 210 15% 45%; /* Muted Blue/Gray */
-    --chart-2: 210 10% 60%; /* Lighter Muted Blue/Gray */
-    --chart-3: 240 5% 80%; /* Medium Gray */
-    --chart-4: 240 10% 20%; /* Darker Gray */
-    --chart-5: 0 0% 60%; /* Gray */
-    --radius: 0.3rem; /* Slightly reduced radius for cleaner lines */
+
+    --border: 220 15% 88%; /* Slightly darker border */
+    --input: 220 15% 90%; /* Light Gray/Blue tint Input */
+    --ring: 180 100% 30%; /* Teal Ring */
+
+    --chart-1: 215 30% 35%; /* Deep Blue */
+    --chart-2: 180 100% 25%; /* Teal */
+    --chart-3: 220 15% 70%; /* Medium Gray/Blue tint */
+    --chart-4: 225 10% 10%; /* Dark Blue/Gray */
+    --chart-5: 0 0% 60%;   /* Gray */
+
+    --radius: 0.5rem;
   }
 
   .dark {
-    /* Art Museum - Dark Theme */
-    --background: 240 10% 4%; /* Very Dark Gray/Almost Black */
+    /* SpontAlign - Teal Accent - Dark Theme */
+    --background: 225 15% 8%; /* Very Dark Blue */
     --foreground: 0 0% 95%; /* Light Gray/Off-white */
-    --card: 240 8% 10%; /* Slightly Lighter Dark Gray */
+
+    --card: 225 15% 12%; /* Slightly Lighter Dark Blue */
     --card-foreground: 0 0% 95%; /* Light Gray/Off-white */
-    --popover: 240 10% 4%; /* Very Dark Gray/Almost Black */
+
+    --popover: 225 15% 8%; /* Very Dark Blue */
     --popover-foreground: 0 0% 95%; /* Light Gray/Off-white */
-    --primary: 210 20% 75%; /* Lighter Muted Blue */
-    --primary-foreground: 240 10% 4%; /* Very Dark Gray */
-    --secondary: 240 5% 15%; /* Dark Gray */
+
+    --primary: 215 40% 65%; /* Lighter Muted Blue */
+    --primary-foreground: 225 15% 8%; /* Very Dark Blue */
+
+    --secondary: 220 15% 18%; /* Dark Gray/Blue tint */
     --secondary-foreground: 0 0% 95%; /* Light Gray/Off-white */
-    --muted: 240 5% 25%; /* Medium Dark Gray */
-    --muted-foreground: 0 0% 60%; /* Medium Light Gray */
-    --accent: 210 15% 65%; /* Medium Light Muted Blue */
-    --accent-foreground: 240 10% 4%; /* Very Dark Gray */
-    --destructive: 0 50% 55%; /* Muted Red */
+
+    --muted: 220 15% 25%; /* Medium Dark Gray/Blue tint */
+    --muted-foreground: 220 10% 65%; /* Medium Light Gray/Blue tint */
+
+    --accent: 180 100% 35%; /* Slightly Brighter Teal */
+    --accent-foreground: 225 15% 8%; /* Very Dark Blue */
+
+    --destructive: 0 60% 55%; /* Muted Red */
     --destructive-foreground: 0 0% 95%; /* Light Gray/Off-white */
-    --border: 240 5% 20%; /* Medium Dark Gray Border */
-    --input: 240 5% 20%; /* Medium Dark Gray Input */
-    --ring: 210 20% 75%; /* Lighter Muted Blue Ring */
-    --chart-1: 210 20% 75%; /* Lighter Muted Blue */
-    --chart-2: 210 15% 65%; /* Medium Light Muted Blue */
-    --chart-3: 240 5% 40%; /* Medium Gray */
-    --chart-4: 0 0% 80%; /* Lighter Gray */
-    --chart-5: 0 0% 60%; /* Gray */
+
+    --border: 220 15% 22%; /* Medium Dark Gray/Blue Border */
+    --input: 220 15% 25%; /* Medium Dark Gray/Blue Input */
+    --ring: 180 100% 40%; /* Teal Ring */
+
+    --chart-1: 215 40% 65%; /* Lighter Muted Blue */
+    --chart-2: 180 100% 35%; /* Slightly Brighter Teal */
+    --chart-3: 220 15% 50%; /* Medium Gray/Blue tint */
+    --chart-4: 0 0% 80%;   /* Lighter Gray */
+    --chart-5: 0 0% 60%;   /* Gray */
+
+    --radius: 0.5rem;
   }
 }
+
 
 @layer base {
   * {
     @apply border-border;
   }
   body {
-    /* Apply the elegant sans-serif font by default */
-    @apply bg-background text-foreground font-sans;
+    /* Apply the Abel font by default */
+    @apply bg-background text-foreground font-body;
     font-feature-settings: "rlig" 1, "calt" 1; /* Enable common ligatures */
   }
-  /* Apply the elegant serif font to headings */
+  /* Apply the Anton font to headings */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply font-heading;
   }
 }
 
 @layer components {
-  /* More subtle transitions */
+  /* Subtle transitions */
   .btn-transition {
-    @apply transition-colors duration-200 ease-in-out;
+    @apply transition-all duration-200 ease-in-out; /* Apply to all properties */
   }
 
-  /* More subtle hover state - perhaps just a slight color change */
+  /* Subtle hover state */
   .btn-hover:hover {
-     /* Example: Slightly darken/lighten background or change text color */
-     /* This depends heavily on the specific button styles */
+     /* Primary Button Hover: Slightly lighter primary color */
+    @apply hover:bg-primary/90;
+     /* Outline Button Hover: Accent background fill */
+    @apply hover:border-accent hover:bg-accent/10;
+     /* Ghost Button Hover: Accent background fill */
+     @apply hover:bg-accent/10;
+     /* Link Button Hover: Underline remains */
   }
 
-  /* More subtle active/press state */
+  /* Subtle active/press state */
   .btn-active:active {
-    /* Example: Slightly more pronounced color change or subtle scale */
-     transform: scale(0.99);
+    /* Slightly scale down */
+     transform: scale(0.98);
+     /* Slightly increase brightness/contrast for feedback */
+     filter: brightness(1.1);
+  }
+
+   /* Postmodern background elements - placeholder */
+  .postmodern-bg-element {
+    @apply absolute mix-blend-multiply dark:mix-blend-lighten opacity-10 dark:opacity-5 pointer-events-none;
   }
 }

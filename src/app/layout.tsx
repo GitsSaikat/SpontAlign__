@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { Poppins, Playfair_Display } from 'next/font/google'; // Import desired aesthetic fonts
+// Import Anton for headings and Abel for body text
+import { Anton, Abel } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -11,16 +12,16 @@ import Loading from './loading'; // Import the loading component
 import { PageTransition } from '@/components/layout/page-transition'; // Import PageTransition
 
 // Define fonts with appropriate weights and subsets
-const poppins = Poppins({
+const anton = Anton({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'], // Include needed weights
-  variable: '--font-sans', // Use CSS variable for sans-serif
+  weight: ['400'], // Anton only has 400 weight
+  variable: '--font-heading', // Use CSS variable for heading font
 });
 
-const playfairDisplay = Playfair_Display({
+const abel = Abel({
   subsets: ['latin'],
-  weight: ['400', '700'], // Include needed weights
-  variable: '--font-serif', // Use CSS variable for serif
+  weight: ['400'], // Abel only has 400 weight
+  variable: '--font-body', // Use CSS variable for body font
 });
 
 
@@ -42,9 +43,9 @@ export default function RootLayout({
       {/* Apply font variables and antialiased using cn */}
       <body
         className={cn(
-          'font-sans antialiased relative min-h-screen flex flex-col',
-          poppins.variable, // Apply sans-serif font variable
-          playfairDisplay.variable // Apply serif font variable
+          'font-body antialiased relative min-h-screen flex flex-col', // Use font-body (Abel) as default
+          anton.variable, // Apply heading font variable
+          abel.variable // Apply body font variable
         )}
         suppressHydrationWarning // Add suppressHydrationWarning to body as well
       >

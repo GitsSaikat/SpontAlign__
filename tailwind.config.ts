@@ -8,11 +8,18 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
         // Add aesthetic font families
         fontFamily: {
-            serif: ['var(--font-serif)', 'serif'], // Use Playfair Display from CSS variable
-            sans: ['var(--font-sans)', 'sans-serif'],    // Use Poppins from CSS variable
+            heading: ['var(--font-heading)', 'sans-serif'], // Use Anton from CSS variable
+            body: ['var(--font-body)', 'sans-serif'],    // Use Abel from CSS variable
         },
         colors: {
             background: 'hsl(var(--background))',
