@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Linkedin, Twitter } from "lucide-react"; // Added Linkedin, Twitter
 import { useToast } from "@/hooks/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useSearchParams } from 'next/navigation';
@@ -54,17 +54,22 @@ export default function ContactPage() {
 
    // Pre-fill subject based on query param
    useEffect(() => {
-     const subjectParam = searchParams.get('subject');
-     if (subjectParam) {
-       // Map param to enum value if necessary, otherwise use directly
-        let mappedInquiryType: z.infer<typeof formSchema>['inquiryType'] = "Other";
-        if (subjectParam === "AcademicCollaboration") mappedInquiryType = "Research Collaboration";
-        if (subjectParam === "VisitingResearcher") mappedInquiryType = "Research Collaboration"; // or custom
-        if (subjectParam === "DocsFeedback") mappedInquiryType = "Docs Feedback";
+     // Ensure searchParams is available and has the 'subject' key
+     if (searchParams && searchParams.has('subject')) {
+       const subjectParam = searchParams.get('subject');
+       if (subjectParam) {
+         // Map param to enum value if necessary, otherwise use directly
+         let mappedInquiryType: z.infer<typeof formSchema>['inquiryType'] = "Other";
+         if (subjectParam === "AcademicCollaboration") mappedInquiryType = "Research Collaboration";
+         if (subjectParam === "VisitingResearcher") mappedInquiryType = "Research Collaboration"; // or custom
+         if (subjectParam === "DocsFeedback") mappedInquiryType = "Docs Feedback";
 
-        form.setValue('inquiryType', mappedInquiryType);
-        form.setValue('subject', `Regarding: ${subjectParam.replace(/([A-Z])/g, ' $1').trim()}`); // Auto-generate subject
+         // Safely set form values only if subjectParam is valid
+         form.setValue('inquiryType', mappedInquiryType);
+         form.setValue('subject', `Regarding: ${subjectParam.replace(/([A-Z])/g, ' $1').trim()}`); // Auto-generate subject
+       }
      }
+     // Add searchParams and form to dependency array
    }, [searchParams, form]);
 
 
