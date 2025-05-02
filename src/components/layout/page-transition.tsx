@@ -16,36 +16,35 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
   const variants = {
     initial: {
       opacity: 0,
-      y: '50px', // Start slightly below the final position
+      x: '100%', // Start off-screen to the right
     },
     animate: {
       opacity: 1,
-      y: 0, // Slide up to the final position
+      x: 0, // Slide to the center
       transition: {
-        duration: 0.5, // Animation duration for entering page
-        ease: 'easeInOut',
-        // No explicit delay needed here if mode="wait" and exit duration provide the pause
+        duration: 0.4, // Adjust duration for smoothness
+        ease: 'easeOut', // Use easeOut for entry
       },
     },
     exit: {
       opacity: 0,
-      // Optional: Add a slight downward movement on exit if desired
-      // y: '20px',
+      x: '-100%', // Slide off-screen to the left
       transition: {
-        duration: 0.3, // Duration for the disappearing animation (acts as the pause)
-        ease: 'easeInOut',
+        duration: 0.3, // Adjust duration for smoothness
+        ease: 'easeIn', // Use easeIn for exit
       },
     },
   };
 
   // Render children directly until mounted to avoid hydration mismatch
   if (!hasMounted) {
+    // Ensure the main tag is present for initial render to match server structure
     return <main className="flex-grow container mx-auto px-4 py-8">{children}</main>;
   }
 
-  // The outer div provides relative positioning context for the exiting element.
+  // The outer div provides relative positioning context and prevents layout shifts.
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative', overflow: 'hidden' }}> {/* Added overflow hidden */}
       <AnimatePresence mode="wait">
         <motion.div
           key={pathname} // Key change triggers animation
