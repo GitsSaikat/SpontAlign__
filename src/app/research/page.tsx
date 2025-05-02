@@ -59,9 +59,10 @@ export default function ResearchPage() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="flex-grow bg-background"
+              suppressHydrationWarning
             />
             <Select onValueChange={(value) => setSelectedTopic(value === 'all' ? null : value)} value={selectedTopic || 'all'}>
-              <SelectTrigger className="w-full md:w-[180px] bg-background">
+              <SelectTrigger className="w-full md:w-[180px] bg-background" suppressHydrationWarning>
                 <SelectValue placeholder="Filter by Topic" />
               </SelectTrigger>
               <SelectContent>
@@ -72,7 +73,7 @@ export default function ResearchPage() {
               </SelectContent>
             </Select>
             <Select onValueChange={(value) => setSelectedYear(value === 'all' ? null : value)} value={selectedYear || 'all'}>
-              <SelectTrigger className="w-full md:w-[180px] bg-background">
+              <SelectTrigger className="w-full md:w-[180px] bg-background" suppressHydrationWarning>
                 <SelectValue placeholder="Filter by Year" />
               </SelectTrigger>
               <SelectContent>
@@ -115,7 +116,7 @@ export default function ResearchPage() {
                       {item.topic} - {item.type}
                     </span>
                     <Button asChild variant="outline" size="sm" className="btn-transition btn-hover btn-active">
-                      <Link href={item.link} target="_blank" rel="noopener noreferrer">
+                      <Link href={item.link} target="_blank" rel="noopener noreferrer" prefetch={false}> {/* Prefetch false for external links */}
                         {item.type === 'Paper' ? <FileText className="mr-1 h-4 w-4" /> : <ExternalLink className="mr-1 h-4 w-4" />}
                         View
                       </Link>

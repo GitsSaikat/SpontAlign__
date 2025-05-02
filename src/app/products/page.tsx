@@ -87,7 +87,7 @@ export default function ProductsPage() {
                 </ul>
               </div>
               <Button asChild className="w-full mt-auto btn-transition btn-hover btn-active" disabled={product.status === 'Coming Soon'}>
-                <Link href={product.link}>
+                <Link href={product.link} prefetch={product.status !== 'Coming Soon' && product.status !== 'Alpha'}>
                   {product.status === 'Alpha' ? 'Request Access' : product.status === 'Coming Soon' ? 'Coming Soon' : 'Learn More'}
                   {product.status !== 'Coming Soon' && <ArrowRight className="ml-2 h-4 w-4" />}
                 </Link>
@@ -104,7 +104,7 @@ export default function ProductsPage() {
             Our research and expertise can be tailored to your specific enterprise needs. Let's discuss how we can build a bespoke AI solution together.
           </p>
            <Button asChild size="lg" className="btn-transition btn-hover btn-active">
-            <Link href="/enterprise">
+            <Link href="/enterprise" prefetch={true}>
               Explore Enterprise Partnerships <ArrowRight className="ml-2" />
             </Link>
           </Button>

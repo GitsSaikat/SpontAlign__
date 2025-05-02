@@ -8,7 +8,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -30,7 +29,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button asChild size="lg" className="btn-transition btn-hover">
-              <Link href="/vision">
+              <Link href="/vision" prefetch={true}>
                 Explore Our Vision <ArrowRight className="ml-2" />
               </Link>
             </Button>
@@ -40,7 +39,7 @@ export default function Home() {
               size="lg"
               className="btn-transition btn-hover"
             >
-              <Link href="/research">Discover Research</Link>
+              <Link href="/research" prefetch={true}>Discover Research</Link>
             </Button>
           </div>
         </section>
@@ -75,7 +74,7 @@ export default function Home() {
                   variant="link"
                   className="p-0 h-auto text-base text-primary btn-transition btn-hover"
                 >
-                  <Link href="/vision">
+                  <Link href="/vision" prefetch={true}>
                     Read More{" "}
                     <ArrowRight className="ml-1 h-4 w-4" strokeWidth={3} />
                   </Link>
@@ -102,7 +101,7 @@ export default function Home() {
                   variant="link"
                   className="p-0 h-auto text-base text-primary btn-transition btn-hover"
                 >
-                  <Link href="/research">
+                  <Link href="/research" prefetch={true}>
                     View Research{" "}
                     <ArrowRight className="ml-1 h-4 w-4" strokeWidth={3} />
                   </Link>
@@ -129,7 +128,7 @@ export default function Home() {
                   variant="link"
                   className="p-0 h-auto text-base text-primary btn-transition btn-hover"
                 >
-                  <Link href="/enterprise">
+                  <Link href="/enterprise" prefetch={true}>
                     Learn More{" "}
                     <ArrowRight className="ml-1 h-4 w-4" strokeWidth={3} />
                   </Link>
@@ -154,7 +153,7 @@ export default function Home() {
             size="lg"
             className="btn-transition btn-hover"
           >
-            <Link href="/blogs">
+            <Link href="/blogs" prefetch={true}>
               Read Our Blog{" "}
               <ArrowRight className="ml-2" strokeWidth={3} />
             </Link>

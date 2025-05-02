@@ -13,13 +13,13 @@ export function Footer() {
 
         {/* Navigation Links - Use sans-serif, increased gap, subtle hover */}
         <nav className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-6 md:mb-0">
-          <Link href="/privacy-policy" className="text-sm font-sans text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="/privacy-policy" className="text-sm font-sans text-muted-foreground hover:text-foreground transition-colors" prefetch={true}>
             Privacy Policy
           </Link>
-          <Link href="/terms-of-service" className="text-sm font-sans text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="/terms-of-service" className="text-sm font-sans text-muted-foreground hover:text-foreground transition-colors" prefetch={true}>
             Terms of Service
           </Link>
-           <Link href="/contact" className="text-sm font-sans text-muted-foreground hover:text-foreground transition-colors">
+           <Link href="/contact" className="text-sm font-sans text-muted-foreground hover:text-foreground transition-colors" prefetch={true}>
             Contact Us
           </Link>
         </nav>
@@ -27,13 +27,13 @@ export function Footer() {
         {/* Social Icons - Muted color, subtle hover */}
         <div className="flex items-center space-x-5">
           {/* Replace # with actual social media links */}
-          <Link href="#" aria-label="SpontAlign on Twitter" className="text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="#" aria-label="SpontAlign on Twitter" className="text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
             <Twitter className="h-5 w-5" />
           </Link>
-          <Link href="#" aria-label="SpontAlign on LinkedIn" className="text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="#" aria-label="SpontAlign on LinkedIn" className="text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
             <Linkedin className="h-5 w-5" />
           </Link>
-          <Link href="#" aria-label="SpontAlign on GitHub" className="text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="#" aria-label="SpontAlign on GitHub" className="text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
             <Github className="h-5 w-5" />
           </Link>
         </div>

@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { BookOpen, Search, ChevronRight } from 'lucide-react';
+import { BookOpen, Search, ChevronRight, ArrowRight } from 'lucide-react'; // Added ArrowRight
 
 // Placeholder Docs Structure
 const docSections = [
@@ -82,6 +82,7 @@ export default function DocsPage() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-10 pr-4 py-2 text-base"
+            suppressHydrationWarning
           />
         </div>
       </section>
@@ -101,7 +102,7 @@ export default function DocsPage() {
               <ul className="space-y-2">
                 {section.pages.map((page) => (
                   <li key={page.id}>
-                    <Link href={page.href} className="flex items-center justify-between p-2 rounded-md hover:bg-accent/50 dark:hover:bg-accent/10 group">
+                    <Link href={page.href} className="flex items-center justify-between p-2 rounded-md hover:bg-accent/50 dark:hover:bg-accent/10 group" prefetch={true}>
                       <span className="text-sm font-medium text-foreground group-hover:text-accent-foreground">{page.title}</span>
                       <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-accent-foreground transition-transform group-hover:translate-x-1" />
                     </Link>
@@ -110,7 +111,7 @@ export default function DocsPage() {
                  {/* Add a "View All" link if needed */}
                  {section.pages.length > 4 && (
                     <li>
-                         <Link href={`/docs/${section.id}`} className="flex items-center justify-between p-2 rounded-md hover:bg-accent/50 dark:hover:bg-accent/10 group text-primary font-semibold">
+                         <Link href={`/docs/${section.id}`} className="flex items-center justify-between p-2 rounded-md hover:bg-accent/50 dark:hover:bg-accent/10 group text-primary font-semibold" prefetch={true}>
                           <span>View all in {section.title}</span>
                           <ArrowRight className="h-4 w-4" />
                         </Link>
@@ -134,7 +135,7 @@ export default function DocsPage() {
           </p>
           <Button asChild variant="outline" className="btn-transition btn-hover btn-active">
              {/* Link to GitHub issues or contact page */}
-            <Link href="/contact?subject=DocsFeedback">
+            <Link href="/contact?subject=DocsFeedback" prefetch={true}>
               Provide Feedback
             </Link>
           </Button>

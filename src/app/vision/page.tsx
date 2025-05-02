@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link"; // Added Link import
-import { Button } from "@/components/ui/button"; // Added Button import
+import { Button } from "@/components/ui/button";
 
 export default function VisionPage() {
   return (
@@ -128,10 +128,10 @@ export default function VisionPage() {
           </p>
            <div className="flex flex-col sm:flex-row justify-center gap-4">
              <Button asChild size="lg" className="btn-transition btn-hover btn-active">
-               <Link href="/contact">Get Involved</Link>
+               <Link href="/contact" prefetch={true}>Get Involved</Link>
              </Button>
              <Button asChild variant="outline" size="lg" className="btn-transition btn-hover btn-active">
-               <Link href="/research">See Our Work</Link>
+               <Link href="/research" prefetch={true}>See Our Work</Link>
              </Button>
            </div>
         </section>

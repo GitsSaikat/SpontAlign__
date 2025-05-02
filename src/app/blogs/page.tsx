@@ -104,20 +104,21 @@ export default function BlogsPage() {
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
               className="bg-secondary focus-visible:ring-offset-2 focus-visible:ring-ring focus:outline-none"
+              suppressHydrationWarning
             />
           </div>
           <div className="col-span-1">
               <Select
-                onValueChange={(value) => setCategory(value)}
-                defaultValue="all"
+                onValueChange={(value) => setCategory(value === 'all' ? '' : value)} // Handle 'all' selection
+                value={category || 'all'} // Ensure controlled component behavior
               >
-                <SelectTrigger className="bg-secondary focus-visible:ring-offset-2 focus-visible:ring-ring focus:outline-none">
+                <SelectTrigger className="bg-secondary focus-visible:ring-offset-2 focus-visible:ring-ring focus:outline-none" suppressHydrationWarning>
                   <SelectValue placeholder="Filter by Category" />
                 </SelectTrigger>
                 <SelectContent>
                 <SelectItem value='all'>All Categories</SelectItem>
-                  {categories.filter(tag => tag !== "all").map((category, idx) => (
-                    <SelectItem key={idx} value={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</SelectItem>
+                  {categories.filter(tag => tag !== "all").map((cat, idx) => (
+                    <SelectItem key={idx} value={cat}>{cat.charAt(0).toUpperCase() + cat.slice(1)}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -148,9 +149,9 @@ export default function BlogsPage() {
 
       {/* Blog Post Grid */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {blogPosts.map((post) => (
+        {filteredPosts.map((post) => (
           <Card key={post.id} className="flex flex-col overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <Link href={post.href} className="block relative h-48 w-full">
+            <Link href={post.href} className="block relative h-48 w-full" prefetch={true}>
               <Image
                 src={post.imageUrl}
                 alt={`Featured image for ${post.title}`}
@@ -166,7 +167,7 @@ export default function BlogsPage() {
                 ))}
               </div>
               <CardTitle className="text-xl leading-snug">
-                 <Link href={post.href} className="hover:text-primary transition-colors">{post.title}</Link>
+                 <Link href={post.href} className="hover:text-primary transition-colors" prefetch={true}>{post.title}</Link>
               </CardTitle>
                <CardDescription className="flex items-center gap-4 text-xs pt-1">
                  <span className="flex items-center gap-1"><User className="h-3 w-3"/> {post.author}</span>
@@ -178,7 +179,7 @@ export default function BlogsPage() {
              </CardContent>
              <CardFooter>
                <Button asChild variant="link" className="p-0 h-auto text-sm text-primary btn-transition btn-hover btn-active">
-                  <Link href={post.href}>
+                  <Link href={post.href} prefetch={true}>
                    Read More <ArrowRight className="ml-1 h-4 w-4" />
                  </Link>
                </Button>

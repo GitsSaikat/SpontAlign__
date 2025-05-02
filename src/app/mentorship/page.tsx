@@ -69,7 +69,7 @@ export default function MentorshipPage() {
                 We partner with universities and research labs on joint projects, workshops, and knowledge sharing initiatives. Let's advance the field together.
               </p>
               <Button asChild variant="outline" size="sm" className="w-full btn-transition btn-hover btn-active">
-                <Link href="/contact?subject=AcademicCollaboration">
+                <Link href="/contact?subject=AcademicCollaboration" prefetch={true}>
                     Propose Collaboration
                 </Link>
               </Button>
@@ -86,7 +86,7 @@ export default function MentorshipPage() {
                 Spend time at SpontAlign collaborating on specific research questions, leveraging our resources and expertise. By invitation or proposal.
               </p>
                 <Button asChild variant="outline" size="sm" className="w-full btn-transition btn-hover btn-active">
-                <Link href="/contact?subject=VisitingResearcher">
+                <Link href="/contact?subject=VisitingResearcher" prefetch={true}>
                     Inquire About Visiting
                 </Link>
               </Button>
@@ -103,7 +103,7 @@ export default function MentorshipPage() {
                 SpontAlign actively participates in the broader AI community through conference presentations, open-source contributions, and hosting technical talks and workshops (both online and in-person when possible).
             </p>
              <p>
-               Follow our <Link href="/blogs" className="text-primary hover:underline">Blog</Link> and social media channels for announcements about upcoming events and opportunities to engage with our team.
+               Follow our <Link href="/blogs" className="text-primary hover:underline" prefetch={true}>Blog</Link> and social media channels for announcements about upcoming events and opportunities to engage with our team.
             </p>
          </div>
       </section>
@@ -115,7 +115,7 @@ export default function MentorshipPage() {
             Reach out to discuss potential mentorship or collaboration opportunities. We are always open to connecting with passionate individuals and institutions.
           </p>
           <Button asChild size="lg" className="btn-transition btn-hover btn-active">
-            <Link href="/contact">
+            <Link href="/contact" prefetch={true}>
               Contact Us <ArrowRight className="ml-2" />
             </Link>
           </Button>
