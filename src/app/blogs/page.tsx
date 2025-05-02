@@ -1,9 +1,11 @@
 'use client'; // For potential future filtering/sorting
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
+import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowRight, Calendar, User } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
@@ -52,21 +54,97 @@ const blogPosts = [
   },
 ];
 
-// TODO: Add filtering/sorting state if needed
-
 export default function BlogsPage() {
-  // const [filter, setFilter] = useState(''); // Example state for filtering
+  const [filter, setFilter] = useState('');
+  const [category, setCategory] = useState('');
+  const [filteredPosts, setFilteredPosts] = useState(blogPosts);
+
+  useEffect(() => {
+    let tempPosts = blogPosts;
+
+    if (filter) {
+      tempPosts = tempPosts.filter(post =>
+        post.title.toLowerCase().includes(filter.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(filter.toLowerCase()) ||
+        post.tags.some(tag => tag.toLowerCase().includes(filter.toLowerCase()))
+      );
+    }
+
+    if (category) {
+      tempPosts = tempPosts.filter(post =>
+        post.tags.some(tag => tag.toLowerCase() === category.toLowerCase())
+      );
+    }
+
+    setFilteredPosts(tempPosts);
+  }, [filter, category]);
+
+  const categories = ['all', ...new Set(blogPosts.flatMap(post => post.tags).map(tag => tag.toLowerCase()))]
 
   return (
-    <div className="space-y-12">
-      <section className="text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-          SpontAlign Blog
-        </h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-          Insights, research updates, company news, and thought leadership from the team at SpontAlign.
-        </p>
-      </section>
+    <div className="container mx-auto px-4 py-12">
+      {/* Header Section */}
+      <header className="mb-12">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-primary">
+            SpontAlign Blog
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            Dive into insights, research updates, company news, and thought leadership from the team at SpontAlign.
+          </p>
+        </div>
+      </header>
+
+      {/* Filters Section */}
+        <section className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="col-span-1">
+            <Input
+              type="text"
+              placeholder="Search posts by title, excerpt, or tag..."
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              className="bg-secondary focus-visible:ring-offset-2 focus-visible:ring-ring focus:outline-none"
+            />
+          </div>
+          <div className="col-span-1">
+              <Select
+                onValueChange={(value) => setCategory(value)}
+                defaultValue="all"
+              >
+                <SelectTrigger className="bg-secondary focus-visible:ring-offset-2 focus-visible:ring-ring focus:outline-none">
+                  <SelectValue placeholder="Filter by Category" />
+                </SelectTrigger>
+                <SelectContent>
+                <SelectItem value='all'>All Categories</SelectItem>
+                  {categories.filter(tag => tag !== "all").map((category, idx) => (
+                    <SelectItem key={idx} value={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+        </section>
+
+        {/* No Results Section */}
+        {!filteredPosts.length && (
+            <section className="text-center py-10">
+                <h2 className="text-2xl font-semibold text-muted-foreground">
+                    No Results Found
+                </h2>
+                <p className="text-muted-foreground mt-2">
+                    Try adjusting your search or filter criteria.
+                </p>
+                <Button
+                    variant="outline"
+                    onClick={() => {
+                        setFilter('');
+                        setCategory('');
+                    }}
+                    className="mt-4"
+                >
+                    Reset Filters
+                </Button>
+            </section>
+        )}
 
       {/* Blog Post Grid */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -97,17 +175,17 @@ export default function BlogsPage() {
             </CardHeader>
             <CardContent className="flex-grow">
               <p className="text-sm text-muted-foreground line-clamp-3">{post.excerpt}</p>
-            </CardContent>
-            <CardFooter>
-              <Button asChild variant="link" className="p-0 h-auto text-sm text-primary btn-transition btn-hover btn-active">
-                 <Link href={post.href}>
-                  Read More <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </Button>
-            </CardFooter>
+             </CardContent>
+             <CardFooter>
+               <Button asChild variant="link" className="p-0 h-auto text-sm text-primary btn-transition btn-hover btn-active">
+                  <Link href={post.href}>
+                   Read More <ArrowRight className="ml-1 h-4 w-4" />
+                 </Link>
+               </Button>
+             </CardFooter>
           </Card>
         ))}
-      </section>
+        </section>
 
       {/* TODO: Add Pagination if many posts */}
        {/* <section className="text-center">
