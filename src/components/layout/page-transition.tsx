@@ -21,22 +21,26 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
       x: '-100%', // Slide out to the left
       position: 'absolute', // Keep exiting element in flow briefly
       width: '100%', // Prevent layout shift
+      top: 0, // Ensure it stays positioned correctly during exit
     },
   };
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={pathname} // Key change triggers animation
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        variants={variants}
-        transition={{ duration: 0.3, ease: 'easeInOut' }} // Faster transition duration
-        style={{ position: 'relative' }} // Needed for positioning exiting element
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    // Added relative positioning to the outer container for AnimatePresence context
+    <div style={{ position: 'relative' }}>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={pathname} // Key change triggers animation
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          variants={variants}
+          transition={{ duration: 0.3, ease: 'easeInOut' }} // Faster transition duration
+          // Removed inline style, relying on variants
+        >
+          {children}
+        </motion.div>
+      </AnimatePresence>
+    </div>
   );
 };
