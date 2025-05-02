@@ -14,8 +14,7 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
   const [hasMounted, setHasMounted] = useState(false);
   const previousPathnameRef = useRef<string | null>(null);
-  // Default direction can be 'forward' or based on initial load logic if needed
-  const [direction, setDirection] = useState<'forward' | 'backward' | 'default'>('forward');
+  const [direction, setDirection] = useState<'forward' | 'backward' | 'default'>('default');
 
 
   useEffect(() => {
@@ -29,8 +28,7 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
     if (previousPathnameRef.current === null) {
       // Initial load, set initial pathname
       previousPathnameRef.current = pathname;
-      // Optionally set initial direction to 'default' or 'forward' based on desired first load behavior
-      setDirection('forward'); // Example: Default initial load slides in from right
+      setDirection('default'); // No animation on initial load
       return;
     }
 
@@ -44,52 +42,55 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
       } else if (currentIndex < previousIndex) {
         setDirection('backward'); // Moving left in nav -> Enter from LEFT
       } else {
-        setDirection('default'); // Same page or not in nav (uses forward logic)
+        setDirection('default'); // Same page or not in nav (no transition needed)
       }
     } else {
-      setDirection('default'); // Default if either path is not in primary nav (uses forward logic)
+      setDirection('default'); // Default if either path is not in primary nav
     }
 
     // Update previous pathname for next transition
     previousPathnameRef.current = pathname;
 
-  }, [pathname, hasMounted]); // Depend on pathname and mount state
+  }, [pathname, hasMounted]);
 
 
   // Define animation variants based on the determined direction
-  const variants = {
-    forward: { // Enter from RIGHT
-      initial: { x: '100%', opacity: 0 },
-      animate: { x: 0, opacity: 1, transition: { duration: 1, ease: 'easeInOut' } },
-      exit: { x: '-100%', opacity: 0, transition: { duration: 1, ease: 'easeInOut' } }, // Exit to LEFT
-    },
-    backward: { // Enter from LEFT
-      initial: { x: '-100%', opacity: 0 },
-      animate: { x: 0, opacity: 1, transition: { duration: 1, ease: 'easeInOut' } },
-      exit: { x: '100%', opacity: 0, transition: { duration: 1, ease: 'easeInOut' } }, // Exit to RIGHT
-    },
-    default: { // Fallback (same as forward)
+   const variants = {
+    forward: { // Enter from RIGHT, Exit to LEFT
       initial: { x: '100%', opacity: 0 },
       animate: { x: 0, opacity: 1, transition: { duration: 1, ease: 'easeInOut' } },
       exit: { x: '-100%', opacity: 0, transition: { duration: 1, ease: 'easeInOut' } },
     },
+    backward: { // Enter from LEFT, Exit to RIGHT
+      initial: { x: '-100%', opacity: 0 },
+      animate: { x: 0, opacity: 1, transition: { duration: 1, ease: 'easeInOut' } },
+      exit: { x: '100%', opacity: 0, transition: { duration: 1, ease: 'easeInOut' } },
+    },
+     default: { // No transition for default/initial load
+      initial: { x: 0, opacity: 1 },
+      animate: { x: 0, opacity: 1, transition: { duration: 0 } }, // Instant
+      exit: { x: 0, opacity: 1, transition: { duration: 0 } }, // Instant
+    },
   };
 
   // Select the correct animation variant
-  const currentVariants = direction === 'backward' ? variants.backward : variants.forward; // Use forward for 'default' as well
+  const currentVariants = direction === 'backward' ? variants.backward : (direction === 'forward' ? variants.forward : variants.default);
 
-  // Render children directly until mounted to avoid hydration mismatch on initial load
+  // Avoid rendering AnimatePresence and motion.div on the server or before mount
+  // Render structure that matches client-side to avoid layout shifts if possible
   if (!hasMounted) {
-     // Avoid rendering AnimatePresence and motion.div on the server or before mount
-     // Render structure that matches client-side to avoid layout shifts if possible
-     return <div style={{ position: 'relative', width: '100%' }}><main className="flex-grow container mx-auto px-4 py-8">{children}</main></div>;
-  }
+     return (
+        <div style={{ position: 'relative', width: '100%' }} suppressHydrationWarning>
+         <main className="flex-grow container mx-auto px-4 py-8">{children}</main>
+       </div>
+     );
+   }
 
 
   return (
-    // The outer div provides relative positioning context and prevents layout shifts.
-    // Ensure it takes full width and clips overflow.
-    <div style={{ position: 'relative', overflow: 'hidden', width: '100%' }}>
+    // Outer div provides context and prevents layout shifts.
+    // Use suppressHydrationWarning here because hasMounted logic causes server/client mismatch initially
+    <div style={{ position: 'relative', overflow: 'hidden', width: '100%' }} suppressHydrationWarning>
       <AnimatePresence
         mode="wait" // Ensures exit animation completes before enter animation starts
         initial={false} // Don't animate initial component mount
@@ -100,7 +101,7 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
           animate="animate"
           exit="exit"
           variants={currentVariants}
-          suppressHydrationWarning // Add suppressHydrationWarning
+          suppressHydrationWarning // Suppress warning here too, due to dynamic variants
         >
           {/* Wrap children in the main tag to maintain layout structure */}
            <main className="flex-grow container mx-auto px-4 py-8">
