@@ -25,8 +25,9 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
     },
   };
 
+  // The outer div is necessary for position:absolute during exit animation with mode="wait"
+  // It provides the relative positioning context.
   return (
-    // Added relative positioning to the outer container for AnimatePresence context
     <div style={{ position: 'relative' }}>
       <AnimatePresence mode="wait">
         <motion.div
@@ -35,8 +36,9 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
           animate="animate"
           exit="exit"
           variants={variants}
-          transition={{ duration: 0.3, ease: 'easeInOut' }} // Faster transition duration
-          // Removed inline style, relying on variants
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          // Add suppressHydrationWarning to try and mitigate mismatch from framer-motion styles
+          suppressHydrationWarning
         >
           {children}
         </motion.div>
