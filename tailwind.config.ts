@@ -9,10 +9,10 @@ export default {
   ],
   theme: {
     extend: {
-        // Add elegant font families
+        // Add aesthetic font families
         fontFamily: {
-            serif: ['Merriweather', 'serif'], // Example elegant serif
-            sans: ['Lato', 'sans-serif'],    // Example clean sans-serif
+            serif: ['var(--font-serif)', 'serif'], // Use Playfair Display from CSS variable
+            sans: ['var(--font-sans)', 'sans-serif'],    // Use Poppins from CSS variable
         },
         colors: {
             background: 'hsl(var(--background))',

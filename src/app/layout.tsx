@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Merriweather, Lato } from 'next/font/google'; // Import desired fonts
+import { Poppins, Playfair_Display } from 'next/font/google'; // Import desired aesthetic fonts
 import './globals.css';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -11,15 +11,15 @@ import Loading from './loading'; // Import the loading component
 import { PageTransition } from '@/components/layout/page-transition'; // Import PageTransition
 
 // Define fonts with appropriate weights and subsets
-const lato = Lato({
+const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['300', '400', '700'], // Include needed weights
+  weight: ['300', '400', '500', '600', '700'], // Include needed weights
   variable: '--font-sans', // Use CSS variable for sans-serif
 });
 
-const merriweather = Merriweather({
+const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
-  weight: ['300', '400', '700'], // Include needed weights
+  weight: ['400', '700'], // Include needed weights
   variable: '--font-serif', // Use CSS variable for serif
 });
 
@@ -43,8 +43,8 @@ export default function RootLayout({
       <body
         className={cn(
           'font-sans antialiased relative min-h-screen flex flex-col',
-          lato.variable, // Apply sans-serif font variable
-          merriweather.variable // Apply serif font variable
+          poppins.variable, // Apply sans-serif font variable
+          playfairDisplay.variable // Apply serif font variable
         )}
         suppressHydrationWarning // Add suppressHydrationWarning to body as well
       >
