@@ -1,4 +1,3 @@
-
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
@@ -18,10 +17,14 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
   const [direction, setDirection] = useState<'forward' | 'backward' | 'default'>('default');
 
   useEffect(() => {
-    setHasMounted(true);
+    setHasMounted(true); // Component has mounted, safe to use browser APIs
   }, []);
 
+
   useEffect(() => {
+    // Only run transition logic on the client after mount
+    if (!hasMounted) return;
+
     if (previousPathnameRef.current === null) {
       // Initial load, no animation direction needed yet
       previousPathnameRef.current = pathname;
@@ -33,10 +36,10 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
 
     // Determine direction based on nav order
     if (previousIndex !== undefined && currentIndex !== undefined) {
-      if (currentIndex > previousIndex) {
-        setDirection('forward'); // Moving right in nav
+       if (currentIndex > previousIndex) {
+        setDirection('forward'); // Moving right in nav -> Enter from RIGHT
       } else if (currentIndex < previousIndex) {
-        setDirection('backward'); // Moving left in nav
+        setDirection('backward'); // Moving left in nav -> Enter from LEFT
       } else {
         setDirection('default'); // Same page or not in nav
       }
@@ -47,51 +50,57 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
     // Update previous pathname for next transition
     previousPathnameRef.current = pathname;
 
-  }, [pathname]);
+  }, [pathname, hasMounted]); // Depend on pathname and mount state
 
 
-  // Define animation variants based on user's request:
-  // - Forward (right in nav): Slide in from RIGHT
-  // - Backward (left in nav): Slide in from LEFT
+  // Define animation variants based on the determined direction
+  // - Forward (move right in nav): New page slides in from RIGHT, Old page slides out to LEFT
+  // - Backward (move left in nav): New page slides in from LEFT, Old page slides out to RIGHT
   const variants = {
     forward: { // Slides in from RIGHT
-      initial: { x: '100%', opacity: 0 }, // Start from right
-      animate: { x: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } }, // 0.5s duration
-      exit: { x: '-100%', opacity: 0, transition: { duration: 0.5, ease: 'easeIn' } }, // 0.5s duration
+      initial: { x: '100%', opacity: 0 },
+      animate: { x: 0, opacity: 1, transition: { duration: 1, ease: 'easeInOut' } }, // 1s duration
+      exit: { x: '-100%', opacity: 0, transition: { duration: 1, ease: 'easeInOut' } }, // Exit to LEFT
     },
     backward: { // Slides in from LEFT
-      initial: { x: '-100%', opacity: 0 }, // Start from left
-      animate: { x: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } }, // 0.5s duration
-      exit: { x: '100%', opacity: 0, transition: { duration: 0.5, ease: 'easeIn' } }, // 0.5s duration
-    },
-    default: { // Fallback (e.g., simple slide LTR like original forward)
       initial: { x: '-100%', opacity: 0 },
-      animate: { x: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } }, // 0.5s duration
-      exit: { x: '100%', opacity: 0, transition: { duration: 0.5, ease: 'easeIn' } }, // 0.5s duration
+      animate: { x: 0, opacity: 1, transition: { duration: 1, ease: 'easeInOut' } }, // 1s duration
+      exit: { x: '100%', opacity: 0, transition: { duration: 1, ease: 'easeInOut' } }, // Exit to RIGHT
+    },
+    default: { // Fallback (simple fade or default slide LTR)
+      initial: { x: '100%', opacity: 0 }, // Default enter from right
+      animate: { x: 0, opacity: 1, transition: { duration: 1, ease: 'easeInOut' } }, // 1s duration
+      exit: { x: '-100%', opacity: 0, transition: { duration: 1, ease: 'easeInOut' } }, // Default exit to left
     },
   };
 
-  // Render children directly until mounted to avoid hydration mismatch
+  // Select the correct animation variant
+  const currentVariants = variants[direction];
+
+  // Render children directly until mounted to avoid hydration mismatch on initial load
   if (!hasMounted) {
+     // Avoid rendering AnimatePresence and motion.div on the server or before mount
     return <main className="flex-grow container mx-auto px-4 py-8">{children}</main>;
   }
 
-  // Apply the correct animation variant based on the determined direction
-  const currentVariants = variants[direction];
-
   return (
     // The outer div provides relative positioning context and prevents layout shifts.
-    <div style={{ position: 'relative', overflowX: 'hidden' }}> {/* Prevent horizontal scrollbar during animation */}
-      <AnimatePresence mode="wait" initial={false}>
+    // Added overflow: 'hidden' to ensure content is clipped during transition.
+    <div style={{ position: 'relative', overflow: 'hidden' }}>
+      <AnimatePresence
+        mode="wait" // Ensures exit animation completes before enter animation starts
+        initial={false} // Don't animate initial component mount
+      >
         <motion.div
           key={pathname} // Key change triggers animation
           initial="initial"
           animate="animate"
           exit="exit"
           variants={currentVariants}
+          // Applying suppressHydrationWarning here just in case, although the !hasMounted check should prevent issues
           suppressHydrationWarning
         >
-          {/* Wrap children in the main tag to match layout structure */}
+          {/* Wrap children in the main tag to maintain layout structure */}
            <main className="flex-grow container mx-auto px-4 py-8">
               {children}
            </main>
@@ -100,4 +109,3 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
     </div>
   );
 };
-
