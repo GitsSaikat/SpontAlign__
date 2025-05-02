@@ -3,56 +3,88 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import type { ReactNode } from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { navItems } from './header'; // Import navItems to get the order
+
+// Create a map for quick index lookup
+const navItemPaths = navItems.map(item => item.href);
+const pathIndexMap = new Map(navItemPaths.map((path, index) => [path, index]));
 
 export const PageTransition = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
   const [hasMounted, setHasMounted] = useState(false);
+  const previousPathnameRef = useRef<string | null>(null);
+  const [direction, setDirection] = useState<'forward' | 'backward' | 'default'>('default');
 
   useEffect(() => {
     setHasMounted(true);
   }, []);
 
+  useEffect(() => {
+    if (previousPathnameRef.current === null) {
+      // Initial load, no animation direction needed yet
+      previousPathnameRef.current = pathname;
+      return;
+    }
+
+    const previousIndex = pathIndexMap.get(previousPathnameRef.current);
+    const currentIndex = pathIndexMap.get(pathname);
+
+    // Determine direction based on nav order
+    if (previousIndex !== undefined && currentIndex !== undefined) {
+      if (currentIndex > previousIndex) {
+        setDirection('forward'); // Moving right in nav -> slide LTR
+      } else if (currentIndex < previousIndex) {
+        setDirection('backward'); // Moving left in nav -> slide RTL
+      } else {
+        setDirection('default'); // Same page or not in nav
+      }
+    } else {
+      setDirection('default'); // Default if either path is not in primary nav
+    }
+
+    // Update previous pathname for next transition
+    previousPathnameRef.current = pathname;
+
+  }, [pathname]);
+
+
   const variants = {
-    initial: {
-      opacity: 0,
-      x: '100%', // Start off-screen to the right
+    forward: {
+      initial: { x: '-100%', opacity: 0 }, // Start from left
+      animate: { x: 0, opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } },
+      exit: { x: '100%', opacity: 0, transition: { duration: 0.2, ease: 'easeIn' } }, // Exit to right
     },
-    animate: {
-      opacity: 1,
-      x: 0, // Slide to the center
-      transition: {
-        duration: 0.4, // Adjust duration for smoothness
-        ease: 'easeOut', // Use easeOut for entry
-      },
+    backward: {
+      initial: { x: '100%', opacity: 0 }, // Start from right
+      animate: { x: 0, opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } },
+      exit: { x: '-100%', opacity: 0, transition: { duration: 0.2, ease: 'easeIn' } }, // Exit to left
     },
-    exit: {
-      opacity: 0,
-      x: '-100%', // Slide off-screen to the left
-      transition: {
-        duration: 0.3, // Adjust duration for smoothness
-        ease: 'easeIn', // Use easeIn for exit
-      },
+    default: { // Fallback (e.g., fade or simple slide LTR)
+      initial: { x: '-100%', opacity: 0 },
+      animate: { x: 0, opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } },
+      exit: { x: '100%', opacity: 0, transition: { duration: 0.2, ease: 'easeIn' } },
     },
   };
 
   // Render children directly until mounted to avoid hydration mismatch
   if (!hasMounted) {
-    // Ensure the main tag is present for initial render to match server structure
     return <main className="flex-grow container mx-auto px-4 py-8">{children}</main>;
   }
 
-  // The outer div provides relative positioning context and prevents layout shifts.
+  // Apply the correct animation variant based on the determined direction
+  const currentVariants = variants[direction];
+
   return (
-    <div style={{ position: 'relative', overflow: 'hidden' }}> {/* Added overflow hidden */}
-      <AnimatePresence mode="wait">
+    // The outer div provides relative positioning context and prevents layout shifts.
+    <div style={{ position: 'relative', overflowX: 'hidden' }}> {/* Prevent horizontal scrollbar during animation */}
+      <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={pathname} // Key change triggers animation
           initial="initial"
           animate="animate"
           exit="exit"
-          variants={variants}
-          // Apply suppressHydrationWarning here as well, although useEffect should handle the core issue
+          variants={currentVariants}
           suppressHydrationWarning
         >
           {/* Wrap children in the main tag to match layout structure */}
