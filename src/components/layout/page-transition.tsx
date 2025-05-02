@@ -1,3 +1,4 @@
+
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
@@ -33,9 +34,9 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
     // Determine direction based on nav order
     if (previousIndex !== undefined && currentIndex !== undefined) {
       if (currentIndex > previousIndex) {
-        setDirection('forward'); // Moving right in nav -> slide LTR
+        setDirection('forward'); // Moving right in nav
       } else if (currentIndex < previousIndex) {
-        setDirection('backward'); // Moving left in nav -> slide RTL
+        setDirection('backward'); // Moving left in nav
       } else {
         setDirection('default'); // Same page or not in nav
       }
@@ -49,18 +50,21 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
   }, [pathname]);
 
 
+  // Define animation variants based on user's request:
+  // - Forward (right in nav): Slide in from RIGHT
+  // - Backward (left in nav): Slide in from LEFT
   const variants = {
-    forward: {
-      initial: { x: '-100%', opacity: 0 }, // Start from left
-      animate: { x: 0, opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } },
-      exit: { x: '100%', opacity: 0, transition: { duration: 0.2, ease: 'easeIn' } }, // Exit to right
-    },
-    backward: {
+    forward: { // Slides in from RIGHT
       initial: { x: '100%', opacity: 0 }, // Start from right
       animate: { x: 0, opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } },
       exit: { x: '-100%', opacity: 0, transition: { duration: 0.2, ease: 'easeIn' } }, // Exit to left
     },
-    default: { // Fallback (e.g., fade or simple slide LTR)
+    backward: { // Slides in from LEFT
+      initial: { x: '-100%', opacity: 0 }, // Start from left
+      animate: { x: 0, opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } },
+      exit: { x: '100%', opacity: 0, transition: { duration: 0.2, ease: 'easeIn' } }, // Exit to right
+    },
+    default: { // Fallback (e.g., simple slide LTR like original forward)
       initial: { x: '-100%', opacity: 0 },
       animate: { x: 0, opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } },
       exit: { x: '100%', opacity: 0, transition: { duration: 0.2, ease: 'easeIn' } },
@@ -96,3 +100,4 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
     </div>
   );
 };
+
