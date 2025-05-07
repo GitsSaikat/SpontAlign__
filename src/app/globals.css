@@ -1,4 +1,5 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Abel&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,36 +7,36 @@
 
 @layer base {
   :root {
-    /* Art Museum Aesthetic - Deep Teal & White */
-    --background: 0 0% 100%; /* White */
-    --foreground: 200 12% 18%; /* Near Black - slightly desaturated for a softer look */
-    --card: 0 0% 100%; /* White */
-    --card-foreground: 200 12% 18%; /* Near Black for card text */
-    --popover: 0 0% 100%; /* White */
-    --popover-foreground: 200 12% 18%; /* Near Black for popover text */
+    /* Art Museum Aesthetic - Deep Teal & White - Updated for White Background */
+    --background: 0 0% 98%; /* Off-White, e.g., HSL(0, 0%, 98%) */
+    --foreground: 180 60% 25%; /* Dark Teal for general text */
+    --card: 0 0% 100%; /* Pure White for cards */
+    --card-foreground: 180 60% 25%; /* Dark Teal for card text */
+    --popover: 0 0% 100%; /* Pure White for popovers */
+    --popover-foreground: 180 60% 25%; /* Dark Teal for popover text */
     --primary: 180 100% 18%; /* Deep Teal (HSL: 180, 100%, 18%) - Darker for primary actions */
     --primary-foreground: 0 0% 100%; /* White for text on primary */
-    --secondary: 180 60% 95%; /* Very Light Teal/Gray for subtle backgrounds */
+    --secondary: 0 0% 96%; /* Lighter Off-White/Subtle Gray for secondary backgrounds */
     --secondary-foreground: 180 100% 18%; /* Deep Teal for text on secondary backgrounds */
-    --muted: 0 0% 90%; /* Light Gray for muted elements */
-    --muted-foreground: 0 0% 40%; /* Medium Gray for muted text */
+    --muted: 0 0% 92%; /* Light Gray for muted elements */
+    --muted-foreground: 180 40% 30%; /* Dark Muted Teal for less prominent text */
     --accent: 180 70% 35%; /* A slightly lighter, vibrant Teal for accents (HSL: 180, 70%, 35%) */
     --accent-foreground: 0 0% 100%; /* White for text on accent */
     --destructive: 0 70% 50%; /* Muted Red - kept for consistency */
     --destructive-foreground: 0 0% 100%; /* White */
-    --border: 180 10% 85%; /* Light Teal/Gray border */
-    --input: 180 10% 90%; /* Light Teal/Gray input background */
+    --border: 0 0% 90%; /* Light Gray border, can be slightly off-white */
+    --input: 0 0% 97%; /* Very Light Gray/Off-White input background */
     --ring: 180 70% 40%; /* Teal Ring, aligned with accent */
     --chart-1: 180 100% 18%; /* Deep Teal */
     --chart-2: 180 70% 35%;  /* Accent Teal */
     --chart-3: 180 50% 50%;  /* Mid Teal */
-    --chart-4: 200 12% 40%;  /* Darker Gray for charts */
+    --chart-4: 180 50% 35%;  /* Dark Teal for charts */
     --chart-5: 0 0% 70%;    /* Lighter Gray for charts */
     --radius: 0.5rem;
 
     /* Font Variables */
-    --font-playfair-display: "Playfair Display", serif;
-    --font-merriweather: "Merriweather", serif;
+    --font-anton: "Anton", sans-serif;
+    --font-abel: "Abel", sans-serif;
   }
 
   .dark {
@@ -73,11 +74,11 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body;
+    @apply bg-background text-foreground font-body; /* font-body will apply Abel */
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
+    @apply font-heading; /* font-heading will apply Anton */
   }
 }
 
