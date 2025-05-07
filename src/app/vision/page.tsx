@@ -1,11 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
-import Link from "next/link"; // Added Link import
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export default function VisionPage() {
   return (
-    <div className="space-y-12">
+    <div className="container mx-auto px-4 py-8 space-y-12">
       <section className="text-center">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
           Our Vision: Aligning AI for Humanity
@@ -15,112 +15,106 @@ export default function VisionPage() {
         </p>
       </section>
 
-      <section>
-        <h2 className="text-3xl font-bold mb-6 text-center">Our Mission</h2>
-        <Card className="shadow-md">
-          <CardContent className="p-6 md:p-8">
-            <p className="text-lg text-center leading-relaxed">
+      {/* Updated Our Mission Section */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <CardHeader>
+            <CardTitle className="text-3xl font-bold text-primary text-center md:text-left">Our Mission</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-lg text-muted-foreground text-center md:text-left">
               To pioneer research and development in AI alignment, ensuring that advanced artificial intelligence systems are safe, transparent, controllable, and robustly aligned with human intentions and ethical principles. We strive to build trustworthy AI that empowers society and mitigates existential risks.
             </p>
           </CardContent>
         </Card>
+        <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center">
+          {/* Placeholder for Aesthetic Wallpaper */}
+          <div className="w-full h-64 bg-muted rounded-lg flex items-center justify-center">
+            <p className="text-muted-foreground">Aesthetic Wallpaper Area</p>
+          </div>
+        </Card>
       </section>
 
+      {/* Long-Term Goals Section (remains the same) */}
       <section>
         <h2 className="text-3xl font-bold mb-6 text-center">Long-Term Goals</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle>Develop Robust Alignment Techniques</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Create and validate methods that reliably instill complex human values and intentions into diverse AI architectures.</p>
+              <p className="text-muted-foreground">Create and validate methods that reliably instill complex human values and intentions into diverse AI architectures.</p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle>Advance AI Safety Research</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Contribute foundational knowledge to understand and prevent unintended behaviors and failure modes in advanced AI.</p>
+              <p className="text-muted-foreground">Contribute foundational knowledge to understand and prevent unintended behaviors and failure modes in advanced AI.</p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle>Foster Global Collaboration</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Engage with the international research community, policymakers, and the public to promote responsible AI development worldwide.</p>
+              <p className="text-muted-foreground">Engage with the international research community, policymakers, and the public to promote responsible AI development worldwide.</p>
             </CardContent>
           </Card>
-           <Card>
+           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle>Build Verifiable Systems</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Design AI systems where safety properties and alignment can be formally verified or rigorously empirically tested.</p>
+              <p className="text-muted-foreground">Design AI systems where safety properties and alignment can be formally verified or rigorously empirically tested.</p>
             </CardContent>
           </Card>
-           <Card>
+           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle>Promote Transparency</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Develop interpretability tools and techniques to make the decision-making processes of complex AI models understandable.</p>
+              <p className="text-muted-foreground">Develop interpretability tools and techniques to make the decision-making processes of complex AI models understandable.</p>
             </CardContent>
           </Card>
-           <Card>
+           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle>Ethical Deployment</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Establish best practices and frameworks for the ethical deployment of aligned AI systems in real-world applications.</p>
+              <p className="text-muted-foreground">Establish best practices and frameworks for the ethical deployment of aligned AI systems in real-world applications.</p>
             </CardContent>
           </Card>
         </div>
       </section>
 
+      {/* Updated Core Values Section */}
       <section>
-        <h2 className="text-3xl font-bold mb-6 text-center">Core Values</h2>
-        <ul className="space-y-4 max-w-2xl mx-auto">
-          <li className="flex items-start gap-3">
-            <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-            <div>
-              <h3 className="font-semibold">Safety First</h3>
-              <p className="text-muted-foreground">Prioritizing the safety and well-being of humanity above all else in AI development.</p>
-            </div>
-          </li>
-          <li className="flex items-start gap-3">
-            <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-            <div>
-              <h3 className="font-semibold">Scientific Rigor</h3>
-              <p className="text-muted-foreground">Committing to high standards of research, empirical validation, and intellectual honesty.</p>
-            </div>
-          </li>
-          <li className="flex items-start gap-3">
-            <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-            <div>
-              <h3 className="font-semibold">Openness & Collaboration</h3>
-              <p className="text-muted-foreground">Believing in the power of sharing knowledge and working together to solve complex challenges.</p>
-            </div>
-          </li>
-          <li className="flex items-start gap-3">
-            <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-            <div>
-              <h3 className="font-semibold">Long-Term Perspective</h3>
-              <p className="text-muted-foreground">Focusing on the long-term implications of AI and making decisions that benefit future generations.</p>
-            </div>
-          </li>
-           <li className="flex items-start gap-3">
-            <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-            <div>
-              <h3 className="font-semibold">Responsibility</h3>
-              <p className="text-muted-foreground">Acknowledging our responsibility in shaping the future of AI and acting accordingly.</p>
-            </div>
-          </li>
-        </ul>
+        <h2 className="text-3xl font-bold mb-8 text-center">Core Values</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { title: "Safety First", description: "Prioritizing the safety and well-being of humanity above all else in AI development." },
+            { title: "Scientific Rigor", description: "Committing to high standards of research, empirical validation, and intellectual honesty." },
+            { title: "Openness & Collaboration", description: "Believing in the power of sharing knowledge and working together to solve complex challenges." },
+            { title: "Long-Term Perspective", description: "Focusing on the long-term implications of AI and making decisions that benefit future generations." },
+            { title: "Responsibility", description: "Acknowledging our responsibility in shaping the future of AI and acting accordingly." },
+            { title: "Integrity", description: "Upholding the highest ethical standards in all our research and development." }
+          ].map((value) => (
+            <Card key={value.title} className="shadow-md hover:shadow-lg transition-shadow duration-300">
+              <CardHeader>
+                <CardTitle className="text-xl text-primary">{value.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{value.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </section>
 
+       {/* Join Our Mission Section (remains the same) */}
        <section className="text-center py-12 bg-secondary rounded-lg">
           <h2 className="text-3xl font-bold mb-4">Join Our Mission</h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">

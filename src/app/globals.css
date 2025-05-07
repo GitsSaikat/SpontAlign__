@@ -1,5 +1,4 @@
-/* Optional: Google Fonts are now imported via next/font in layout.tsx */
-/* @import url('https://fonts.googleapis.com/css2?family=Anton&family=Abel&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap'); */
 
 @tailwind base;
 @tailwind components;
@@ -7,81 +6,64 @@
 
 @layer base {
   :root {
-    /* SpontAlign - Teal Accent - Light Theme */
-    --background: 0 0% 98%; /* Almost White */
-    --foreground: 225 10% 10%; /* Dark Blue/Gray */
-
+    /* Art Museum Aesthetic - Deep Teal & White */
+    --background: 0 0% 100%; /* White */
+    --foreground: 200 12% 18%; /* Near Black - slightly desaturated for a softer look */
     --card: 0 0% 100%; /* White */
-    --card-foreground: 225 10% 10%; /* Dark Blue/Gray */
-
+    --card-foreground: 200 12% 18%; /* Near Black for card text */
     --popover: 0 0% 100%; /* White */
-    --popover-foreground: 225 10% 10%; /* Dark Blue/Gray */
-
-    --primary: 215 30% 35%; /* Deep Blue */
-    --primary-foreground: 0 0% 100%; /* White */
-
-    --secondary: 220 15% 96%; /* Very Light Gray/Blue tint */
-    --secondary-foreground: 225 10% 10%; /* Dark Blue/Gray */
-
-    --muted: 220 15% 90%; /* Light Gray/Blue tint */
-    --muted-foreground: 220 10% 45%; /* Medium Gray/Blue tint */
-
-    --accent: 180 100% 25%; /* Teal */
-    --accent-foreground: 0 0% 100%; /* White */
-
-    --destructive: 0 70% 50%; /* Muted Red */
+    --popover-foreground: 200 12% 18%; /* Near Black for popover text */
+    --primary: 180 100% 18%; /* Deep Teal (HSL: 180, 100%, 18%) - Darker for primary actions */
+    --primary-foreground: 0 0% 100%; /* White for text on primary */
+    --secondary: 180 60% 95%; /* Very Light Teal/Gray for subtle backgrounds */
+    --secondary-foreground: 180 100% 18%; /* Deep Teal for text on secondary backgrounds */
+    --muted: 0 0% 90%; /* Light Gray for muted elements */
+    --muted-foreground: 0 0% 40%; /* Medium Gray for muted text */
+    --accent: 180 70% 35%; /* A slightly lighter, vibrant Teal for accents (HSL: 180, 70%, 35%) */
+    --accent-foreground: 0 0% 100%; /* White for text on accent */
+    --destructive: 0 70% 50%; /* Muted Red - kept for consistency */
     --destructive-foreground: 0 0% 100%; /* White */
-
-    --border: 220 15% 88%; /* Slightly darker border */
-    --input: 220 15% 90%; /* Light Gray/Blue tint Input */
-    --ring: 180 100% 30%; /* Teal Ring */
-
-    --chart-1: 215 30% 35%; /* Deep Blue */
-    --chart-2: 180 100% 25%; /* Teal */
-    --chart-3: 220 15% 70%; /* Medium Gray/Blue tint */
-    --chart-4: 225 10% 10%; /* Dark Blue/Gray */
-    --chart-5: 0 0% 60%;   /* Gray */
-
+    --border: 180 10% 85%; /* Light Teal/Gray border */
+    --input: 180 10% 90%; /* Light Teal/Gray input background */
+    --ring: 180 70% 40%; /* Teal Ring, aligned with accent */
+    --chart-1: 180 100% 18%; /* Deep Teal */
+    --chart-2: 180 70% 35%;  /* Accent Teal */
+    --chart-3: 180 50% 50%;  /* Mid Teal */
+    --chart-4: 200 12% 40%;  /* Darker Gray for charts */
+    --chart-5: 0 0% 70%;    /* Lighter Gray for charts */
     --radius: 0.5rem;
+
+    /* Font Variables */
+    --font-playfair-display: "Playfair Display", serif;
+    --font-merriweather: "Merriweather", serif;
   }
 
   .dark {
-    /* SpontAlign - Teal Accent - Dark Theme */
-    --background: 225 15% 8%; /* Very Dark Blue */
-    --foreground: 0 0% 95%; /* Light Gray/Off-white */
-
-    --card: 225 15% 12%; /* Slightly Lighter Dark Blue */
-    --card-foreground: 0 0% 95%; /* Light Gray/Off-white */
-
-    --popover: 225 15% 8%; /* Very Dark Blue */
-    --popover-foreground: 0 0% 95%; /* Light Gray/Off-white */
-
-    --primary: 215 40% 65%; /* Lighter Muted Blue */
-    --primary-foreground: 225 15% 8%; /* Very Dark Blue */
-
-    --secondary: 220 15% 18%; /* Dark Gray/Blue tint */
-    --secondary-foreground: 0 0% 95%; /* Light Gray/Off-white */
-
-    --muted: 220 15% 25%; /* Medium Dark Gray/Blue tint */
-    --muted-foreground: 220 10% 65%; /* Medium Light Gray/Blue tint */
-
-    --accent: 180 100% 35%; /* Slightly Brighter Teal */
-    --accent-foreground: 225 15% 8%; /* Very Dark Blue */
-
-    --destructive: 0 60% 55%; /* Muted Red */
-    --destructive-foreground: 0 0% 95%; /* Light Gray/Off-white */
-
-    --border: 220 15% 22%; /* Medium Dark Gray/Blue Border */
-    --input: 220 15% 25%; /* Medium Dark Gray/Blue Input */
-    --ring: 180 100% 40%; /* Teal Ring */
-
-    --chart-1: 215 40% 65%; /* Lighter Muted Blue */
-    --chart-2: 180 100% 35%; /* Slightly Brighter Teal */
-    --chart-3: 220 15% 50%; /* Medium Gray/Blue tint */
-    --chart-4: 0 0% 80%;   /* Lighter Gray */
-    --chart-5: 0 0% 60%;   /* Gray */
-
-    --radius: 0.5rem;
+    /* Art Museum Aesthetic - Dark Theme (Deep Teal & Dark Background) */
+    --background: 180 10% 10%;
+    --foreground: 0 0% 95%;
+    --card: 180 12% 15%;
+    --card-foreground: 0 0% 95%;
+    --popover: 180 10% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 180 80% 55%;
+    --primary-foreground: 180 100% 10%; 
+    --secondary: 180 15% 20%;
+    --secondary-foreground: 0 0% 85%;
+    --muted: 180 10% 25%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 180 90% 65%;
+    --accent-foreground: 180 100% 10%;
+    --destructive: 0 60% 55%;
+    --destructive-foreground: 0 0% 95%;
+    --border: 180 10% 22%;
+    --input: 180 10% 25%;
+    --ring: 180 90% 70%;
+    --chart-1: 180 80% 55%;
+    --chart-2: 180 90% 65%;
+    --chart-3: 180 60% 45%;
+    --chart-4: 0 0% 70%;
+    --chart-5: 0 0% 50%;
   }
 }
 
@@ -91,42 +73,30 @@
     @apply border-border;
   }
   body {
-    /* Apply the Abel font by default */
     @apply bg-background text-foreground font-body;
-    font-feature-settings: "rlig" 1, "calt" 1; /* Enable common ligatures */
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
-  /* Apply the Anton font to headings */
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
   }
 }
 
 @layer components {
-  /* Subtle transitions */
   .btn-transition {
-    @apply transition-all duration-200 ease-in-out; /* Apply to all properties */
+    @apply transition-all duration-200 ease-in-out;
   }
 
-  /* Subtle hover state */
   .btn-hover:hover {
-     /* Primary Button Hover: Slightly lighter primary color */
     @apply hover:bg-primary/90;
-     /* Outline Button Hover: Accent background fill */
     @apply hover:border-accent hover:bg-accent/10;
-     /* Ghost Button Hover: Accent background fill */
-     @apply hover:bg-accent/10;
-     /* Link Button Hover: Underline remains */
+    @apply hover:bg-accent/10;
   }
 
-  /* Subtle active/press state */
   .btn-active:active {
-    /* Slightly scale down */
      transform: scale(0.98);
-     /* Slightly increase brightness/contrast for feedback */
      filter: brightness(1.1);
   }
 
-   /* Postmodern background elements - placeholder */
   .postmodern-bg-element {
     @apply absolute mix-blend-multiply dark:mix-blend-lighten opacity-10 dark:opacity-5 pointer-events-none;
   }
