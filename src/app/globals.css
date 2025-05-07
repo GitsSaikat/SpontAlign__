@@ -1,5 +1,5 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Abel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Abel&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -35,7 +35,7 @@
     --radius: 0.5rem;
 
     /* Font Variables */
-    --font-anton: "Anton", sans-serif;
+    --font-poppins: "Poppins", sans-serif; /* Updated from Anton to Poppins */
     --font-abel: "Abel", sans-serif;
   }
 
@@ -78,7 +78,7 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading; /* font-heading will apply Anton */
+    @apply font-heading; /* font-heading will apply Poppins */
   }
 }
 
@@ -101,4 +101,38 @@
   .postmodern-bg-element {
     @apply absolute mix-blend-multiply dark:mix-blend-lighten opacity-10 dark:opacity-5 pointer-events-none;
   }
+}
+
+/* Ensure all text uses foreground color by default, which is teal */
+body, p, span, div, a, li, input, textarea, select, button, label, h1, h2, h3, h4, h5, h6 {
+  color: hsl(var(--foreground));
+}
+
+/* Specific overrides for ShadCN components that might set their own text colors */
+.text-card-foreground { color: hsl(var(--card-foreground)) !important; }
+.text-popover-foreground { color: hsl(var(--popover-foreground)) !important; }
+.text-primary-foreground { color: hsl(var(--primary-foreground)) !important; } /* Text on primary buttons, etc. */
+.text-secondary-foreground { color: hsl(var(--secondary-foreground)) !important; }
+.text-muted-foreground { color: hsl(var(--muted-foreground)) !important; }
+.text-accent-foreground { color: hsl(var(--accent-foreground)) !important; } /* Text on accent elements */
+.text-destructive-foreground { color: hsl(var(--destructive-foreground)) !important; } /* Text on destructive elements */
+
+/* Ensure placeholder text is also teal (or a muted teal) */
+::placeholder {
+  color: hsl(var(--muted-foreground));
+  opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: hsl(var(--muted-foreground));
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: hsl(var(--muted-foreground));
+}
+
+/* Ensure links are teal by default, can be overridden by utility classes like .text-primary */
+a:not([class*="text-"]) {
+  color: hsl(var(--foreground));
+}
+a:hover:not([class*="text-"]) {
+  color: hsl(var(--accent)); /* Or a slightly lighter teal for hover */
 }

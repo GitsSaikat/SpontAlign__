@@ -17,7 +17,7 @@ export default {
     },
     extend: {
         fontFamily: {
-            heading: ["var(--font-anton)", "sans-serif"],
+            heading: ["var(--font-poppins)", "sans-serif"], // Updated from --font-anton
             body: ["var(--font-abel)", "sans-serif"],
         },
         colors: {
