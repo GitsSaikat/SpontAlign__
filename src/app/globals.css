@@ -82,6 +82,27 @@
   }
 }
 
+@layer utilities {
+  @keyframes nudge-horizontal {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(var(--nudge-distance));
+    }
+  }
+
+  .animate-nudge-right {
+    --nudge-distance: 4px;
+    animation: nudge-horizontal 1.5s ease-in-out infinite;
+  }
+
+  .animate-nudge-left {
+    --nudge-distance: -4px;
+    animation: nudge-horizontal 1.5s ease-in-out infinite;
+  }
+}
+
 @layer components {
   .btn-transition {
     @apply transition-all duration-200 ease-in-out;
