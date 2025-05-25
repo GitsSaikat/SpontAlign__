@@ -40,9 +40,15 @@ export default function VisionPage() {
           <CardHeader>
             <CardTitle className="text-3xl font-bold text-primary text-center md:text-left">Our Mission</CardTitle>
           </CardHeader>
-          <CardContent className="flex-grow">
+          <CardContent className="flex-grow space-y-4">
             <p className="text-lg text-muted-foreground text-center md:text-left">
-              In the future, the economy will be primarily AI-driven; our company aims to create a bridge between AI and people. We want to create Benevolent AI systems that benefit humanity even when they clash with our company values. We aim to create a transhumanist society empowered by AI systems. Once achieved, our mission will be to explore the deep, dark secrets of the Consciousness and the Universe.
+              We believe the future economy will be primarily AI-driven—and we’re building the bridge that connects AI to people. Our mission is to create benevolent AI systems that serve humanity, even if doing so challenges our own company’s interests.
+            </p>
+            <p className="text-lg text-muted-foreground text-center md:text-left">
+              AI holds the potential to uplift every sector of society, accelerating innovation, solving complex problems, and expanding human capacity. But left unchecked, it could also bring catastrophic risks. That’s why we stand for responsible development, transparent governance, and human-aligned intelligence.
+            </p>
+            <p className="text-lg text-muted-foreground text-center md:text-left">
+              We envision a transhumanist society, empowered by AI—not just smarter, but more conscious, compassionate, and capable. Once this is achieved, our mission will be to explore the deep, dark secrets of the Consciousness and the Universe.
             </p>
           </CardContent>
         </Card>
