@@ -23,13 +23,13 @@ export default function VisionPage() {
           </CardHeader>
           <CardContent>
             <p className="text-lg text-muted-foreground text-center md:text-left">
-              To pioneer research and development in AI alignment, ensuring that advanced artificial intelligence systems are safe, transparent, controllable, and robustly aligned with human intentions and ethical principles. We strive to build trustworthy AI that empowers society and mitigates existential risks.
+              In the future, the economy will be primarily AI-driven; our company aims to create a bridge between AI and people. We want to create Benevolent AI systems that benefit humanity even when they clash with our company values. We aim to create a transhumanist society empowered by AI systems. Once achieved, our mission will be to explore the deep, dark secrets of the Universe.
             </p>
           </CardContent>
         </Card>
         <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center">
           {/* Placeholder for Aesthetic Wallpaper */}
-          <div className="w-full h-64 bg-muted rounded-lg flex items-center justify-center">
+          <div className="w-full h-64 bg-muted rounded-lg flex items-center justify-center" data-ai-hint="abstract technology">
             <p className="text-muted-foreground">Aesthetic Wallpaper Area</p>
           </div>
         </Card>
@@ -122,10 +122,10 @@ export default function VisionPage() {
           </p>
            <div className="flex flex-col sm:flex-row justify-center gap-4">
              <Button asChild size="lg" className="btn-transition btn-hover btn-active">
-               <Link href="/contact" prefetch={true}>Get Involved</Link>
+               <Link href="/contact">Get Involved</Link>
              </Button>
              <Button asChild variant="outline" size="lg" className="btn-transition btn-hover btn-active">
-               <Link href="/research" prefetch={true}>See Our Work</Link>
+               <Link href="/research">See Our Work</Link>
              </Button>
            </div>
         </section>
