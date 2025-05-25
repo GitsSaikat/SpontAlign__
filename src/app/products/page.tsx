@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { ArrowRight, Package, Zap } from "lucide-react"; // Sparkles can be added if desired for specific cards
+import { ArrowRight, ExternalLink, Package, Zap } from "lucide-react"; // Added ExternalLink
 import Image from "next/image";
 
 // Updated Product Data
@@ -86,11 +86,11 @@ export default function ProductsPage() {
                {product.status && (
                  <span className={`absolute top-2 right-2 text-xs font-semibold px-2 py-1 rounded ${
                    product.status === 'Live' ? 'bg-green-600 text-white' :
-                   product.status === 'Beta' ? 'bg-yellow-500 text-black' : // Kept for potential future use
-                   product.status === 'Alpha' ? 'bg-blue-500 text-white' : // Kept for potential future use
+                   product.status === 'Beta' ? 'bg-yellow-500 text-black' :
+                   product.status === 'Alpha' ? 'bg-blue-500 text-white' :
                    product.status === 'Announcement' ? 'bg-purple-600 text-white' :
                    product.status === 'Coming Soon' ? 'bg-gray-500 text-white' :
-                   'bg-gray-500 text-white' // Default fallback
+                   'bg-gray-500 text-white'
                  }`}>
                    {product.status}
                  </span>
@@ -98,7 +98,7 @@ export default function ProductsPage() {
             </div>
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-2">
-                <Package className="h-6 w-6 text-primary" /> {/* Or use product.icon if defined */}
+                <Package className="h-6 w-6 text-primary" />
                 {product.name}
               </CardTitle>
               <CardDescription>{product.description}</CardDescription>
@@ -119,17 +119,36 @@ export default function ProductsPage() {
                 asChild
                 className="w-full mt-auto btn-transition btn-hover btn-active"
                 disabled={product.status === 'Coming Soon'}
-                variant={product.status === 'Coming Soon' ? 'outline' : 'default'}
+                variant="outline"
+                size="sm"
               >
-                <Link href={product.link} prefetch={product.status !== 'Coming Soon' && product.link !== '#'}>
-                  {
-                    product.status === 'Live' ? 'Access Product' :
-                    product.status === 'Alpha' ? 'Request Access' : // Kept for future use
-                    product.status === 'Coming Soon' ? 'Coming Soon' :
-                    product.status === 'Announcement' ? 'Follow Updates' :
-                    'Learn More'
-                  }
-                  {(product.status === 'Live' || product.status === 'Announcement') && <ArrowRight className="ml-2 h-4 w-4" />}
+                <Link
+                  href={product.link}
+                  prefetch={product.link.startsWith('/') && product.status !== 'Coming Soon'}
+                  target={product.status === 'Live' && !product.link.startsWith('/') ? '_blank' : undefined}
+                  rel={product.status === 'Live' && !product.link.startsWith('/') ? 'noopener noreferrer' : undefined}
+                  className="flex items-center justify-center" // Ensure icon and text are centered
+                >
+                  {product.status === 'Live' && (
+                    <>
+                      <ExternalLink className="mr-1 h-4 w-4" />
+                      Use it
+                    </>
+                  )}
+                  {product.status === 'Announcement' && (
+                    <>
+                      Follow Updates
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </>
+                  )}
+                  {product.status === 'Coming Soon' && 'Coming Soon'}
+                  {/* Fallback for other statuses or if a new status is added without specific handling */}
+                  {product.status !== 'Live' && product.status !== 'Announcement' && product.status !== 'Coming Soon' && (
+                    <>
+                      Learn More
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </>
+                  )}
                 </Link>
               </Button>
             </CardContent>
@@ -152,5 +171,3 @@ export default function ProductsPage() {
     </div>
   );
 }
-
-    
