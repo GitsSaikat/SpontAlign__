@@ -1,3 +1,4 @@
+
 'use client'; // For potential future filtering/sorting
 
 import { useState, useEffect } from 'react';
@@ -90,7 +91,9 @@ export default function BlogsPage() {
             SpontAlign Blog
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Dive into insights, research updates, company news, and thought leadership from the team at SpontAlign.
+            In our blog, we explore how to be responsible with AI and examine the societal impacts of artificial intelligence. We cover the latest trends in AI research and development, and reflect on what they mean for the future.
+            <br /><br />
+            Our writing also delves into the deeper questions: the philosophy of consciousness and AI, and the timeless inquiries that drive human curiosity—Where do we come from? What are we? Where are we going?
           </p>
         </div>
       </header>
@@ -141,6 +144,7 @@ export default function BlogsPage() {
                         setCategory('');
                     }}
                     className="mt-4"
+                    suppressHydrationWarning
                 >
                     Reset Filters
                 </Button>
@@ -151,7 +155,7 @@ export default function BlogsPage() {
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredPosts.map((post) => (
           <Card key={post.id} className="flex flex-col overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <Link href={post.href} className="block relative h-48 w-full" prefetch={true}>
+            <Link href={post.href} className="block relative h-48 w-full" prefetch={false}>
               <Image
                 src={post.imageUrl}
                 alt={`Featured image for ${post.title}`}
@@ -167,7 +171,7 @@ export default function BlogsPage() {
                 ))}
               </div>
               <CardTitle className="text-xl leading-snug">
-                 <Link href={post.href} className="hover:text-primary transition-colors" prefetch={true}>{post.title}</Link>
+                 <Link href={post.href} className="hover:text-primary transition-colors" prefetch={false}>{post.title}</Link>
               </CardTitle>
                <CardDescription className="flex items-center gap-4 text-xs pt-1">
                  <span className="flex items-center gap-1"><User className="h-3 w-3"/> {post.author}</span>
@@ -179,7 +183,7 @@ export default function BlogsPage() {
              </CardContent>
              <CardFooter>
                <Button asChild variant="link" className="p-0 h-auto text-sm text-primary btn-transition btn-hover btn-active">
-                  <Link href={post.href} prefetch={true}>
+                  <Link href={post.href} prefetch={false}>
                    Read More <ArrowRight className="ml-1 h-4 w-4" />
                  </Link>
                </Button>
@@ -202,3 +206,4 @@ export default function BlogsPage() {
 // src/app/blogs/why-ai-alignment-is-crucial/page.tsx
 // src/app/blogs/our-approach-to-scalable-oversight/page.tsx
 // etc.
+
