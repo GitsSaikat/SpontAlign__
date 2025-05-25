@@ -1,3 +1,4 @@
+
 'use client'; // Required for state management (filters)
 
 import { useState, useEffect } from 'react'; // Import useEffect
@@ -5,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, FileText, Filter } from "lucide-react";
+import { FileText, Filter } from "lucide-react"; // Changed ExternalLink to FileText
 import Link from 'next/link';
 
 // Placeholder data for research items
@@ -132,8 +133,8 @@ export default function ResearchPage() {
                       {item.topic} - {item.type}
                     </span>
                     <Button asChild variant="outline" size="sm" className="btn-transition btn-hover btn-active">
-                      <Link href={item.link} target="_blank" rel="noopener noreferrer" prefetch={false}> {/* Prefetch false for external links */}
-                        {item.type === 'Paper' ? <FileText className="mr-1 h-4 w-4" /> : <ExternalLink className="mr-1 h-4 w-4" />}
+                      <Link href={item.link} target="_blank" rel="noopener noreferrer" prefetch={false}>
+                        <FileText className="mr-1 h-4 w-4" /> {/* Always use FileText icon */}
                         View
                       </Link>
                     </Button>
@@ -158,3 +159,4 @@ export default function ResearchPage() {
     </div>
   );
 }
+
