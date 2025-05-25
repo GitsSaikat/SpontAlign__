@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -12,13 +13,15 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="container space-y-12 py-12 md:space-y-16 lg:space-y-20 md:py-16 lg:py-20">
-      <main className="flex flex-col items-center space-y-12 md:space-y-16 lg:space-y-20">
+    <div
+      className="container space-y-12 py-12 md:space-y-16 lg:space-y-20 md:py-16 lg:py-20 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/images/homepage-background.png')" }}
+    >
+      <main className="flex flex-col items-center space-y-12 md:space-y-16 lg:space-y-20 bg-background/80 dark:bg-background/90 p-6 md:p-10 rounded-xl shadow-2xl">
         {/* Hero Section */}
         <section className="flex flex-col items-center text-center space-y-6">
-          {/* Logo removed from here */}
           <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight text-primary">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight text-primary">
               Pioneering AI Alignment
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl px-4">
@@ -29,7 +32,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button asChild size="lg" className="btn-transition btn-hover">
-              <Link href="/vision" prefetch={true}>
+              <Link href="/vision">
                 Explore Our Vision <ArrowRight className="ml-2" />
               </Link>
             </Button>
@@ -39,13 +42,13 @@ export default function Home() {
               size="lg"
               className="btn-transition btn-hover"
             >
-              <Link href="/research" prefetch={true}>Discover Research</Link>
+              <Link href="/research">Discover Research</Link>
             </Button>
           </div>
         </section>
 
         {/* Key Areas Summary */}
-        <section className="space-y-6">
+        <section className="space-y-6 w-full max-w-5xl">
           <div className="text-center space-y-2">
             <h2 className="text-3xl font-bold tracking-tight">
               Our Key Areas
@@ -55,7 +58,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 bg-primary/5">
+            <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card/90 dark:bg-card/80">
               <CardHeader>
                 <CardTitle className="text-2xl font-semibold text-primary">
                   Our Vision
@@ -74,7 +77,7 @@ export default function Home() {
                   variant="link"
                   className="p-0 h-auto text-base text-primary btn-transition btn-hover"
                 >
-                  <Link href="/vision" prefetch={true}>
+                  <Link href="/vision">
                     Read More{" "}
                     <ArrowRight className="ml-1 h-4 w-4" strokeWidth={3} />
                   </Link>
@@ -82,7 +85,7 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card/90 dark:bg-card/80">
               <CardHeader>
                 <CardTitle className="text-2xl font-semibold text-primary">
                   Research Highlights
@@ -101,7 +104,7 @@ export default function Home() {
                   variant="link"
                   className="p-0 h-auto text-base text-primary btn-transition btn-hover"
                 >
-                  <Link href="/research" prefetch={true}>
+                  <Link href="/research">
                     View Research{" "}
                     <ArrowRight className="ml-1 h-4 w-4" strokeWidth={3} />
                   </Link>
@@ -109,9 +112,9 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 bg-secondary/5">
+            <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card/90 dark:bg-card/80">
               <CardHeader>
-                <CardTitle className="text-2xl">
+                <CardTitle className="text-2xl font-semibold text-primary">
                   Enterprise Solutions
                 </CardTitle>
                 <CardDescription className="text-muted-foreground">
@@ -128,7 +131,7 @@ export default function Home() {
                   variant="link"
                   className="p-0 h-auto text-base text-primary btn-transition btn-hover"
                 >
-                  <Link href="/enterprise" prefetch={true}>
+                  <Link href="/enterprise">
                     Learn More{" "}
                     <ArrowRight className="ml-1 h-4 w-4" strokeWidth={3} />
                   </Link>
@@ -138,10 +141,10 @@ export default function Home() {
           </div>
         </section>
 
-        <Separator className="my-8" />
+        <Separator className="my-8 bg-border/50" />
 
         {/* Stay Updated Section */}
-        <section className="bg-secondary rounded-lg p-8 md:p-12 text-center bg-secondary/5">
+        <section className="bg-secondary/80 dark:bg-secondary/70 rounded-lg p-8 md:p-12 text-center w-full max-w-3xl">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
             Stay Updated
           </h2>
@@ -153,7 +156,7 @@ export default function Home() {
             size="lg"
             className="btn-transition btn-hover"
           >
-            <Link href="/blogs" prefetch={true}>
+            <Link href="/blogs">
               Read Our Blog{" "}
               <ArrowRight className="ml-2" strokeWidth={3} />
             </Link>
