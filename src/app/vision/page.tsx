@@ -42,7 +42,7 @@ export default function VisionPage() {
           </CardHeader>
           <CardContent className="flex-grow">
             <p className="text-lg text-muted-foreground text-center md:text-left">
-              In the future, the economy will be primarily AI-driven; our company aims to create a bridge between AI and people. We want to create Benevolent AI systems that benefit humanity even when they clash with our company values. We aim to create a transhumanist society empowered by AI systems. Once achieved, our mission will be to explore the deep, dark secrets of the Universe.
+              In the future, the economy will be primarily AI-driven; our company aims to create a bridge between AI and people. We want to create Benevolent AI systems that benefit humanity even when they clash with our company values. We aim to create a transhumanist society empowered by AI systems. Once achieved, our mission will be to explore the deep, dark secrets of the Consciousness and the Universe.
             </p>
           </CardContent>
         </Card>
