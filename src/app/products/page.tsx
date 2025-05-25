@@ -1,38 +1,62 @@
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { ArrowRight, Package, Zap } from "lucide-react";
+import { ArrowRight, Package, Zap } from "lucide-react"; // Sparkles can be added if desired for specific cards
 import Image from "next/image";
 
-// Placeholder Product Data
+// Updated Product Data
 const products = [
   {
-    id: 'alignment-suite',
-    name: 'SpontAlign Alignment Suite',
-    description: 'A comprehensive toolkit for measuring, training, and monitoring the alignment of large language models.',
-    features: ['Scalable Oversight Tools', 'Preference Model Training', 'Red Teaming Automation', 'Interpretability Dashboards'],
-    imageUrl: 'https://picsum.photos/seed/product1/600/400',
-    status: 'Beta',
-    link: '/docs/alignment-suite' // Link to product-specific docs
+    id: 'open-deep-research',
+    name: 'Open Deep Research',
+    description: 'An application for assisting in research by conducting comprehensive research on any topic.',
+    features: ['AI-Powered Research', 'Comprehensive Topic Analysis', 'Knowledge Discovery'],
+    imageUrl: 'https://placehold.co/600x400.png',
+    imageHint: 'research brain',
+    status: 'Live',
+    link: 'https://huggingface.co/spaces/AlignAI/Open-Deep-Research'
   },
   {
-    id: 'safety-layer-api',
-    name: 'Safety Layer API',
-    description: 'An API providing real-time content filtering and behavior monitoring to ensure AI interactions remain safe and appropriate.',
-    features: ['Harmful Content Detection', 'Sycophancy Reduction', 'Instruction Following Checks', 'Customizable Policies'],
-    imageUrl: 'https://picsum.photos/seed/product2/600/400',
-    status: 'Alpha',
-    link: '/contact' // Link to contact for alpha access
+    id: 'deep-research-arxiv',
+    name: 'Deep Research Arxiv',
+    description: 'Do literature review, Fast, Simple and Reliable.',
+    features: ['Targeted Literature Review', 'Arxiv Paper Integration', 'Efficient & Accurate'],
+    imageUrl: 'https://placehold.co/600x400.png',
+    imageHint: 'documents papers',
+    status: 'Live',
+    link: 'https://huggingface.co/spaces/AlignAI/Deep-Research-Arxiv'
   },
-    {
-    id: 'verify-ai',
-    name: 'VerifyAI Platform',
-    description: 'A platform for rigorous testing and validation of AI model robustness and safety against adversarial attacks and distributional shifts.',
-    features: ['Automated Test Generation', 'Formal Verification Modules', 'Robustness Benchmarking', 'Failure Mode Analysis'],
-    imageUrl: 'https://picsum.photos/seed/product3/600/400',
+  {
+    id: 'agent-ds',
+    name: 'Agent DS',
+    description: 'Your personal data scientist.',
+    features: ['AI-Driven Data Analysis', 'Automated Insights', 'Personalized Dashboards'],
+    imageUrl: 'https://placehold.co/600x400.png',
+    imageHint: 'data science chart',
     status: 'Coming Soon',
-    link: '#' // No link yet
+    link: '#'
   },
+  {
+    id: 'shikkhok',
+    name: 'Shikkhok',
+    description: 'Your personal educator.',
+    features: ['Personalized Learning Paths', 'Interactive AI Tutoring', 'Knowledge Reinforcement'],
+    imageUrl: 'https://placehold.co/600x400.png',
+    imageHint: 'education book',
+    status: 'Coming Soon',
+    link: '#'
+  },
+  {
+    id: 'stay-tuned',
+    name: 'Stay Tuned!',
+    description: 'Many more interesting applications are coming soon 😊',
+    features: ['Continuous Innovation', 'Expanding AI Toolkit', 'Community Focused'],
+    imageUrl: 'https://placehold.co/600x400.png',
+    imageHint: 'abstract future',
+    status: 'Announcement',
+    link: '/blogs'
+  }
 ];
 
 export default function ProductsPage() {
@@ -57,12 +81,16 @@ export default function ProductsPage() {
                 alt={`${product.name} illustration`}
                 layout="fill"
                 objectFit="cover"
+                data-ai-hint={product.imageHint}
               />
                {product.status && (
                  <span className={`absolute top-2 right-2 text-xs font-semibold px-2 py-1 rounded ${
-                   product.status === 'Beta' ? 'bg-yellow-500 text-black' :
-                   product.status === 'Alpha' ? 'bg-blue-500 text-white' :
-                   'bg-gray-500 text-white' // Coming Soon or other
+                   product.status === 'Live' ? 'bg-green-600 text-white' :
+                   product.status === 'Beta' ? 'bg-yellow-500 text-black' : // Kept for potential future use
+                   product.status === 'Alpha' ? 'bg-blue-500 text-white' : // Kept for potential future use
+                   product.status === 'Announcement' ? 'bg-purple-600 text-white' :
+                   product.status === 'Coming Soon' ? 'bg-gray-500 text-white' :
+                   'bg-gray-500 text-white' // Default fallback
                  }`}>
                    {product.status}
                  </span>
@@ -70,7 +98,8 @@ export default function ProductsPage() {
             </div>
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-2">
-                <Package className="h-6 w-6 text-primary" /> {product.name}
+                <Package className="h-6 w-6 text-primary" /> {/* Or use product.icon if defined */}
+                {product.name}
               </CardTitle>
               <CardDescription>{product.description}</CardDescription>
             </CardHeader>
@@ -86,10 +115,21 @@ export default function ProductsPage() {
                   ))}
                 </ul>
               </div>
-              <Button asChild className="w-full mt-auto btn-transition btn-hover btn-active" disabled={product.status === 'Coming Soon'}>
-                <Link href={product.link} prefetch={product.status !== 'Coming Soon' && product.status !== 'Alpha'}>
-                  {product.status === 'Alpha' ? 'Request Access' : product.status === 'Coming Soon' ? 'Coming Soon' : 'Learn More'}
-                  {product.status !== 'Coming Soon' && <ArrowRight className="ml-2 h-4 w-4" />}
+              <Button
+                asChild
+                className="w-full mt-auto btn-transition btn-hover btn-active"
+                disabled={product.status === 'Coming Soon'}
+                variant={product.status === 'Coming Soon' ? 'outline' : 'default'}
+              >
+                <Link href={product.link} prefetch={product.status !== 'Coming Soon' && product.link !== '#'}>
+                  {
+                    product.status === 'Live' ? 'Access Product' :
+                    product.status === 'Alpha' ? 'Request Access' : // Kept for future use
+                    product.status === 'Coming Soon' ? 'Coming Soon' :
+                    product.status === 'Announcement' ? 'Follow Updates' :
+                    'Learn More'
+                  }
+                  {(product.status === 'Live' || product.status === 'Announcement') && <ArrowRight className="ml-2 h-4 w-4" />}
                 </Link>
               </Button>
             </CardContent>
@@ -112,3 +152,5 @@ export default function ProductsPage() {
     </div>
   );
 }
+
+    
