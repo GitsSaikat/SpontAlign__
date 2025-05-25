@@ -25,7 +25,7 @@ export default function BlogsPage() {
                 rel="noopener noreferrer"
                 className="text-primary hover:underline font-semibold break-all"
               >
-                {mediumBlogUrl}
+                Epoch
               </a>
             </p>
             <p>
