@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { ArrowRight, ExternalLink, Package, Zap } from "lucide-react"; // Added ExternalLink
+import { ArrowRight, ExternalLink, Package, Zap } from "lucide-react"; // Zap might be unused now
 import Image from "next/image";
 
 // Updated Product Data
@@ -11,7 +11,7 @@ const products = [
     id: 'open-deep-research',
     name: 'Open Deep Research',
     description: 'An application for assisting in research by conducting comprehensive research on any topic.',
-    features: ['AI-Powered Research', 'Comprehensive Topic Analysis', 'Knowledge Discovery'],
+    features: ['AI-Powered Research', 'Comprehensive Topic Analysis', 'Knowledge Discovery'], // Kept for data structure, but won't be rendered
     imageUrl: 'https://placehold.co/600x400.png',
     imageHint: 'research brain',
     status: 'Live',
@@ -21,7 +21,7 @@ const products = [
     id: 'deep-research-arxiv',
     name: 'Deep Research Arxiv',
     description: 'Do literature review, Fast, Simple and Reliable.',
-    features: ['Targeted Literature Review', 'Arxiv Paper Integration', 'Efficient & Accurate'],
+    features: ['Targeted Literature Review', 'Arxiv Paper Integration', 'Efficient & Accurate'], // Kept for data structure
     imageUrl: 'https://placehold.co/600x400.png',
     imageHint: 'documents papers',
     status: 'Live',
@@ -31,7 +31,7 @@ const products = [
     id: 'agent-ds',
     name: 'Agent DS',
     description: 'Your personal data scientist.',
-    features: ['AI-Driven Data Analysis', 'Automated Insights', 'Personalized Dashboards'],
+    features: ['AI-Driven Data Analysis', 'Automated Insights', 'Personalized Dashboards'], // Kept for data structure
     imageUrl: 'https://placehold.co/600x400.png',
     imageHint: 'data science chart',
     status: 'Coming Soon',
@@ -41,23 +41,20 @@ const products = [
     id: 'shikkhok',
     name: 'Shikkhok',
     description: 'Your personal educator.',
-    features: ['Personalized Learning Paths', 'Interactive AI Tutoring', 'Knowledge Reinforcement'],
+    features: ['Personalized Learning Paths', 'Interactive AI Tutoring', 'Knowledge Reinforcement'], // Kept for data structure
     imageUrl: 'https://placehold.co/600x400.png',
     imageHint: 'education book',
     status: 'Coming Soon',
     link: '#'
-  },
-  {
-    id: 'stay-tuned',
-    name: 'Stay Tuned!',
-    description: 'Many more interesting applications are coming soon 😊',
-    features: ['Continuous Innovation', 'Expanding AI Toolkit', 'Community Focused'],
-    imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'abstract future',
-    status: 'Announcement',
-    link: '/blogs'
   }
+  // "Stay Tuned!" is removed from here and handled separately
 ];
+
+const stayTunedMessage = {
+  name: 'Stay Tuned!',
+  description: 'Many more interesting applications are coming soon 😊',
+  link: '/blogs'
+};
 
 export default function ProductsPage() {
   return (
@@ -88,9 +85,8 @@ export default function ProductsPage() {
                    product.status === 'Live' ? 'bg-green-600 text-white' :
                    product.status === 'Beta' ? 'bg-yellow-500 text-black' :
                    product.status === 'Alpha' ? 'bg-blue-500 text-white' :
-                   product.status === 'Announcement' ? 'bg-purple-600 text-white' :
                    product.status === 'Coming Soon' ? 'bg-gray-500 text-white' :
-                   'bg-gray-500 text-white'
+                   'bg-gray-500 text-white' // Fallback, though 'Announcement' was removed for individual products
                  }`}>
                    {product.status}
                  </span>
@@ -103,21 +99,11 @@ export default function ProductsPage() {
               </CardTitle>
               <CardDescription>{product.description}</CardDescription>
             </CardHeader>
-            <CardContent className="flex-grow flex flex-col justify-between">
-              <div>
-                <h4 className="font-semibold mb-2">Key Features:</h4>
-                <ul className="list-none space-y-1 text-sm text-muted-foreground mb-6">
-                  {product.features.map((feature, index) => (
-                    <li key={index} className="flex items-center gap-2">
-                      <Zap className="h-4 w-4 text-accent flex-shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <CardContent className="flex-grow flex flex-col justify-end"> {/* Changed justify-between to justify-end */}
+              {/* Key Features section removed */}
               <Button
                 asChild
-                className="w-full mt-auto btn-transition btn-hover btn-active"
+                className="w-full mt-auto btn-transition btn-hover btn-active" // mt-auto pushes button to bottom if CardContent is flex-grow
                 disabled={product.status === 'Coming Soon'}
                 variant="outline"
                 size="sm"
@@ -127,7 +113,7 @@ export default function ProductsPage() {
                   prefetch={product.link.startsWith('/') && product.status !== 'Coming Soon'}
                   target={product.status === 'Live' && !product.link.startsWith('/') ? '_blank' : undefined}
                   rel={product.status === 'Live' && !product.link.startsWith('/') ? 'noopener noreferrer' : undefined}
-                  className="flex items-center justify-center" // Ensure icon and text are centered
+                  className="flex items-center justify-center"
                 >
                   {product.status === 'Live' && (
                     <>
@@ -135,6 +121,7 @@ export default function ProductsPage() {
                       Use it
                     </>
                   )}
+                  {/* Announcement status for individual products is removed, so this condition might not be met often */}
                   {product.status === 'Announcement' && (
                     <>
                       Follow Updates
@@ -154,6 +141,17 @@ export default function ProductsPage() {
             </CardContent>
           </Card>
         ))}
+      </section>
+
+      {/* Stay Tuned Section */}
+      <section className="text-center py-8">
+        <h2 className="text-2xl font-semibold mb-2">{stayTunedMessage.name}</h2>
+        <p className="text-muted-foreground mb-4">{stayTunedMessage.description}</p>
+        <Button asChild variant="link" className="text-primary btn-transition btn-hover btn-active">
+          <Link href={stayTunedMessage.link} prefetch={true}>
+            Follow Our Blog for Updates <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
+        </Button>
       </section>
 
       {/* Custom Solutions Section */}
