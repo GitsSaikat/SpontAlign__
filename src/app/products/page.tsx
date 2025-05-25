@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { ArrowRight, ExternalLink, Package, Zap } from "lucide-react"; // Zap might be unused now
+import { ArrowRight, ExternalLink, Package } from "lucide-react";
 import Image from "next/image";
 
 // Updated Product Data
@@ -11,7 +11,6 @@ const products = [
     id: 'open-deep-research',
     name: 'Open Deep Research',
     description: 'An application for assisting in research by conducting comprehensive research on any topic.',
-    features: ['AI-Powered Research', 'Comprehensive Topic Analysis', 'Knowledge Discovery'], // Kept for data structure, but won't be rendered
     imageUrl: 'https://placehold.co/600x400.png',
     imageHint: 'research brain',
     status: 'Live',
@@ -21,7 +20,6 @@ const products = [
     id: 'deep-research-arxiv',
     name: 'Deep Research Arxiv',
     description: 'Do literature review, Fast, Simple and Reliable.',
-    features: ['Targeted Literature Review', 'Arxiv Paper Integration', 'Efficient & Accurate'], // Kept for data structure
     imageUrl: 'https://placehold.co/600x400.png',
     imageHint: 'documents papers',
     status: 'Live',
@@ -31,7 +29,6 @@ const products = [
     id: 'agent-ds',
     name: 'Agent DS',
     description: 'Your personal data scientist.',
-    features: ['AI-Driven Data Analysis', 'Automated Insights', 'Personalized Dashboards'], // Kept for data structure
     imageUrl: 'https://placehold.co/600x400.png',
     imageHint: 'data science chart',
     status: 'Coming Soon',
@@ -41,13 +38,11 @@ const products = [
     id: 'shikkhok',
     name: 'Shikkhok',
     description: 'Your personal educator.',
-    features: ['Personalized Learning Paths', 'Interactive AI Tutoring', 'Knowledge Reinforcement'], // Kept for data structure
     imageUrl: 'https://placehold.co/600x400.png',
     imageHint: 'education book',
     status: 'Coming Soon',
     link: '#'
   }
-  // "Stay Tuned!" is removed from here and handled separately
 ];
 
 const stayTunedMessage = {
@@ -86,7 +81,7 @@ export default function ProductsPage() {
                    product.status === 'Beta' ? 'bg-yellow-500 text-black' :
                    product.status === 'Alpha' ? 'bg-blue-500 text-white' :
                    product.status === 'Coming Soon' ? 'bg-gray-500 text-white' :
-                   'bg-gray-500 text-white' // Fallback, though 'Announcement' was removed for individual products
+                   'bg-gray-500 text-white'
                  }`}>
                    {product.status}
                  </span>
@@ -99,11 +94,10 @@ export default function ProductsPage() {
               </CardTitle>
               <CardDescription>{product.description}</CardDescription>
             </CardHeader>
-            <CardContent className="flex-grow flex flex-col justify-end"> {/* Changed justify-between to justify-end */}
-              {/* Key Features section removed */}
+            <CardContent className="flex-grow flex flex-col justify-end">
               <Button
                 asChild
-                className="w-full mt-auto btn-transition btn-hover btn-active" // mt-auto pushes button to bottom if CardContent is flex-grow
+                className="w-full mt-auto btn-transition btn-hover btn-active"
                 disabled={product.status === 'Coming Soon'}
                 variant="outline"
                 size="sm"
@@ -121,15 +115,13 @@ export default function ProductsPage() {
                       Use it
                     </>
                   )}
-                  {/* Announcement status for individual products is removed, so this condition might not be met often */}
-                  {product.status === 'Announcement' && (
+                  {product.status === 'Announcement' && ( // This status is not currently used for individual products but kept for completeness
                     <>
                       Follow Updates
                       <ArrowRight className="ml-1 h-4 w-4" />
                     </>
                   )}
                   {product.status === 'Coming Soon' && 'Coming Soon'}
-                  {/* Fallback for other statuses or if a new status is added without specific handling */}
                   {product.status !== 'Live' && product.status !== 'Announcement' && product.status !== 'Coming Soon' && (
                     <>
                       Learn More
@@ -145,8 +137,8 @@ export default function ProductsPage() {
 
       {/* Stay Tuned Section */}
       <section className="text-center py-8">
-        <h2 className="text-2xl font-semibold mb-2">{stayTunedMessage.name}</h2>
-        <p className="text-muted-foreground mb-4">{stayTunedMessage.description}</p>
+        <h2 className="text-3xl font-semibold mb-2">{stayTunedMessage.name}</h2>
+        <p className="text-lg text-muted-foreground mb-4">{stayTunedMessage.description}</p>
         <Button asChild variant="link" className="text-primary btn-transition btn-hover btn-active">
           <Link href={stayTunedMessage.link} prefetch={true}>
             Follow Our Blog for Updates <ArrowRight className="ml-2 h-4 w-4" />
