@@ -21,18 +21,22 @@ export default function MentorshipPage() {
         <div>
           <h2 className="text-3xl font-bold mb-4">Our Commitment</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            Advancing the field of AI alignment requires a collaborative effort and nurturing new talent. SpontAlign is committed to supporting students, researchers, and institutions through various mentorship and collaboration initiatives.
+            We believe that deep intelligence emerges from interaction—networks of agents, minds, and ideas coming together. That's not just how we think about AI, but also how we operate as a company.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            We thrive on collaboration. We’re here to help and to be helped, to learn from others, and to build with curious, driven minds. Whether you're an AI enthusiast, researcher, or a builder at heart, we’d love to meet you.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            We believe that open dialogue, shared learning, and diverse perspectives are crucial for tackling the complex challenges of building safe and beneficial AI.
+            Friendship means little when it’s convenient. We’re interested in those who walk the long road with us—those exploring not just what AI is, but what it could become.
           </p>
         </div>
         <div className="relative h-64 md:h-80 rounded-lg overflow-hidden shadow-lg">
            <Image
-              src="https://picsum.photos/seed/mentorship1/800/600"
+              src="https://placehold.co/800x600.png"
               alt="Collaboration illustration"
               layout="fill"
               objectFit="cover"
+              data-ai-hint="collaboration teamwork"
            />
            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
         </div>
@@ -69,7 +73,7 @@ export default function MentorshipPage() {
                 We partner with universities and research labs on joint projects, workshops, and knowledge sharing initiatives. Let's advance the field together.
               </p>
               <Button asChild variant="outline" size="sm" className="w-full btn-transition btn-hover btn-active">
-                <Link href="/contact?subject=AcademicCollaboration" prefetch={true}>
+                <Link href="/contact?subject=AcademicCollaboration">
                     Propose Collaboration
                 </Link>
               </Button>
@@ -86,7 +90,7 @@ export default function MentorshipPage() {
                 Spend time at SpontAlign collaborating on specific research questions, leveraging our resources and expertise. By invitation or proposal.
               </p>
                 <Button asChild variant="outline" size="sm" className="w-full btn-transition btn-hover btn-active">
-                <Link href="/contact?subject=VisitingResearcher" prefetch={true}>
+                <Link href="/contact?subject=VisitingResearcher">
                     Inquire About Visiting
                 </Link>
               </Button>
@@ -103,7 +107,7 @@ export default function MentorshipPage() {
                 SpontAlign actively participates in the broader AI community through conference presentations, open-source contributions, and hosting technical talks and workshops (both online and in-person when possible).
             </p>
              <p>
-               Follow our <Link href="/blogs" className="text-primary hover:underline" prefetch={true}>Blog</Link> and social media channels for announcements about upcoming events and opportunities to engage with our team.
+               Follow our <Link href="/blogs" className="text-primary hover:underline">Blog</Link> and social media channels for announcements about upcoming events and opportunities to engage with our team.
             </p>
          </div>
       </section>
@@ -115,7 +119,7 @@ export default function MentorshipPage() {
             Reach out to discuss potential mentorship or collaboration opportunities. We are always open to connecting with passionate individuals and institutions.
           </p>
           <Button asChild size="lg" className="btn-transition btn-hover btn-active">
-            <Link href="/contact" prefetch={true}>
+            <Link href="/contact">
               Contact Us <ArrowRight className="ml-2" />
             </Link>
           </Button>
