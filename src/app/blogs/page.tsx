@@ -25,7 +25,7 @@ export default function BlogsPage() {
               To explore more, please visit the link below and dive into our collection of insights, ideas, and explorations:
             </p>
             <div className="flex items-center justify-center space-x-3 py-2">
-              <ChevronLeft className="h-6 w-6 text-primary animate-nudge-left" />
+              <ChevronRight className="h-6 w-6 text-primary animate-nudge-right" />
               <a
                 href={mediumBlogUrl}
                 target="_blank"
@@ -34,7 +34,7 @@ export default function BlogsPage() {
               >
                 Epoch
               </a>
-              <ChevronRight className="h-6 w-6 text-primary animate-nudge-right" />
+              <ChevronLeft className="h-6 w-6 text-primary animate-nudge-left" />
             </div>
             <p>
               Let your curiosity lead the way.
