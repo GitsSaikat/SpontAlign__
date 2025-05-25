@@ -6,17 +6,74 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { FileText, Filter } from "lucide-react"; // Changed ExternalLink to FileText
+import { FileText, Filter } from "lucide-react";
 import Link from 'next/link';
 
-// Placeholder data for research items
+// Updated research items data
 const allResearchItems = [
-  { id: 1, title: "Scalable Oversight for Large Language Models", year: 2024, topic: "Oversight", type: "Paper", link: "#", authors: "A. Researcher, B. Collaborator" },
-  { id: 2, title: "Interpretability Techniques for Transformer Models", year: 2023, topic: "Interpretability", type: "Project", link: "#", authors: "C. Scientist" },
-  { id: 3, title: "Measuring and Reducing Sycophancy in AI", year: 2023, topic: "Alignment", type: "Paper", link: "#", authors: "D. Engineer, E. Scholar" },
-  { id: 4, title: "Robustness Against Adversarial Examples", year: 2024, topic: "Safety", type: "Paper", link: "#", authors: "F. Investigator" },
-  { id: 5, title: "Value Learning from Human Preferences", year: 2022, topic: "Alignment", type: "Project", link: "#", authors: "G. Expert, H. Analyst" },
-  { id: 6, title: "Constitutional AI: Harmlessness from AI Feedback", year: 2023, topic: "Alignment", type: "Paper", link: "#", authors: "I. Pioneer"},
+  {
+    id: 1,
+    title: "KAXAI: An Integrated Environment for Knowledge Analysis and Explainable AI",
+    year: 2024,
+    topic: "Interpretability",
+    type: "Paper",
+    link: "https://arxiv.org/abs/2401.00193",
+    authors: "Saikat Barua, Sifat Momen"
+  },
+  {
+    id: 2,
+    title: "RESCUED: Robust Quantum Error Correction with Surface Code in Noisy Channels using Ensemble Decoder",
+    year: 2024, // Assuming recent publication from IEEE link
+    topic: "Quantum",
+    type: "Paper",
+    link: "https://ieeexplore.ieee.org/document/10490966",
+    authors: "Saikat Barua, Syed Emad Uddin Shubha, Monika Rahman, Apurba Jalal Uchash, MRC Mahdy"
+  },
+  {
+    id: 3,
+    title: "ELMAGIC: Energy-Efficient Lean Model for Reliable Medical Image Generation and Classification using Forward Forward Algorithm",
+    year: 2024, // Assuming recent publication from IEEE link
+    topic: "AI Applications",
+    type: "Paper",
+    link: "https://ieeexplore.ieee.org/document/10585776",
+    authors: "Saikat Barua, Mostafizur Rahman, Mezbah Uddin Saad, Rafiul Islam, Md Jafor Sadek"
+  },
+  {
+    id: 4,
+    title: "Exploring autonomous agents through the lens of large language models: A review",
+    year: 2024,
+    topic: "Autonomous Agents",
+    type: "Paper",
+    link: "https://arxiv.org/abs/2404.04442",
+    authors: "Saikat Barua"
+  },
+  {
+    id: 5,
+    title: "Pygen: A collaborative human-ai approach to python package creation",
+    year: 2024,
+    topic: "AI Tools",
+    type: "Paper",
+    link: "https://arxiv.org/abs/2411.08932",
+    authors: "Saikat Barua, Mostafizur Rahman, Md Jafor Sadek, Rafiul Islam, Shehenaz Khaled, Md Shohrab Hossain"
+  },
+  {
+    id: 6,
+    title: "Guardians of the agentic system: Preventing many shots jailbreak with agentic system",
+    year: 2025,
+    topic: "Safety",
+    type: "Paper",
+    link: "https://arxiv.org/abs/2502.16750",
+    authors: "Saikat Barua, Mostafizur Rahman, Md Jafor Sadek, Rafiul Islam, Shehenaz Khaled, Ahmedul Kabir"
+  },
+  {
+    id: 7,
+    title: "QuXAI: Explainers for Hybrid Quantum Machine Learning Models",
+    year: 2025,
+    topic: "Interpretability", // Could also be Quantum
+    type: "Paper",
+    link: "https://arxiv.org/abs/2505.10167",
+    authors: "Saikat Barua, Mostafizur Rahman, Shehenaz Khaled, Md Jafor Sadek, Rafiul Islam, Shahnewaz Siddique"
+  }
 ];
 
 // Get unique topics and years for filters
@@ -74,7 +131,7 @@ export default function ResearchPage() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="flex-grow bg-background font-body"
-              suppressHydrationWarning // Keep for Input
+              suppressHydrationWarning
             />
             <Select onValueChange={(value) => setSelectedTopic(value === 'all' ? null : value)} value={selectedTopic || 'all'}>
               <SelectTrigger className="w-full md:w-[180px] bg-background font-body" suppressHydrationWarning>
@@ -106,7 +163,7 @@ export default function ResearchPage() {
                     setSelectedYear(null);
                 }}
                 className="bg-background font-body"
-                suppressHydrationWarning // Add suppressHydrationWarning here
+                suppressHydrationWarning
              >
                 Clear Filters
             </Button>
@@ -133,8 +190,8 @@ export default function ResearchPage() {
                       {item.topic} - {item.type}
                     </span>
                     <Button asChild variant="outline" size="sm" className="btn-transition btn-hover btn-active">
-                      <Link href={item.link} target="_blank" rel="noopener noreferrer" prefetch={false}>
-                        <FileText className="mr-1 h-4 w-4" /> {/* Always use FileText icon */}
+                      <Link href={item.link} target="_blank" rel="noopener noreferrer">
+                        <FileText className="mr-1 h-4 w-4" />
                         View
                       </Link>
                     </Button>
@@ -159,4 +216,3 @@ export default function ResearchPage() {
     </div>
   );
 }
-
