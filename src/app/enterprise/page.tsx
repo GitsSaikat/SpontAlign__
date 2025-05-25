@@ -12,7 +12,7 @@ export default function EnterprisePage() {
          <div className="absolute inset-0 bg-black/20 mix-blend-multiply"></div>
          <div className="relative z-10">
             <Building className="h-16 w-16 mx-auto mb-4 text-white/80" />
-            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
             Partner with SpontAlign for Responsible AI Integration
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-8">
