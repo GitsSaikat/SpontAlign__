@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { ArrowRight, GraduationCap, Users, BrainCircuit, Briefcase } from "lucide-react"; // Added Briefcase for new icon
+import { ArrowRight, GraduationCap, Users, BrainCircuit, Briefcase, ExternalLink } from "lucide-react"; // Added Briefcase for new icon, ExternalLink
 import Image from "next/image";
 
 export default function MentorshipPage() {
@@ -56,10 +56,12 @@ export default function MentorshipPage() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground mb-4">
-                Gain hands-on experience working alongside our researchers on cutting-edge AI alignment projects. Open to PhD and advanced undergrad/masters students.
+                Gain hands-on experience working alongside our researchers on cutting-edge AI alignment projects. Open to PhD and undergrad/masters students.
               </p>
-              <Button variant="outline" size="sm" disabled className="w-full btn-transition">
-                Applications Closed (Check Back Soon)
+              <Button asChild variant="outline" size="sm" className="w-full btn-transition btn-hover btn-active">
+                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfSzaQZgen67RH1MxjlbjVskg28_0sdobv-PhqK96fHVQTA-w/viewform?usp=header" target="_blank" rel="noopener noreferrer">
+                  Apply <ExternalLink className="ml-2 h-4 w-4" />
+                </Link>
               </Button>
             </CardContent>
           </Card>
