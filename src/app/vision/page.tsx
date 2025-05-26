@@ -42,13 +42,13 @@ export default function VisionPage() {
           </CardHeader>
           <CardContent className="flex-grow space-y-4">
             <p className="text-lg text-muted-foreground text-center md:text-left">
-              We believe the future economy will be primarily AI-driven—and we’re building the bridge that connects AI to people. Our mission is to create benevolent AI systems that serve humanity, even if doing so challenges our own company’s interests.
+              We believe the future economy will be primarily AI-driven and we’re building the bridge that connects AI to people. Our mission is to create benevolent AI systems that serve humanity, even if doing so challenges our own company’s interests.
             </p>
             <p className="text-lg text-muted-foreground text-center md:text-left">
               AI holds the potential to uplift every sector of society, accelerating innovation, solving complex problems, and expanding human capacity. But left unchecked, it could also bring catastrophic risks. That’s why we stand for responsible development, transparent governance, and human-aligned intelligence.
             </p>
             <p className="text-lg text-muted-foreground text-center md:text-left">
-              We envision a transhumanist society, empowered by AI—not just smarter, but more conscious, compassionate, and capable. Once this is achieved, our mission will be to explore the deep, dark secrets of the Consciousness and the Universe.
+              We envision a transhumanist society, empowered by AI not just smarter, but more conscious, compassionate, and capable. Once this is achieved, our mission will be to explore the deep, dark secrets of the Consciousness and the Universe.
             </p>
           </CardContent>
         </Card>
