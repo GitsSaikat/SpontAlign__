@@ -65,11 +65,11 @@ export default function VisionPage() {
         </Card>
       </section>
 
-      {/* Long-Term Goals & Core Values Section - Two Column Layout */}
+      {/* Goals & Core Values Section - Two Column Layout */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center md:text-left">Long-Term Goals</CardTitle>
+            <CardTitle className="text-2xl font-bold text-center md:text-left">Goals</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-3">
