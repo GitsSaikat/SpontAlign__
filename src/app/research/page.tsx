@@ -12,49 +12,14 @@ import Link from 'next/link';
 // Updated research items data
 const allResearchItems = [
   {
-    id: 1,
-    title: "KAXAI: An Integrated Environment for Knowledge Analysis and Explainable AI",
-    year: 2024,
-    topic: "Interpretability",
-    type: "Paper",
-    link: "https://arxiv.org/abs/2401.00193",
-    authors: "Saikat Barua, Sifat Momen"
-  },
-  {
-    id: 2,
-    title: "RESCUED: Robust Quantum Error Correction with Surface Code in Noisy Channels using Ensemble Decoder",
-    year: 2024, // Assuming recent publication from IEEE link
-    topic: "Quantum",
-    type: "Paper",
-    link: "https://ieeexplore.ieee.org/document/10490966",
-    authors: "Saikat Barua, Syed Emad Uddin Shubha, Monika Rahman, Apurba Jalal Uchash, MRC Mahdy"
-  },
-  {
-    id: 3,
-    title: "ELMAGIC: Energy-Efficient Lean Model for Reliable Medical Image Generation and Classification using Forward Forward Algorithm",
-    year: 2024, // Assuming recent publication from IEEE link
-    topic: "AI Applications",
-    type: "Paper",
-    link: "https://ieeexplore.ieee.org/document/10585776",
-    authors: "Saikat Barua, Mostafizur Rahman, Mezbah Uddin Saad, Rafiul Islam, Md Jafor Sadek"
-  },
-  {
     id: 4,
     title: "Exploring autonomous agents through the lens of large language models: A review",
     year: 2024,
     topic: "Autonomous Agents",
     type: "Paper",
     link: "https://arxiv.org/abs/2404.04442",
-    authors: "Saikat Barua"
-  },
-  {
-    id: 5,
-    title: "Pygen: A collaborative human-ai approach to python package creation",
-    year: 2024,
-    topic: "AI Tools",
-    type: "Paper",
-    link: "https://arxiv.org/abs/2411.08932",
-    authors: "Saikat Barua, Mostafizur Rahman, Md Jafor Sadek, Rafiul Islam, Shehenaz Khaled, Md Shohrab Hossain"
+    authors: "Saikat Barua",
+    shortAbstract: "This review explores LLM-powered autonomous agents, their architecture, capabilities, challenges, and future research directions."
   },
   {
     id: 6,
@@ -63,16 +28,58 @@ const allResearchItems = [
     topic: "Safety",
     type: "Paper",
     link: "https://arxiv.org/abs/2502.16750",
-    authors: "Saikat Barua, Mostafizur Rahman, Md Jafor Sadek, Rafiul Islam, Shehenaz Khaled, Ahmedul Kabir"
+    authors: "Saikat Barua, Mostafizur Rahman, Md Jafor Sadek, Rafiul Islam, Shehenaz Khaled, Ahmedul Kabir",
+    shortAbstract: "Proposes systems to detect and prevent advanced jailbreaking attacks on LLM-based autonomous AI agents."
+  },
+  {
+    id: 1,
+    title: "KAXAI: An Integrated Environment for Knowledge Analysis and Explainable AI",
+    year: 2024,
+    topic: "Interpretability",
+    type: "Paper",
+    link: "https://arxiv.org/abs/2401.00193",
+    authors: "Saikat Barua, Sifat Momen",
+    shortAbstract: "KAXAI integrates AutoML, XAI, and synthetic data generation for accessible machine learning and interpretability."
+  },
+  {
+    id: 2,
+    title: "RESCUED: Robust Quantum Error Correction with Surface Code in Noisy Channels using Ensemble Decoder",
+    year: 2024, 
+    topic: "Quantum",
+    type: "Paper",
+    link: "https://ieeexplore.ieee.org/document/10490966",
+    authors: "Saikat Barua, Syed Emad Uddin Shubha, Monika Rahman, Apurba Jalal Uchash, MRC Mahdy",
+    shortAbstract: "RESCUED proposes an ensemble decoder for robust quantum error correction with surface codes in noisy channels."
+  },
+  {
+    id: 3,
+    title: "ELMAGIC: Energy-Efficient Lean Model for Reliable Medical Image Generation and Classification using Forward Forward Algorithm",
+    year: 2024, 
+    topic: "AI Applications",
+    type: "Paper",
+    link: "https://ieeexplore.ieee.org/document/10585776",
+    authors: "Saikat Barua, Mostafizur Rahman, Mezbah Uddin Saad, Rafiul Islam, Md Jafor Sadek",
+    shortAbstract: "ELMAGIC offers an energy-efficient lean model for medical image generation and classification using Forward Forward."
+  },
+  {
+    id: 5,
+    title: "Pygen: A collaborative human-ai approach to python package creation",
+    year: 2024,
+    topic: "AI Tools",
+    type: "Paper",
+    link: "https://arxiv.org/abs/2411.08932", // Link will be active Nov 2024
+    authors: "Saikat Barua, Mostafizur Rahman, Md Jafor Sadek, Rafiul Islam, Shehenaz Khaled, Md Shohrab Hossain",
+    shortAbstract: "PyGen is a human-AI collaborative platform for automating Python package creation from abstract ideas."
   },
   {
     id: 7,
     title: "QuXAI: Explainers for Hybrid Quantum Machine Learning Models",
     year: 2025,
-    topic: "Interpretability", // Could also be Quantum
+    topic: "Interpretability", 
     type: "Paper",
-    link: "https://arxiv.org/abs/2505.10167",
-    authors: "Saikat Barua, Mostafizur Rahman, Shehenaz Khaled, Md Jafor Sadek, Rafiul Islam, Shahnewaz Siddique"
+    link: "https://arxiv.org/abs/2505.10167", // Link will be active May 2025
+    authors: "Saikat Barua, Mostafizur Rahman, Shehenaz Khaled, Md Jafor Sadek, Rafiul Islam, Shahnewaz Siddique",
+    shortAbstract: "QuXAI introduces a framework and explainer (Q-MEDLEY) for hybrid quantum-classical machine learning model transparency."
   }
 ];
 
@@ -97,7 +104,9 @@ export default function ResearchPage() {
     if (!hasMounted) return;
 
     const filtered = allResearchItems.filter(item => {
-        const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) || item.authors.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                              item.authors.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                              (item.shortAbstract && item.shortAbstract.toLowerCase().includes(searchTerm.toLowerCase()));
         const matchesTopic = !selectedTopic || item.topic === selectedTopic;
         const matchesYear = !selectedYear || item.year === parseInt(selectedYear);
         return matchesSearch && matchesTopic && matchesYear;
@@ -127,7 +136,7 @@ export default function ResearchPage() {
           </CardHeader>
           <CardContent className="flex flex-col md:flex-row gap-4">
             <Input
-              placeholder="Search by title or author..."
+              placeholder="Search by title, author, or abstract..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="flex-grow bg-background font-body"
@@ -180,12 +189,17 @@ export default function ResearchPage() {
               <Card key={item.id} className="flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
                 <CardHeader>
                   <CardTitle className="text-xl leading-snug font-heading">{item.title}</CardTitle>
-                  <CardDescription className="font-body">
+                  <CardDescription className="font-body text-sm">
                     {item.authors} ({item.year})
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex justify-between items-center mt-4">
+                  {item.shortAbstract && (
+                    <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
+                      {item.shortAbstract}
+                    </p>
+                  )}
+                  <div className="flex justify-between items-center mt-auto pt-3 border-t border-border/50">
                     <span className="text-xs font-medium bg-secondary text-secondary-foreground px-2 py-1 rounded font-body">
                       {item.topic} - {item.type}
                     </span>
