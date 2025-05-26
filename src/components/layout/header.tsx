@@ -25,8 +25,8 @@ export function Header() {
   return (
     // Use a subtle border, increased vertical padding (py-4), more space below (mb-8 or mb-12)
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/60 mb-8">
-      {/* Reduced padding in container (py-2), max width for content */}
-      <div className="container flex h-auto items-center justify-between py-2 max-w-screen-xl" suppressHydrationWarning> {/* Changed py-4 to py-2 */}
+      {/* Reduced padding in container (py-1), max width for content */}
+      <div className="container flex h-auto items-center justify-between py-1 max-w-screen-xl" suppressHydrationWarning> {/* Changed py-2 to py-1 */}
         {/* Logo */}
         {/* Added ml-6 for left spacing */}
         <Link href="/" className="flex items-center mr-8 ml-6" suppressHydrationWarning> {/* Added ml-6 */}
@@ -38,7 +38,7 @@ export function Header() {
               priority // Load logo quickly
               style={{ objectFit: 'contain', height: 'auto' }} // Maintain aspect ratio
               quality={100}
-              suppressHydrationWarning // Added due to previous error
+              suppressHydrationWarning 
            />
         </Link>
 
@@ -50,6 +50,7 @@ export function Header() {
               href={item.href}
               // Use font-body, more muted text, subtle hover
               className="text-base font-body text-muted-foreground transition-colors hover:text-foreground"
+              prefetch={false} // Disabled prefetching for all nav items
             >
               {item.label}
             </Link>
@@ -70,13 +71,13 @@ export function Header() {
              <div className="flex justify-between items-center mb-8"> {/* Increased bottom margin */}
                  <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)} suppressHydrationWarning>
                   <Image
-                    src="/images/logo.png" // Updated path relative to public directory
+                    src="/images/logo.png" 
                     alt="SpontAlign Logo"
                     width={150}
                     height={20}
-                    style={{ objectFit: 'contain', height: 'auto' }} // Maintain aspect ratio
+                    style={{ objectFit: 'contain', height: 'auto' }} 
                     quality={100}
-                    // priority prop removed here as well if needed, but likely fine for mobile menu
+                    suppressHydrationWarning
                     />
                  </Link>
                  <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)} className="text-muted-foreground hover:text-foreground">
@@ -93,6 +94,7 @@ export function Header() {
                   // Larger text, font-body, clearer indication of current page might be needed
                   className="text-lg font-body font-medium text-foreground transition-colors hover:text-primary"
                   onClick={() => setIsMobileMenuOpen(false)}
+                  prefetch={false} // Disabled prefetching for all nav items
                 >
                   {item.label}
                 </Link>
