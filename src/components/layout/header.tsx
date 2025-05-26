@@ -31,7 +31,7 @@ export function Header() {
         {/* Added ml-6 for left spacing */}
         <Link href="/" className="flex items-center mr-8 ml-6" suppressHydrationWarning> {/* Added ml-6 and suppressHydrationWarning */}
            <Image
-              src="/images/SpontAlign_LOGO_M_nbg.png" // Path relative to public directory
+              src="/images/logo.png" // Updated path relative to public directory
               alt="SpontAlign Logo"
               width={180} // Slightly larger? Adjust as needed
               height={24}
@@ -49,7 +49,6 @@ export function Header() {
               href={item.href}
               // Use font-body, more muted text, subtle hover
               className="text-base font-body text-muted-foreground transition-colors hover:text-foreground"
-              prefetch={true} // Preload linked pages
             >
               {item.label}
             </Link>
@@ -70,7 +69,7 @@ export function Header() {
              <div className="flex justify-between items-center mb-8"> {/* Increased bottom margin */}
                  <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
                   <Image
-                    src="/images/SpontAlign_LOGO_M_nbg.png" // Path relative to public directory
+                    src="/images/logo.png" // Updated path relative to public directory
                     alt="SpontAlign Logo"
                     width={150}
                     height={20}
@@ -93,7 +92,6 @@ export function Header() {
                   // Larger text, font-body, clearer indication of current page might be needed
                   className="text-lg font-body font-medium text-foreground transition-colors hover:text-primary"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  prefetch={true} // Preload linked pages
                 >
                   {item.label}
                 </Link>
