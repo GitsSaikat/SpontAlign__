@@ -1,7 +1,8 @@
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { ArrowRight, GraduationCap, Users, BrainCircuit } from "lucide-react";
+import { ArrowRight, GraduationCap, Users, BrainCircuit, Briefcase } from "lucide-react"; // Added Briefcase for new icon
 import Image from "next/image";
 
 export default function MentorshipPage() {
@@ -81,17 +82,17 @@ export default function MentorshipPage() {
           </Card>
           <Card className="hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-                 <BrainCircuit className="h-10 w-10 text-primary mb-2"/>
-              <CardTitle>Visiting Researcher Program</CardTitle>
-              <CardDescription>For Experienced Researchers</CardDescription>
+                 <Briefcase className="h-10 w-10 text-primary mb-2"/> {/* Changed icon */}
+              <CardTitle>Research Team Collaborations</CardTitle> {/* Updated Title */}
+              <CardDescription>For AI Labs & Independent Groups</CardDescription> {/* Updated Description */}
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground mb-4">
-                Spend time at SpontAlign collaborating on specific research questions, leveraging our resources and expertise. By invitation or proposal.
+                We collaborate with external research teams on aligned goals—sharing resources, ideas, and infrastructure to tackle complex challenges in AI. Let’s co-develop solutions that push the boundaries of what’s possible. {/* Updated Content */}
               </p>
                 <Button asChild variant="outline" size="sm" className="w-full btn-transition btn-hover btn-active">
-                <Link href="/contact?subject=VisitingResearcher">
-                    Inquire About Visiting
+                <Link href="/contact?subject=ResearchTeamCollaboration"> {/* Updated Link */}
+                    Discuss Collaboration {/* Updated Button Text */}
                 </Link>
               </Button>
             </CardContent>
