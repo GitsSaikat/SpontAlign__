@@ -8,9 +8,9 @@ import Image from "next/image";
 export default function VisionPage() {
   const longTermGoals = [
     "Develop Robust Alignment Techniques",
-    "Advance AI Safety Research",
+    "Responsible AI development",
     "Foster Global Collaboration",
-    "Build Verifiable Systems",
+    "Build Interpretable Systems",
     "Promote Transparency",
     "Ethical Deployment",
   ];
