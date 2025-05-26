@@ -15,7 +15,6 @@ export default function Home() {
   return (
     <div
       className="container space-y-12 py-12 md:space-y-16 lg:space-y-20 md:py-16 lg:py-20 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/homepage-background.png')" }}
     >
       <main className="flex flex-col items-center space-y-12 md:space-y-16 lg:space-y-20 bg-background/80 dark:bg-background/90 p-6 md:p-10 rounded-xl shadow-2xl">
         {/* Hero Section */}
@@ -26,8 +25,7 @@ export default function Home() {
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl px-4">
               SpontAlign is an AI research initiative dedicated to building
-              safe, transparent, and beneficial artificial intelligence through
-              cutting-edge research and collaboration.
+              safe, transparent, and beneficial AI systems through research and collaboration.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
