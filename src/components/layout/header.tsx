@@ -25,19 +25,20 @@ export function Header() {
   return (
     // Use a subtle border, increased vertical padding (py-4), more space below (mb-8 or mb-12)
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/60 mb-8">
-      {/* Increased padding in container (py-4), max width for content */}
-      <div className="container flex h-auto items-center justify-between py-4 max-w-screen-xl">
+      {/* Reduced padding in container (py-2), max width for content */}
+      <div className="container flex h-auto items-center justify-between py-2 max-w-screen-xl" suppressHydrationWarning> {/* Changed py-4 to py-2 */}
         {/* Logo */}
         {/* Added ml-6 for left spacing */}
-        <Link href="/" className="flex items-center mr-8 ml-6" suppressHydrationWarning> {/* Added ml-6 and suppressHydrationWarning */}
+        <Link href="/" className="flex items-center mr-8 ml-6" suppressHydrationWarning> {/* Added ml-6 */}
            <Image
-              src="/images/logo.png" // Updated path relative to public directory
+              src="/images/logo.png" // Path relative to public directory
               alt="SpontAlign Logo"
-              width={180} // Slightly larger? Adjust as needed
-              height={24}
-              // priority // Removed priority prop
+              width={180} // Set the width of your logo
+              height={24} // Adjust height for aspect ratio
+              priority // Load logo quickly
               style={{ objectFit: 'contain', height: 'auto' }} // Maintain aspect ratio
               quality={100}
+              suppressHydrationWarning // Added due to previous error
            />
         </Link>
 
@@ -67,7 +68,7 @@ export function Header() {
           {/* Mobile Menu - Increased padding, sans-serif font */}
           <SheetContent side="left" className="w-full max-w-xs bg-background p-6">
              <div className="flex justify-between items-center mb-8"> {/* Increased bottom margin */}
-                 <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
+                 <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)} suppressHydrationWarning>
                   <Image
                     src="/images/logo.png" // Updated path relative to public directory
                     alt="SpontAlign Logo"
