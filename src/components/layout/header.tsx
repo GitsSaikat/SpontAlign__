@@ -26,7 +26,7 @@ export function Header() {
     // Use a subtle border, minimal vertical padding (py-1), no space below (mb-0)
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       {/* Minimal padding in container (py-1), max width for content */}
-      <div className="container flex h-auto items-center justify-between py-1 max-w-screen-xl" suppressHydrationWarning> {/* Minimal vertical padding */}
+      <div className="container flex h-auto items-center justify-between py-2 max-w-screen-xl" suppressHydrationWarning> {/* Thin vertical padding */}
         {/* Logo */}
         {/* Added ml-6 for left spacing */}
         <Link href="/" className="flex items-center mr-8 ml-6" suppressHydrationWarning> {/* Added ml-6 */}
@@ -50,7 +50,7 @@ export function Header() {
               href={item.href}
               // Use font-body, more muted text, subtle hover
               className="text-base font-body text-muted-foreground transition-colors hover:text-foreground"
-              prefetch={false}
+              
             >
               {item.label}
             </Link>
@@ -94,7 +94,7 @@ export function Header() {
                   // Larger text, font-body, clearer indication of current page might be needed
                   className="text-lg font-body font-medium text-foreground transition-colors hover:text-primary"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  prefetch={false}
+                  
                 >
                   {item.label}
                 </Link>
