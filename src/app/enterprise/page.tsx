@@ -8,6 +8,8 @@ import { ArrowRight, Check, Building } from "lucide-react";
 import Image from "next/image";
 import { motion } from 'framer-motion';
 
+const MotionButton = motion(Button);
+
 const unifiedHoverEffect = {
   fmWhileHover: { scale: 1.05 },
   iconHoverClass: "group-hover:rotate-[15deg]",
@@ -68,11 +70,18 @@ export default function EnterprisePage() {
             <br /><br />
             Let’s explore what AI can (and can’t) do for you together.
             </p>
-            <Button asChild size="lg" variant="secondary" className="btn-transition btn-hover btn-active text-primary hover:bg-white/90">
-            <Link href="/contact">
+            <MotionButton
+              asChild
+              size="lg"
+              variant="secondary"
+              className="btn-transition btn-active text-primary" // Removed btn-hover and hover:bg-white/90
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Link href="/contact">
                 Discuss Your Needs <ArrowRight className="ml-2" />
-            </Link>
-            </Button>
+              </Link>
+            </MotionButton>
          </div>
       </section>
 
