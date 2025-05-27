@@ -8,56 +8,44 @@ import { ArrowRight, Check, Building } from "lucide-react";
 import Image from "next/image";
 import { motion } from 'framer-motion';
 
+const统一HoverEffect = {
+  fmWhileHover: { scale: 1.05 },
+  iconHoverClass: "group-hover:rotate-[15deg]",
+  bgHoverClass: "group-hover:bg-gradient-to-br group-hover:from-primary/10 group-hover:via-background group-hover:to-accent/10",
+  textHoverClass: "group-hover:text-foreground",
+  extraContainerClass: "", // Ensure no extra container classes for unified look
+};
+
 const useCasesData = [
   {
     title: "Safe Customer Service AI",
     description: "Developing chatbots and virtual assistants that are helpful, harmless, and honest in customer interactions.",
-    fmWhileHover: { scale: 1.05 },
-    iconHoverClass: "group-hover:rotate-[15deg]",
-    bgHoverClass: "group-hover:bg-gradient-to-br group-hover:from-primary/10 group-hover:via-background group-hover:to-accent/10",
-    textHoverClass: "group-hover:text-foreground",
+    ...统一HoverEffect,
   },
   {
     title: "Reliable Content Moderation",
     description: "Building AI systems for content filtering and moderation that accurately reflect complex guidelines.",
-    fmWhileHover: { scale: 1.03 },
-    iconHoverClass: "group-hover:scale-110",
-    bgHoverClass: "group-hover:bg-gradient-to-r group-hover:from-secondary/70 group-hover:via-background group-hover:to-secondary/70",
-    textHoverClass: "group-hover:text-foreground", // Deeper shade of blue/gray is hard with theme, using foreground
-    extraContainerClass: "group-hover:shadow-xl",
+    ...统一HoverEffect,
   },
   {
     title: "Trustworthy Financial Modeling",
     description: "Creating AI for financial analysis and prediction with enhanced robustness and interpretability.",
-    fmWhileHover: { scale: 1.03 }, // scaleX might cause reflow, using uniform scale
-    iconHoverClass: "group-hover:scale-125",
-    bgHoverClass: "group-hover:bg-gradient-to-r group-hover:from-accent/20 group-hover:via-background group-hover:to-primary/20", // Green/gold tones
-    textHoverClass: "group-hover:text-foreground",
+    ...统一HoverEffect,
   },
   {
     title: "Ethical Recommender Systems",
     description: "Designing recommendation engines that avoid manipulative patterns and promote user well-being.",
-    fmWhileHover: { y: -5 },
-    iconHoverClass: "group-hover:animate-spin-slow", // spin-slow needs to be defined or use Framer for continuous
-    bgHoverClass: "group-hover:bg-gradient-to-br group-hover:from-primary/5 group-hover:via-background group-hover:to-accent/5", // Soft pastels
-    textHoverClass: "group-hover:text-foreground",
+    ...统一HoverEffect,
   },
   {
     title: "Robust Autonomous Systems",
     description: "Ensuring AI agents in robotics or control systems operate safely and according to intended goals.",
-    fmWhileHover: { rotateX: 3, rotateY: -3, scale: 1.02 }, // Subtle 3D tilt
-    iconHoverClass: "group-hover:scale-110", // Rhythmic scaling is complex, simple scale for now
-    bgHoverClass: "group-hover:bg-gradient-to-br group-hover:from-muted/50 group-hover:via-background group-hover:to-muted/30", // Metallic/silver tones
-    textHoverClass: "group-hover:text-foreground",
+    ...统一HoverEffect,
   },
   {
     title: "Fairness in AI Decision-Making",
     description: "Auditing and mitigating bias in AI systems used for hiring, lending, or other critical decisions.",
-    fmWhileHover: { scale: 1.02 },
-    iconHoverClass: "group-hover:scale-110", // Rhythmic scaling, simple scale
-    bgHoverClass: "group-hover:bg-gradient-to-br group-hover:from-accent/10 group-hover:via-background group-hover:to-primary/10", // Purple/pink tones
-    textHoverClass: "group-hover:text-foreground",
-    extraContainerClass: "group-hover:shadow-[0_0_15px_1px_hsl(var(--accent))]", // Subtle glow
+    ...统一HoverEffect,
   },
 ];
 
