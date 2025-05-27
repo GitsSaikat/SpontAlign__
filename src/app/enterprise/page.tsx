@@ -16,11 +16,11 @@ export default function EnterprisePage() {
             Partner with SpontAlign for Responsible AI Integration
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-8">
-            Connect with us—we'll help you design and develop the AI components your products and services need. Whether you're enhancing existing features or building something entirely new, we guide you through the process.
+            Connect with us we'll help you design and develop the AI components your products and services need. Whether you're enhancing existing features or building something entirely new, we guide you through the process.
             <br /><br />
             We'll also support your transition to becoming an AI-friendly business, with clear, honest advice. If AI isn't the right solution for your goals, we'll tell you.
             <br /><br />
-            Let’s explore what AI can (and can’t) do for you—together.
+            Let’s explore what AI can (and can’t) do for you together.
             </p>
             <Button asChild size="lg" variant="secondary" className="btn-transition btn-hover btn-active text-primary hover:bg-white/90">
             <Link href="/contact">
