@@ -15,7 +15,7 @@ const unifiedHoverEffect = {
   iconHoverClass: "group-hover:rotate-[15deg]",
   bgHoverClass: "group-hover:bg-gradient-to-br group-hover:from-primary/10 group-hover:via-background group-hover:to-accent/10",
   textHoverClass: "group-hover:text-foreground",
-  extraContainerClass: "", // Ensure no extra container classes for unified look
+  extraContainerClass: "", 
 };
 
 const useCasesData = [
@@ -74,7 +74,7 @@ export default function EnterprisePage() {
               asChild
               size="lg"
               variant="secondary"
-              className="btn-transition btn-active text-primary" // Removed btn-hover and hover:bg-white/90
+              className="btn-transition btn-active text-primary hover:text-primary-foreground" 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -160,7 +160,7 @@ export default function EnterprisePage() {
       </section>
 
       {/* Potential Use Cases */}
-      <section className="bg-background rounded-lg p-8 md:p-12"> {/* Changed from bg-secondary to allow item backgrounds to pop */}
+      <section className="bg-background rounded-lg p-8 md:p-12"> 
         <h2 className="text-3xl font-bold mb-8 text-center">Potential Use Cases</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {useCasesData.map((item) => (
