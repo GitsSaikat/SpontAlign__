@@ -1,13 +1,27 @@
 
 // This page can now be a Server Component as no client-side hooks are used.
+import Image from 'next/image';
 
 export default function DocsPage() {
   return (
-    <div className="container mx-auto px-4 py-12 space-y-8">
+    <div className="container mx-auto px-4 py-12 space-y-12">
       <section className="text-center">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-primary">
           SpontAlign Toolkit Documentation
         </h1>
+      </section>
+
+      <section className="flex justify-center mb-12">
+        <div className="relative w-full max-w-2xl h-64 md:h-96 rounded-lg overflow-hidden shadow-lg">
+          <Image
+            src="/images/Front.png" // Path relative to public directory
+            alt="SpontAlign Toolkit Conceptual Image"
+            layout="fill"
+            objectFit="contain" // Use 'contain' to ensure the whole image is visible
+            data-ai-hint="toolkit code abstract"
+            className="rounded-lg"
+          />
+        </div>
       </section>
 
       <section className="max-w-3xl mx-auto text-lg text-muted-foreground space-y-6">
