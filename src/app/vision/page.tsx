@@ -35,11 +35,11 @@ export default function VisionPage() {
         </p>
       </section>
 
-      {/* Updated Mission Section with Overlap */}
-      <section className="relative mb-16 md:mb-24"> {/* Increased bottom margin to account for overlap */}
-        {/* Image Card (Above) */}
-        <Card className="shadow-md p-0 overflow-hidden rounded-lg max-w-4xl mx-auto">
-          <div className="relative w-full h-72 md:h-96 bg-muted rounded-lg">
+      {/* Updated Mission Section - Centered Text Over Image */}
+      <section className="mb-16 md:mb-24">
+        <div className="relative max-w-4xl mx-auto"> {/* Container for image and text */}
+          {/* Image Background */}
+          <div className="relative w-full h-72 md:h-96 rounded-lg overflow-hidden shadow-lg">
              <Image
                 src="/images/Mission.png" // Assuming public/images/Mission.png exists
                 alt="Conceptual image representing our mission"
@@ -48,28 +48,32 @@ export default function VisionPage() {
                 data-ai-hint="mission future concept"
                 className="rounded-lg"
              />
+             {/* Optional: Add a semi-transparent overlay to improve text readability if needed */}
+             {/* <div className="absolute inset-0 bg-black/50 rounded-lg"></div> */}
           </div>
-        </Card>
 
-        {/* Our Mission Card (Overlapping) */}
-        <Card className="shadow-xl transition-shadow duration-300 flex flex-col
-                       mt-[-6rem] md:mt-[-8rem] mx-auto w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3
-                       z-10 relative bg-card rounded-lg"> {/* Removed dashed border classes */}
-          <CardHeader>
-            <CardTitle className="text-3xl font-bold text-primary text-center">Our Mission</CardTitle>
-          </CardHeader>
-          <CardContent className="flex-grow space-y-4 text-center md:text-left">
-            <p className="text-lg text-muted-foreground">
-              We believe the future economy will be primarily AI-driven and we’re building the bridge that connects AI to people. Our mission is to create benevolent AI systems that serve humanity, even if doing so challenges our own company’s interests.
-            </p>
-            <p className="text-lg text-muted-foreground">
-              AI holds the potential to uplift every sector of society, accelerating innovation, solving complex problems, and expanding human capacity. But left unchecked, it could also bring catastrophic risks. That’s why we stand for responsible development, transparent governance, and human-aligned intelligence.
-            </p>
-            <p className="text-lg text-muted-foreground">
-              We envision a transhumanist society, empowered by AI not just smarter, but more conscious, compassionate, and capable. Once this is achieved, our mission will be to explore the deep, dark secrets of the Consciousness and the Universe.
-            </p>
-          </CardContent>
-        </Card>
+          {/* Our Mission Card (Centered and Overlapping) */}
+          <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8"> {/* Centering wrapper with padding */}
+            <Card className="shadow-xl transition-shadow duration-300 flex flex-col
+                           bg-card/90 dark:bg-card/80 rounded-lg
+                           w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 max-w-xl"> {/* Adjusted max-width */}
+              <CardHeader>
+                <CardTitle className="text-2xl md:text-3xl font-bold text-primary text-center">Our Mission</CardTitle>
+              </CardHeader>
+              <CardContent className="flex-grow space-y-3 md:space-y-4 text-center text-xs sm:text-sm md:text-base"> {/* Adjusted text sizes and spacing */}
+                <p className="text-muted-foreground">
+                  We believe the future economy will be primarily AI-driven and we’re building the bridge that connects AI to people. Our mission is to create benevolent AI systems that serve humanity, even if doing so challenges our own company’s interests.
+                </p>
+                <p className="text-muted-foreground">
+                  AI holds the potential to uplift every sector of society, accelerating innovation, solving complex problems, and expanding human capacity. But left unchecked, it could also bring catastrophic risks. That’s why we stand for responsible development, transparent governance, and human-aligned intelligence.
+                </p>
+                <p className="text-muted-foreground">
+                  We envision a transhumanist society, empowered by AI not just smarter, but more conscious, compassionate, and capable. Once this is achieved, our mission will be to explore the deep, dark secrets of the Consciousness and the Universe.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </section>
 
       {/* Goals & Core Values Section - Two Column Layout */}
