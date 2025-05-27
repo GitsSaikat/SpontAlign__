@@ -101,6 +101,33 @@
     --nudge-distance: -4px;
     animation: nudge-horizontal 1.5s ease-in-out infinite;
   }
+
+  .animate-spin-slow {
+    animation: spin 2s linear infinite;
+  }
+
+   @keyframes pulse-green {
+    0%, 100% { opacity: 0.05; transform: scale(0.95); }
+    50% { opacity: 0.15; transform: scale(1.05); }
+  }
+  .animate-pulse-green {
+    animation: pulse-green 7s infinite ease-in-out;
+  }
+
+  @keyframes pulse-cyan {
+    0%, 100% { opacity: 0.05; transform: scale(1); }
+    50% { opacity: 0.12; transform: scale(1.1); }
+  }
+  .animate-pulse-cyan {
+    animation: pulse-cyan 8s infinite ease-in-out;
+  }
+   @keyframes pulse-teal {
+    0%, 100% { opacity: 0.03; transform: scale(0.9); }
+    50% { opacity: 0.1; transform: scale(1); }
+  }
+  .animate-pulse-teal {
+    animation: pulse-teal 6s infinite ease-in-out;
+  }
 }
 
 @layer components {
