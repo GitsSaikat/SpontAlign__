@@ -21,7 +21,7 @@ export default function Home() {
         <section className="flex flex-col items-center text-center space-y-6">
           <div className="space-y-4">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight text-primary">
-              Pioneering AI Alignment
+              Align Spontaneously
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl px-4">
               SpontAlign is an AI research initiative dedicated to building
