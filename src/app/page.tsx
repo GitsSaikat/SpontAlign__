@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Button } from "@/components/ui/button";
@@ -47,7 +48,7 @@ export default function Home() {
           animate="visible"
           variants={sectionVariants}
         >
-          <div className="space-y-4">
+          <div className="space-y-6"> {/* Changed from space-y-4 to space-y-6 */}
             <TypingHeading
               text="Align Spontaneously"
               className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight text-primary"
