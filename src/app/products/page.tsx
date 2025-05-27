@@ -11,8 +11,7 @@ const products = [
     id: 'open-deep-research',
     name: 'Open Deep Research',
     description: 'An application for assisting in research by conducting comprehensive research on any topic.',
-    imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'research brain',
+    imageUrl: '/images/OpenD.png', // Updated image path
     status: 'Live',
     link: 'https://huggingface.co/spaces/AlignAI/Open-Deep-Research'
   },
@@ -20,8 +19,7 @@ const products = [
     id: 'deep-research-arxiv',
     name: 'Deep Research Arxiv',
     description: 'Do literature review, Fast, Simple and Reliable.',
-    imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'documents papers',
+    imageUrl: '/images/DeepA.png', // Updated image path
     status: 'Live',
     link: 'https://huggingface.co/spaces/AlignAI/Deep-Research-Arxiv'
   },
@@ -29,8 +27,7 @@ const products = [
     id: 'agent-ds',
     name: 'Agent DS',
     description: 'Your personal data scientist.',
-    imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'data science chart',
+    imageUrl: '/images/AgentD.png', // Updated image path
     status: 'Coming Soon',
     link: '#'
   },
@@ -38,8 +35,7 @@ const products = [
     id: 'shikkhok',
     name: 'Shikkhok',
     description: 'Your personal educator.',
-    imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'education book',
+    imageUrl: '/images/Shikkhok.png', // Updated image path
     status: 'Coming Soon',
     link: '#'
   }
@@ -73,7 +69,7 @@ export default function ProductsPage() {
                 alt={`${product.name} illustration`}
                 layout="fill"
                 objectFit="cover"
-                data-ai-hint={product.imageHint}
+                // data-ai-hint removed as specific images are now used
               />
                {product.status && (
                  <span className={`absolute top-2 right-2 text-xs font-semibold px-2 py-1 rounded ${
@@ -104,7 +100,7 @@ export default function ProductsPage() {
               >
                 <Link
                   href={product.link}
-                  prefetch={product.link.startsWith('/') && product.status !== 'Coming Soon'}
+                  prefetch={product.status === 'Live' && product.link.startsWith('/') ? true : false}
                   target={product.status === 'Live' && !product.link.startsWith('/') ? '_blank' : undefined}
                   rel={product.status === 'Live' && !product.link.startsWith('/') ? 'noopener noreferrer' : undefined}
                   className="flex items-center justify-center"
@@ -115,14 +111,8 @@ export default function ProductsPage() {
                       Use it
                     </>
                   )}
-                  {product.status === 'Announcement' && ( // This status is not currently used for individual products but kept for completeness
-                    <>
-                      Follow Updates
-                      <ArrowRight className="ml-1 h-4 w-4" />
-                    </>
-                  )}
                   {product.status === 'Coming Soon' && 'Coming Soon'}
-                  {product.status !== 'Live' && product.status !== 'Announcement' && product.status !== 'Coming Soon' && (
+                  {product.status !== 'Live' && product.status !== 'Coming Soon' && ( // Catch-all for other potential statuses
                     <>
                       Learn More
                       <ArrowRight className="ml-1 h-4 w-4" />
