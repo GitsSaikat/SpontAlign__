@@ -52,9 +52,9 @@ export default function VisionPage() {
         </Card>
 
         {/* Our Mission Card (Overlapping) */}
-        <Card className="shadow-xl transition-shadow duration-300 flex flex-col 
-                       mt-[-6rem] md:mt-[-8rem] mx-auto w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 
-                       z-10 relative border-2 border-dashed border-primary/60 bg-card rounded-lg">
+        <Card className="shadow-xl transition-shadow duration-300 flex flex-col
+                       mt-[-6rem] md:mt-[-8rem] mx-auto w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3
+                       z-10 relative bg-card rounded-lg"> {/* Removed dashed border classes */}
           <CardHeader>
             <CardTitle className="text-3xl font-bold text-primary text-center">Our Mission</CardTitle>
           </CardHeader>
