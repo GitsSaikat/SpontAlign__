@@ -35,31 +35,31 @@ export default function EnterprisePage() {
       <section>
         <h2 className="text-3xl font-bold mb-8 text-center">How We Partner with Businesses</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <Card className="text-center hover:shadow-xl transition-shadow duration-300">
+          <Card className="group text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl group-hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
             <CardHeader>
-               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-3 h-12 w-12 text-primary"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><path d="M12 20h.01"/><path d="M10 4h4"/><path d="M10 8h4"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>
+               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-3 h-12 w-12 text-primary transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-[5deg]"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><path d="M12 20h.01"/><path d="M10 4h4"/><path d="M10 8h4"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>
               <CardTitle>Custom AI Development</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Tailored development of AI models and systems incorporating state-of-the-art alignment techniques for your specific use case.</p>
+              <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300 ease-in-out">Tailored development of AI models and systems incorporating state-of-the-art alignment techniques for your specific use case.</p>
             </CardContent>
           </Card>
-          <Card className="text-center hover:shadow-xl transition-shadow duration-300">
+          <Card className="group text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl group-hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
             <CardHeader>
-               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-3 h-12 w-12 text-primary"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M5 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
+               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-3 h-12 w-12 text-primary transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-[5deg]"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M5 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
               <CardTitle>Alignment Consulting</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Expert guidance on integrating safety and alignment best practices into your existing AI pipelines and strategies.</p>
+              <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300 ease-in-out">Expert guidance on integrating safety and alignment best practices into your existing AI pipelines and strategies.</p>
             </CardContent>
           </Card>
-          <Card className="text-center hover:shadow-xl transition-shadow duration-300">
+          <Card className="group text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl group-hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
             <CardHeader>
-               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-3 h-12 w-12 text-primary"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-3 h-12 w-12 text-primary transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-[5deg]"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
               <CardTitle>Safety Audits & Testing</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Rigorous assessment of your AI systems to identify potential risks, biases, and alignment failures.</p>
+              <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300 ease-in-out">Rigorous assessment of your AI systems to identify potential risks, biases, and alignment failures.</p>
             </CardContent>
           </Card>
         </div>
