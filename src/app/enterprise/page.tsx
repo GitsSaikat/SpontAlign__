@@ -8,7 +8,7 @@ import { ArrowRight, Check, Building } from "lucide-react";
 import Image from "next/image";
 import { motion } from 'framer-motion';
 
-const统一HoverEffect = {
+const unifiedHoverEffect = {
   fmWhileHover: { scale: 1.05 },
   iconHoverClass: "group-hover:rotate-[15deg]",
   bgHoverClass: "group-hover:bg-gradient-to-br group-hover:from-primary/10 group-hover:via-background group-hover:to-accent/10",
@@ -20,32 +20,32 @@ const useCasesData = [
   {
     title: "Safe Customer Service AI",
     description: "Developing chatbots and virtual assistants that are helpful, harmless, and honest in customer interactions.",
-    ...统一HoverEffect,
+    ...unifiedHoverEffect,
   },
   {
     title: "Reliable Content Moderation",
     description: "Building AI systems for content filtering and moderation that accurately reflect complex guidelines.",
-    ...统一HoverEffect,
+    ...unifiedHoverEffect,
   },
   {
     title: "Trustworthy Financial Modeling",
     description: "Creating AI for financial analysis and prediction with enhanced robustness and interpretability.",
-    ...统一HoverEffect,
+    ...unifiedHoverEffect,
   },
   {
     title: "Ethical Recommender Systems",
     description: "Designing recommendation engines that avoid manipulative patterns and promote user well-being.",
-    ...统一HoverEffect,
+    ...unifiedHoverEffect,
   },
   {
     title: "Robust Autonomous Systems",
     description: "Ensuring AI agents in robotics or control systems operate safely and according to intended goals.",
-    ...统一HoverEffect,
+    ...unifiedHoverEffect,
   },
   {
     title: "Fairness in AI Decision-Making",
     description: "Auditing and mitigating bias in AI systems used for hiring, lending, or other critical decisions.",
-    ...统一HoverEffect,
+    ...unifiedHoverEffect,
   },
 ];
 
