@@ -1,9 +1,12 @@
 
+'use client';
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import { ArrowRight, GraduationCap, Users, Briefcase, ExternalLink } from "lucide-react";
 import Image from "next/image";
+import { motion } from 'framer-motion';
 
 export default function MentorshipPage() {
   return (
@@ -118,17 +121,33 @@ export default function MentorshipPage() {
       </section>
 
        {/* Community Engagement */}
-      <section className="bg-secondary rounded-lg p-8 md:p-12">
-        <h2 className="text-3xl font-bold mb-6 text-center">Community Engagement</h2>
+      <motion.section
+        className="group bg-card rounded-lg p-6 md:p-8 border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
+        animate={{
+          scale: [1, 1.015, 1],
+          boxShadow: [
+            "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+            "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+            "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+          ],
+        }}
+        transition={{
+          duration: 2.5,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "mirror",
+        }}
+      >
+        <h2 className="text-3xl font-bold mb-6 text-center text-primary group-hover:text-primary transition-colors duration-300 ease-in-out">Community Engagement</h2>
          <div className="max-w-3xl mx-auto text-center text-muted-foreground space-y-4">
-            <p>
+            <p className="group-hover:text-foreground transition-colors duration-300 ease-in-out">
                 SpontAlign actively participates in the broader AI community through conference presentations, open-source contributions, and hosting technical talks and workshops (both online and in-person when possible).
             </p>
-             <p>
+             <p className="group-hover:text-foreground transition-colors duration-300 ease-in-out">
                Follow our <Link href="/blogs" className="text-primary hover:underline">Blog</Link> and social media channels for announcements about upcoming events and opportunities to engage with our team.
             </p>
          </div>
-      </section>
+      </motion.section>
 
        {/* Call to Action */}
         <section className="text-center">
