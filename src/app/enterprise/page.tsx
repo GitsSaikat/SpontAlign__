@@ -56,7 +56,7 @@ export default function EnterprisePage() {
   return (
     <div className="space-y-16">
       {/* Hero Section */}
-      <section className="relative overflow-hidden rounded-lg bg-gradient-to-r from-primary to-blue-700 dark:from-primary/80 dark:to-blue-900 text-primary-foreground py-16 md:py-24 px-6 md:px-12 text-center">
+      <section className="relative overflow-hidden rounded-lg bg-gradient-to-r from-primary to-accent dark:from-primary/80 dark:to-accent text-primary-foreground py-16 md:py-24 px-6 md:px-12 text-center">
          <div className="absolute inset-0 bg-black/20 mix-blend-multiply"></div>
          <div className="relative z-10">
             <Building className="h-16 w-16 mx-auto mb-4 text-white/80" />
@@ -199,3 +199,4 @@ export default function EnterprisePage() {
     </div>
   );
 }
+
