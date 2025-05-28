@@ -1,9 +1,12 @@
 
+'use client';
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { motion } from 'framer-motion';
 
 export default function VisionPage() {
   const goals = [
@@ -116,9 +119,25 @@ export default function VisionPage() {
       </section>
 
        {/* Join Our Mission Section */}
-       <section className="text-center py-12 bg-secondary rounded-lg">
-          <h2 className="text-3xl font-bold mb-4">Join Our Mission</h2>
-          <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+       <motion.section
+          className="group bg-card rounded-lg p-8 md:p-12 text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
+          animate={{
+            scale: [1, 1.015, 1], // Subtle scale pulse
+            boxShadow: [
+              "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+              "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+              "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+            ],
+          }}
+          transition={{
+            duration: 2.5,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatType: "mirror",
+          }}
+        >
+          <h2 className="text-3xl font-bold mb-4 text-primary group-hover:text-primary transition-colors duration-300 ease-in-out">Join Our Mission</h2>
+          <p className="text-muted-foreground mb-6 max-w-xl mx-auto group-hover:text-foreground transition-colors duration-300 ease-in-out">
             We are looking for passionate individuals to help us build a safer future with AI. Explore opportunities to collaborate or join our team.
           </p>
            <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -129,7 +148,8 @@ export default function VisionPage() {
                <Link href="/research">See Our Work</Link>
              </Button>
            </div>
-        </section>
+        </motion.section>
     </div>
   );
 }
+
