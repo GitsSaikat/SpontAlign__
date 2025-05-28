@@ -186,16 +186,19 @@ export default function ResearchPage() {
         {hasMounted && filteredResearch.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredResearch.map(item => (
-              <Card key={item.id} className="flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
+              <Card 
+                key={item.id} 
+                className="group flex flex-col justify-between border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
+              >
                 <CardHeader>
-                  <CardTitle className="text-xl leading-snug font-heading">{item.title}</CardTitle>
-                  <CardDescription className="font-body text-sm">
+                  <CardTitle className="text-xl leading-snug font-heading group-hover:text-foreground transition-colors duration-300 ease-in-out">{item.title}</CardTitle>
+                  <CardDescription className="font-body text-sm group-hover:text-foreground transition-colors duration-300 ease-in-out">
                     {item.authors} ({item.year})
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   {item.shortAbstract && (
-                    <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
+                    <p className="text-xs text-muted-foreground mb-3 leading-relaxed group-hover:text-foreground/90 transition-colors duration-300 ease-in-out">
                       {item.shortAbstract}
                     </p>
                   )}
