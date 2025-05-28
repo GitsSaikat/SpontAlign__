@@ -62,14 +62,16 @@ export default function ProductsPage() {
       {/* Products Grid */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {products.map((product) => (
-          <Card key={product.id} className="flex flex-col overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <Card 
+            key={product.id} 
+            className="group flex flex-col overflow-hidden border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
+          >
             <div className="relative h-48 w-full">
               <Image
                 src={product.imageUrl}
                 alt={`${product.name} illustration`}
                 layout="fill"
                 objectFit="cover"
-                // data-ai-hint removed as specific images are now used
               />
                {product.status && (
                  <span className={`absolute top-2 right-2 text-xs font-semibold px-2 py-1 rounded ${
@@ -85,10 +87,10 @@ export default function ProductsPage() {
             </div>
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-2">
-                <Package className="h-6 w-6 text-primary" />
+                <Package className="h-6 w-6 text-primary transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-[5deg]" />
                 {product.name}
               </CardTitle>
-              <CardDescription>{product.description}</CardDescription>
+              <CardDescription className="group-hover:text-foreground transition-colors duration-300 ease-in-out">{product.description}</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow flex flex-col justify-end">
               <Button
@@ -112,7 +114,7 @@ export default function ProductsPage() {
                     </>
                   )}
                   {product.status === 'Coming Soon' && 'Coming Soon'}
-                  {product.status !== 'Live' && product.status !== 'Coming Soon' && ( // Catch-all for other potential statuses
+                  {product.status !== 'Live' && product.status !== 'Coming Soon' && ( 
                     <>
                       Learn More
                       <ArrowRight className="ml-1 h-4 w-4" />
