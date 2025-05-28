@@ -63,14 +63,14 @@ export default function MentorshipPage() {
       <section>
         <h2 className="text-3xl font-bold mb-8 text-center">Opportunities</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="hover:shadow-lg transition-shadow duration-300">
+          <Card className="group text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
             <CardHeader>
-                <GraduationCap className="h-10 w-10 text-primary mb-2"/>
+                <GraduationCap className="h-10 w-10 text-primary mb-2 mx-auto transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-[5deg]"/>
               <CardTitle>Research Internships</CardTitle>
               <CardDescription>For Students</CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-muted-foreground mb-4 group-hover:text-foreground transition-colors duration-300 ease-in-out">
                 Gain hands-on experience working alongside our researchers on cutting-edge AI alignment projects. Open to PhD and undergrad/masters students.
               </p>
               <Button asChild variant="outline" size="sm" className="w-full btn-transition btn-hover btn-active">
@@ -80,14 +80,14 @@ export default function MentorshipPage() {
               </Button>
             </CardContent>
           </Card>
-          <Card className="hover:shadow-lg transition-shadow duration-300">
+          <Card className="group text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
             <CardHeader>
-                <Users className="h-10 w-10 text-primary mb-2"/>
+                <Users className="h-10 w-10 text-primary mb-2 mx-auto transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-[5deg]"/>
               <CardTitle>Academic Collaborations</CardTitle>
               <CardDescription>For Institutions & Faculty</CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-muted-foreground mb-4 group-hover:text-foreground transition-colors duration-300 ease-in-out">
                 We partner with universities and research labs on joint projects, workshops, and knowledge sharing initiatives. Let's advance the field together.
               </p>
               <Button asChild variant="outline" size="sm" className="w-full btn-transition btn-hover btn-active">
@@ -97,14 +97,14 @@ export default function MentorshipPage() {
               </Button>
             </CardContent>
           </Card>
-          <Card className="hover:shadow-lg transition-shadow duration-300">
+          <Card className="group text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
             <CardHeader>
-                 <Briefcase className="h-10 w-10 text-primary mb-2"/>
+                 <Briefcase className="h-10 w-10 text-primary mb-2 mx-auto transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-[5deg]"/>
               <CardTitle>Research Team Collaborations</CardTitle>
               <CardDescription>For AI Labs & Independent Groups</CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-muted-foreground mb-4 group-hover:text-foreground transition-colors duration-300 ease-in-out">
                 We collaborate with external research teams on aligned goals—sharing resources, ideas, and infrastructure to tackle complex challenges in AI. Let’s co-develop solutions that push the boundaries of what’s possible.
               </p>
                 <Button asChild variant="outline" size="sm" className="w-full btn-transition btn-hover btn-active">
