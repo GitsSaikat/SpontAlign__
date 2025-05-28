@@ -148,7 +148,7 @@ export default function ProductsPage() {
 
       {/* Custom Solutions Section */}
        <motion.section
-          className="bg-secondary rounded-lg p-8 md:p-12 text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl"
+          className="group bg-card rounded-lg p-8 md:p-12 text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
           animate={{
             scale: [1, 1.015, 1],
             boxShadow: [
