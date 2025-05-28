@@ -19,11 +19,11 @@ export default function MentorshipPage() {
 
       {/* "Our Commitment" Section - Updated Design */}
       <section className="relative py-10 md:py-16">
-        {/* Image Background - Centered */}
-        <div className="flex justify-center">
-          <div className="relative w-full max-w-2xl lg:max-w-3xl h-64 sm:h-72 md:h-80 lg:h-96 rounded-xl overflow-hidden shadow-2xl mx-auto">
+        <div className="relative max-w-4xl mx-auto h-72 md:h-96"> {/* Container for image and text */}
+          {/* Image Background */}
+          <div className="absolute inset-0 rounded-xl overflow-hidden shadow-2xl">
             <Image
-              src="/images/mentor.png" // User-specified image path
+              src="/images/mentor.png" 
               alt="Our Commitment to Collaboration and Mentorship"
               layout="fill"
               objectFit="cover"
@@ -31,31 +31,30 @@ export default function MentorshipPage() {
               className="rounded-xl"
             />
           </div>
-        </div>
 
-        {/* "Our Commitment" Text Card - Overlapping and Styled */}
-        {/* This div helps center the card and apply the negative margin for overlap */}
-        <div className="relative z-10 flex justify-center -mt-20 md:-mt-28 lg:-mt-32 px-4">
-          <Card 
-            className="w-full max-w-lg md:max-w-xl lg:max-w-2xl 
-                       border-2 border-dashed border-primary 
-                       transform -rotate-1 hover:-rotate-2 transition-transform duration-300 ease-in-out shadow-xl"
-          >
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl sm:text-3xl text-primary">Our Commitment</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
-              <p>
-                We believe that deep intelligence emerges from interaction where networks of agents, minds, and ideas coming together. That's not just how we think about AI, but also how we operate as a company.
-              </p>
-              <p>
-                We thrive on collaboration. We’re here to help and to be helped, to learn from others, and to build with curious, driven minds. Whether you're an AI enthusiast, researcher, or a builder at heart, we’d love to meet you.
-              </p>
-              <p>
-                Friendship means little when it’s convenient. We’re interested in those who walk the long road with us, those exploring not just what AI is, but what it could become.
-              </p>
-            </CardContent>
-          </Card>
+          {/* "Our Commitment" Text Card - Centered and Overlapping */}
+          <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8 z-10">
+            <Card 
+              className="w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 max-w-xl 
+                         bg-card/90 dark:bg-card/85 
+                         shadow-xl rounded-lg"
+            >
+              <CardHeader className="text-center">
+                <CardTitle className="text-2xl sm:text-3xl text-primary">Our Commitment</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3 md:space-y-4 text-center text-xs sm:text-sm md:text-base leading-relaxed">
+                <p className="text-muted-foreground">
+                  We believe that deep intelligence emerges from interaction where networks of agents, minds, and ideas coming together. That's not just how we think about AI, but also how we operate as a company.
+                </p>
+                <p className="text-muted-foreground">
+                  We thrive on collaboration. We’re here to help and to be helped, to learn from others, and to build with curious, driven minds. Whether you're an AI enthusiast, researcher, or a builder at heart, we’d love to meet you.
+                </p>
+                <p className="text-muted-foreground">
+                  Friendship means little when it’s convenient. We’re interested in those who walk the long road with us, those exploring not just what AI is, but what it could become.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
