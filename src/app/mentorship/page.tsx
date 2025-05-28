@@ -22,13 +22,13 @@ export default function MentorshipPage() {
         <div>
           <h2 className="text-3xl font-bold mb-4">Our Commitment</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            We believe that deep intelligence emerges from interaction—networks of agents, minds, and ideas coming together. That's not just how we think about AI, but also how we operate as a company.
+            We believe that deep intelligence emerges from interaction where networks of agents, minds, and ideas coming together. That's not just how we think about AI, but also how we operate as a company.
           </p>
           <p className="text-muted-foreground leading-relaxed mb-4">
             We thrive on collaboration. We’re here to help and to be helped, to learn from others, and to build with curious, driven minds. Whether you're an AI enthusiast, researcher, or a builder at heart, we’d love to meet you.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            Friendship means little when it’s convenient. We’re interested in those who walk the long road with us—those exploring not just what AI is, but what it could become.
+            Friendship means little when it’s convenient. We’re interested in those who walk the long road with us, those exploring not just what AI is, but what it could become.
           </p>
         </div>
         <div className="relative h-64 md:h-80 rounded-lg overflow-hidden shadow-lg">
