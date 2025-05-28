@@ -13,7 +13,8 @@ const products = [
     description: 'An application for assisting in research by conducting comprehensive research on any topic.',
     imageUrl: '/images/OpenD.png', // Updated image path
     status: 'Live',
-    link: 'https://huggingface.co/spaces/AlignAI/Open-Deep-Research'
+    link: 'https://huggingface.co/spaces/AlignAI/Open-Deep-Research',
+    dataAiHint: 'ai research tool'
   },
   {
     id: 'deep-research-arxiv',
@@ -21,7 +22,8 @@ const products = [
     description: 'Do literature review, Fast, Simple and Reliable.',
     imageUrl: '/images/DeepA.png', // Updated image path
     status: 'Live',
-    link: 'https://huggingface.co/spaces/AlignAI/Deep-Research-Arxiv'
+    link: 'https://huggingface.co/spaces/AlignAI/Deep-Research-Arxiv',
+    dataAiHint: 'arxiv literature review'
   },
   {
     id: 'agent-ds',
@@ -29,7 +31,8 @@ const products = [
     description: 'Your personal data scientist.',
     imageUrl: '/images/AgentD.png', // Updated image path
     status: 'Coming Soon',
-    link: '#'
+    link: '#',
+    dataAiHint: 'data science agent'
   },
   {
     id: 'shikkhok',
@@ -37,7 +40,8 @@ const products = [
     description: 'Your personal educator.',
     imageUrl: '/images/Shikkhok.png', // Updated image path
     status: 'Coming Soon',
-    link: '#'
+    link: '#',
+    dataAiHint: 'ai education tutor'
   }
 ];
 
@@ -72,6 +76,7 @@ export default function ProductsPage() {
                 alt={`${product.name} illustration`}
                 layout="fill"
                 objectFit="cover"
+                data-ai-hint={product.dataAiHint}
               />
                {product.status && (
                  <span className={`absolute top-2 right-2 text-xs font-semibold px-2 py-1 rounded ${
@@ -144,7 +149,7 @@ export default function ProductsPage() {
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
             Our research and expertise can be tailored to your specific enterprise needs. Let's discuss how we can build a bespoke AI solution together.
           </p>
-           <Button asChild size="lg" className="btn-transition btn-hover btn-active">
+           <Button asChild size="lg" className="btn-transition btn-hover btn-active hover:text-accent">
             <Link href="/enterprise" prefetch={true}>
               Explore Enterprise Partnerships <ArrowRight className="ml-2" />
             </Link>
