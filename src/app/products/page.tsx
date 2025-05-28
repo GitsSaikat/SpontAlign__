@@ -1,9 +1,12 @@
 
+'use client';
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import { ArrowRight, ExternalLink, Package } from "lucide-react";
 import Image from "next/image";
+import { motion } from 'framer-motion';
 
 // Updated Product Data
 const products = [
@@ -11,7 +14,7 @@ const products = [
     id: 'open-deep-research',
     name: 'Open Deep Research',
     description: 'An application for assisting in research by conducting comprehensive research on any topic.',
-    imageUrl: '/images/OpenD.png', 
+    imageUrl: '/images/OpenD.png',
     status: 'Live',
     link: 'https://huggingface.co/spaces/AlignAI/Open-Deep-Research',
     dataAiHint: 'ai research tool'
@@ -20,7 +23,7 @@ const products = [
     id: 'deep-research-arxiv',
     name: 'Deep Research Arxiv',
     description: 'Do literature review, Fast, Simple and Reliable.',
-    imageUrl: '/images/DeepA.png', 
+    imageUrl: '/images/DeepA.png',
     status: 'Live',
     link: 'https://huggingface.co/spaces/AlignAI/Deep-Research-Arxiv',
     dataAiHint: 'arxiv literature review'
@@ -29,7 +32,7 @@ const products = [
     id: 'agent-ds',
     name: 'Agent DS',
     description: 'Your personal data scientist.',
-    imageUrl: '/images/AgentD.png', 
+    imageUrl: '/images/AgentD.png',
     status: 'Coming Soon',
     link: '#',
     dataAiHint: 'data science agent'
@@ -38,7 +41,7 @@ const products = [
     id: 'shikkhok',
     name: 'Shikkhok',
     description: 'Your personal educator.',
-    imageUrl: '/images/Shikkhok.png', 
+    imageUrl: '/images/Shikkhok.png',
     status: 'Coming Soon',
     link: '#',
     dataAiHint: 'ai education tutor'
@@ -66,8 +69,8 @@ export default function ProductsPage() {
       {/* Products Grid */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {products.map((product) => (
-          <Card 
-            key={product.id} 
+          <Card
+            key={product.id}
             className="group flex flex-col overflow-hidden border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
           >
             <div className="relative h-48 w-full">
@@ -119,7 +122,7 @@ export default function ProductsPage() {
                     </>
                   )}
                   {product.status === 'Coming Soon' && 'Coming Soon'}
-                  {product.status !== 'Live' && product.status !== 'Coming Soon' && ( 
+                  {product.status !== 'Live' && product.status !== 'Coming Soon' && (
                     <>
                       Learn More
                       <ArrowRight className="ml-1 h-4 w-4" />
@@ -144,18 +147,33 @@ export default function ProductsPage() {
       </section>
 
       {/* Custom Solutions Section */}
-       <section className="bg-secondary rounded-lg p-8 md:p-12 text-center">
+       <motion.section
+          className="bg-secondary rounded-lg p-8 md:p-12 text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl"
+          animate={{
+            scale: [1, 1.015, 1],
+            boxShadow: [
+              "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+              "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+              "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+            ],
+          }}
+          transition={{
+            duration: 2.5,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatType: "mirror",
+          }}
+        >
           <h2 className="text-3xl font-bold mb-4">Need a Custom Solution?</h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
             Our research and expertise can be tailored to your specific enterprise needs. Let's discuss how we can build a bespoke AI solution together.
           </p>
-           <Button asChild size="lg" className="btn-transition btn-hover btn-active hover:text-primary hover:bg-card">
+           <Button asChild size="lg" className="btn-transition btn-hover btn-active hover:bg-card hover:text-primary">
             <Link href="/enterprise" prefetch={true}>
               Explore Enterprise Partnerships <ArrowRight className="ml-2" />
             </Link>
           </Button>
-        </section>
+        </motion.section>
     </div>
   );
 }
-
