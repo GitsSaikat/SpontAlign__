@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { ArrowRight, GraduationCap, Users, BrainCircuit, Briefcase, ExternalLink } from "lucide-react"; // Added Briefcase for new icon, ExternalLink
+import { ArrowRight, GraduationCap, Users, Briefcase, ExternalLink } from "lucide-react";
 import Image from "next/image";
 
 export default function MentorshipPage() {
@@ -17,29 +17,45 @@ export default function MentorshipPage() {
         </p>
       </section>
 
-      {/* Program Overview */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
-          <h2 className="text-3xl font-bold mb-4">Our Commitment</h2>
-          <p className="text-muted-foreground leading-relaxed mb-4">
-            We believe that deep intelligence emerges from interaction where networks of agents, minds, and ideas coming together. That's not just how we think about AI, but also how we operate as a company.
-          </p>
-          <p className="text-muted-foreground leading-relaxed mb-4">
-            We thrive on collaboration. We’re here to help and to be helped, to learn from others, and to build with curious, driven minds. Whether you're an AI enthusiast, researcher, or a builder at heart, we’d love to meet you.
-          </p>
-          <p className="text-muted-foreground leading-relaxed">
-            Friendship means little when it’s convenient. We’re interested in those who walk the long road with us, those exploring not just what AI is, but what it could become.
-          </p>
-        </div>
-        <div className="relative h-64 md:h-80 rounded-lg overflow-hidden shadow-lg">
-           <Image
-              src="https://placehold.co/800x600.png"
-              alt="Collaboration illustration"
+      {/* "Our Commitment" Section - Updated Design */}
+      <section className="relative py-10 md:py-16">
+        {/* Image Background - Centered */}
+        <div className="flex justify-center">
+          <div className="relative w-full max-w-2xl lg:max-w-3xl h-64 sm:h-72 md:h-80 lg:h-96 rounded-xl overflow-hidden shadow-2xl mx-auto">
+            <Image
+              src="/images/mentor.png" // User-specified image path
+              alt="Our Commitment to Collaboration and Mentorship"
               layout="fill"
               objectFit="cover"
-              data-ai-hint="collaboration teamwork"
-           />
-           <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+              data-ai-hint="teamwork abstract" 
+              className="rounded-xl"
+            />
+          </div>
+        </div>
+
+        {/* "Our Commitment" Text Card - Overlapping and Styled */}
+        {/* This div helps center the card and apply the negative margin for overlap */}
+        <div className="relative z-10 flex justify-center -mt-20 md:-mt-28 lg:-mt-32 px-4">
+          <Card 
+            className="w-full max-w-lg md:max-w-xl lg:max-w-2xl 
+                       border-2 border-dashed border-primary 
+                       transform -rotate-1 hover:-rotate-2 transition-transform duration-300 ease-in-out shadow-xl"
+          >
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl sm:text-3xl text-primary">Our Commitment</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
+              <p>
+                We believe that deep intelligence emerges from interaction where networks of agents, minds, and ideas coming together. That's not just how we think about AI, but also how we operate as a company.
+              </p>
+              <p>
+                We thrive on collaboration. We’re here to help and to be helped, to learn from others, and to build with curious, driven minds. Whether you're an AI enthusiast, researcher, or a builder at heart, we’d love to meet you.
+              </p>
+              <p>
+                Friendship means little when it’s convenient. We’re interested in those who walk the long road with us, those exploring not just what AI is, but what it could become.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -84,17 +100,17 @@ export default function MentorshipPage() {
           </Card>
           <Card className="hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-                 <Briefcase className="h-10 w-10 text-primary mb-2"/> {/* Changed icon */}
-              <CardTitle>Research Team Collaborations</CardTitle> {/* Updated Title */}
-              <CardDescription>For AI Labs & Independent Groups</CardDescription> {/* Updated Description */}
+                 <Briefcase className="h-10 w-10 text-primary mb-2"/>
+              <CardTitle>Research Team Collaborations</CardTitle>
+              <CardDescription>For AI Labs & Independent Groups</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground mb-4">
-                We collaborate with external research teams on aligned goals—sharing resources, ideas, and infrastructure to tackle complex challenges in AI. Let’s co-develop solutions that push the boundaries of what’s possible. {/* Updated Content */}
+                We collaborate with external research teams on aligned goals—sharing resources, ideas, and infrastructure to tackle complex challenges in AI. Let’s co-develop solutions that push the boundaries of what’s possible.
               </p>
                 <Button asChild variant="outline" size="sm" className="w-full btn-transition btn-hover btn-active">
-                <Link href="/contact?subject=ResearchTeamCollaboration"> {/* Updated Link */}
-                    Discuss Collaboration {/* Updated Button Text */}
+                <Link href="/contact?subject=ResearchTeamCollaboration">
+                    Discuss Collaboration
                 </Link>
               </Button>
             </CardContent>
