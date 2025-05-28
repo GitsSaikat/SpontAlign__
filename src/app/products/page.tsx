@@ -149,7 +149,7 @@ export default function ProductsPage() {
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
             Our research and expertise can be tailored to your specific enterprise needs. Let's discuss how we can build a bespoke AI solution together.
           </p>
-           <Button asChild size="lg" className="btn-transition btn-hover btn-active hover:text-accent">
+           <Button asChild size="lg" className="btn-transition btn-hover btn-active hover:text-primary">
             <Link href="/enterprise" prefetch={true}>
               Explore Enterprise Partnerships <ArrowRight className="ml-2" />
             </Link>
