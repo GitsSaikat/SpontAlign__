@@ -43,13 +43,13 @@ export default function MentorshipPage() {
                 <CardTitle className="text-2xl sm:text-3xl text-primary">Our Commitment</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 md:space-y-4 text-center text-xs sm:text-sm md:text-base leading-relaxed">
-                <p className="text-muted-foreground">
+                <p className="text-card-foreground">
                   We believe that deep intelligence emerges from interaction where networks of agents, minds, and ideas coming together. That's not just how we think about AI, but also how we operate as a company.
                 </p>
-                <p className="text-muted-foreground">
+                <p className="text-card-foreground">
                   We thrive on collaboration. We’re here to help and to be helped, to learn from others, and to build with curious, driven minds. Whether you're an AI enthusiast, researcher, or a builder at heart, we’d love to meet you.
                 </p>
-                <p className="text-muted-foreground">
+                <p className="text-card-foreground">
                   Friendship means little when it’s convenient. We’re interested in those who walk the long road with us, those exploring not just what AI is, but what it could become.
                 </p>
               </CardContent>
