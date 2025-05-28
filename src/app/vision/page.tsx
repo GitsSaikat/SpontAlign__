@@ -37,30 +37,34 @@ export default function VisionPage() {
 
       {/* Updated Mission Section - Centered Text Over Image */}
       <section className="mb-16 md:mb-24">
-        <div className="relative max-w-4xl mx-auto"> {/* Container for image and text */}
+        <div className="relative max-w-4xl mx-auto h-72 md:h-96"> {/* Container for image and text */}
           {/* Image Background */}
-          <div className="relative w-full h-72 md:h-96 rounded-lg overflow-hidden shadow-lg">
+          <div className="absolute inset-0 rounded-xl overflow-hidden shadow-2xl">
              <Image
-                src="/images/Mission.png" // Assuming public/images/Mission.png exists
+                src="/images/Mission.png" 
                 alt="Conceptual image representing our mission"
                 layout="fill"
                 objectFit="cover"
                 data-ai-hint="mission future concept"
-                className="rounded-lg"
+                className="rounded-xl"
              />
-             {/* Optional: Add a semi-transparent overlay to improve text readability if needed */}
-             {/* <div className="absolute inset-0 bg-black/50 rounded-lg"></div> */}
+             {/* Pulsating lights */}
+            <div className="postmodern-bg-element animate-pulse-green w-32 h-32 rounded-full blur-2xl -left-10 top-1/4 bg-green-500/30 dark:bg-green-400/20"></div>
+            <div className="postmodern-bg-element animate-pulse-cyan w-40 h-40 rounded-full blur-2xl -right-10 bottom-1/4 bg-cyan-500/30 dark:bg-cyan-400/20"></div>
+            <div className="postmodern-bg-element animate-pulse-teal w-24 h-24 rounded-full blur-xl left-1/3 -bottom-5 bg-teal-500/30 dark:bg-teal-400/20"></div>
           </div>
 
           {/* Our Mission Card (Centered and Overlapping) */}
-          <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8"> {/* Centering wrapper with padding */}
-            <Card className="shadow-xl transition-shadow duration-300 flex flex-col
-                           bg-card/90 dark:bg-card/80 rounded-lg
-                           w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 max-w-xl"> {/* Adjusted max-width */}
-              <CardHeader>
-                <CardTitle className="text-2xl md:text-3xl font-bold text-primary text-center">Our Mission</CardTitle>
+          <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8 z-10">
+            <Card 
+              className="w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 max-w-xl 
+                         bg-card/90 dark:bg-card/85 
+                         shadow-xl rounded-lg"
+            >
+              <CardHeader className="text-center">
+                <CardTitle className="text-2xl sm:text-3xl text-primary">Our Mission</CardTitle>
               </CardHeader>
-              <CardContent className="flex-grow space-y-3 md:space-y-4 text-center text-xs sm:text-sm md:text-base"> {/* Adjusted text sizes and spacing */}
+              <CardContent className="space-y-3 md:space-y-4 text-center text-xs sm:text-sm md:text-base leading-relaxed">
                 <p className="text-muted-foreground">
                   We believe the future economy will be primarily AI-driven and we’re building the bridge that connects AI to people. Our mission is to create benevolent AI systems that serve humanity, even if doing so challenges our own company’s interests.
                 </p>
@@ -78,32 +82,32 @@ export default function VisionPage() {
 
       {/* Goals & Core Values Section - Two Column Layout */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
+        <Card className="group shadow-md hover:shadow-xl transition-all duration-300 ease-in-out border hover:border-accent hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center md:text-left">Goals</CardTitle>
+            <CardTitle className="text-2xl font-bold text-center md:text-left group-hover:text-foreground transition-colors duration-300 ease-in-out">Goals</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-3">
               {goals.map((goal) => (
                 <li key={goal} className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-muted-foreground">{goal}</span>
+                  <span className="text-muted-foreground group-hover:text-foreground transition-colors duration-300 ease-in-out">{goal}</span>
                 </li>
               ))}
             </ul>
           </CardContent>
         </Card>
 
-        <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
+        <Card className="group shadow-md hover:shadow-xl transition-all duration-300 ease-in-out border hover:border-accent hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center md:text-left">Core Values</CardTitle>
+            <CardTitle className="text-2xl font-bold text-center md:text-left group-hover:text-foreground transition-colors duration-300 ease-in-out">Core Values</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-3">
               {coreValues.map((value) => (
                 <li key={value} className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-muted-foreground">{value}</span>
+                  <span className="text-muted-foreground group-hover:text-foreground transition-colors duration-300 ease-in-out">{value}</span>
                 </li>
               ))}
             </ul>
