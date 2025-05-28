@@ -11,7 +11,7 @@ const products = [
     id: 'open-deep-research',
     name: 'Open Deep Research',
     description: 'An application for assisting in research by conducting comprehensive research on any topic.',
-    imageUrl: '/images/OpenD.png', // Updated image path
+    imageUrl: '/images/OpenD.png', 
     status: 'Live',
     link: 'https://huggingface.co/spaces/AlignAI/Open-Deep-Research',
     dataAiHint: 'ai research tool'
@@ -20,7 +20,7 @@ const products = [
     id: 'deep-research-arxiv',
     name: 'Deep Research Arxiv',
     description: 'Do literature review, Fast, Simple and Reliable.',
-    imageUrl: '/images/DeepA.png', // Updated image path
+    imageUrl: '/images/DeepA.png', 
     status: 'Live',
     link: 'https://huggingface.co/spaces/AlignAI/Deep-Research-Arxiv',
     dataAiHint: 'arxiv literature review'
@@ -29,7 +29,7 @@ const products = [
     id: 'agent-ds',
     name: 'Agent DS',
     description: 'Your personal data scientist.',
-    imageUrl: '/images/AgentD.png', // Updated image path
+    imageUrl: '/images/AgentD.png', 
     status: 'Coming Soon',
     link: '#',
     dataAiHint: 'data science agent'
@@ -38,7 +38,7 @@ const products = [
     id: 'shikkhok',
     name: 'Shikkhok',
     description: 'Your personal educator.',
-    imageUrl: '/images/Shikkhok.png', // Updated image path
+    imageUrl: '/images/Shikkhok.png', 
     status: 'Coming Soon',
     link: '#',
     dataAiHint: 'ai education tutor'
@@ -91,8 +91,8 @@ export default function ProductsPage() {
                )}
             </div>
             <CardHeader>
-              <CardTitle className="text-2xl flex items-center gap-2">
-                <Package className="h-6 w-6 text-primary transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-[5deg]" />
+              <CardTitle className="text-2xl flex items-center gap-2 group-hover:text-foreground transition-colors duration-300 ease-in-out">
+                <Package className="h-6 w-6 text-primary transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-[5deg] group-hover:text-accent" />
                 {product.name}
               </CardTitle>
               <CardDescription className="group-hover:text-foreground transition-colors duration-300 ease-in-out">{product.description}</CardDescription>
@@ -136,7 +136,7 @@ export default function ProductsPage() {
       <section className="text-center py-8">
         <h2 className="text-3xl font-semibold mb-2">{stayTunedMessage.name}</h2>
         <p className="text-lg text-muted-foreground mb-4">{stayTunedMessage.description}</p>
-        <Button asChild variant="link" className="text-primary btn-transition btn-hover btn-active">
+        <Button asChild variant="link" className="text-primary btn-transition btn-hover btn-active text-lg">
           <Link href={stayTunedMessage.link} prefetch={true}>
             Follow Our Blog for Updates <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
