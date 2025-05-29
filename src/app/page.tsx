@@ -19,7 +19,7 @@ import Image from 'next/image';
 // Animation variants
 const sectionVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { // Removed delay parameter, as whileInView handles individual timing
+  visible: { 
     opacity: 1,
     y: 0,
     transition: { duration: 0.6 }
@@ -28,7 +28,7 @@ const sectionVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 15 },
-  visible: (delay: number = 0) => ({ // Accepts a delay via custom prop
+  visible: (delay: number = 0) => ({ 
     opacity: 1,
     y: 0,
     transition: { duration: 0.5, delay }
@@ -45,10 +45,10 @@ export default function Home() {
     >
       <main className="flex flex-col items-center space-y-12 md:space-y-16 lg:space-y-20" style={{ perspective: '1000px' }}>
         {/* New Hero Structure with Image and Overlapping Content */}
-        <div className="relative w-full max-w-5xl mx-auto" style={{ perspective: '1000px' }}> {/* Added perspective for 3D effects */}
+        <div className="relative w-full max-w-5xl mx-auto" style={{ perspective: '1000px' }}>
           {/* The new image */}
-          <motion.div // Wrapper for image 3D hover effect
-            className="relative h-64 md:h-80 lg:h-96 w-full -mb-[9.5rem] md:-mb-[12rem] lg:-mb-[14.5rem]" // Updated negative margin-bottom
+          <motion.div 
+            className="relative h-64 md:h-80 lg:h-96 w-full -mb-[9.5rem] md:-mb-[12rem] lg:-mb-[14.5rem]" 
             whileHover={{
               scale: 1.03,
               rotateX: 5,
@@ -71,8 +71,8 @@ export default function Home() {
           <motion.section
             className="relative z-10 mx-auto max-w-3xl bg-card/95 dark:bg-card/90 p-6 md:p-10 rounded-xl shadow-2xl border-2 border-dashed border-primary transform -rotate-1 hover:rotate-0 transition-transform duration-300 flex flex-col items-center text-center space-y-6"
             initial="hidden"
-            animate="visible" // Hero section animates immediately
-            variants={sectionVariants} // Use sectionVariants without delay here
+            animate="visible" 
+            variants={sectionVariants} 
             whileHover={{ 
               scale: 1.02,
               rotateX: -3,
@@ -88,7 +88,7 @@ export default function Home() {
               />
               <motion.p
                 className="text-lg md:text-xl lg:text-2xl text-muted-foreground"
-                variants={itemVariants} // This will inherit 'visible' from parent section
+                variants={itemVariants} 
               >
                 SpontAlign is an AI research initiative dedicated to building
                 safe, transparent, and beneficial AI systems through research and collaboration.
@@ -96,7 +96,7 @@ export default function Home() {
             </div>
             <motion.div
               className="flex flex-col sm:flex-row justify-center gap-4"
-              variants={itemVariants} // This will inherit 'visible' from parent section
+              variants={itemVariants} 
             >
               <MotionButton
                 asChild
@@ -127,8 +127,8 @@ export default function Home() {
         <motion.section
           className="space-y-6 w-full max-w-5xl"
           initial="hidden"
-          whileInView="visible" // Animate when in view
-          viewport={{ once: true, amount: 0.3 }} // Trigger when 30% visible, only once
+          whileInView="visible" 
+          viewport={{ amount: 0.3 }} // Removed once: true
           variants={sectionVariants}
         >
           <div className="text-center space-y-2">
@@ -149,10 +149,10 @@ export default function Home() {
                 key={item.title}
                 className="shadow-lg transition-shadow duration-300 bg-card/90 dark:bg-card/80"
                 initial="hidden"
-                whileInView="visible" // Animate when in view
-                viewport={{ once: true, amount: 0.1 }} // Trigger when 10% visible, only once
+                whileInView="visible" 
+                viewport={{ amount: 0.1 }} // Removed once: true
                 variants={itemVariants}
-                custom={index * 0.15} // Stagger delay for each card
+                custom={index * 0.15} 
                 whileHover={{ scale: 1.03, y: -5, transition: { duration: 0.2 } }}
               >
                 <CardHeader>
@@ -190,14 +190,14 @@ export default function Home() {
         <motion.section
           className="bg-secondary/80 dark:bg-secondary/70 rounded-lg p-8 md:p-12 text-center w-full max-w-3xl"
           initial="hidden"
-          whileInView="visible" // Animate when in view
-          viewport={{ once: true, amount: 0.5 }} // Trigger when 50% visible, only once
+          whileInView="visible" 
+          viewport={{ amount: 0.5 }} // Removed once: true
           variants={sectionVariants}
           whileHover={{
             scale: 1.03,
             rotateX: 2,
             rotateY: -2,
-            boxShadow: "0px 10px 20px hsl(var(--foreground) / 0.2)", // Using theme foreground with opacity
+            boxShadow: "0px 10px 20px hsl(var(--foreground) / 0.2)", 
             transition: { duration: 0.3, ease: "easeInOut" }
           }}
         >
