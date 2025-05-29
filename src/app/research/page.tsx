@@ -123,7 +123,7 @@ export default function ResearchPage() {
         className="text-center"
         initial="initial"
         whileInView="inView"
-        viewport={{ amount: 0.2 }}
+        viewport={{ amount: 0.1 }} // Adjusted for top content
         variants={scrollVariants}
       >
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 font-heading">

@@ -64,7 +64,7 @@ export default function EnterprisePage() {
         className="relative overflow-hidden rounded-lg bg-gradient-to-r from-primary to-accent dark:from-primary/80 dark:to-accent text-primary-foreground py-16 md:py-24 px-6 md:px-12 text-center"
         initial="initial"
         whileInView="inView"
-        viewport={{ amount: 0.2 }}
+        viewport={{ amount: 0.1 }} // Adjusted for top content
         variants={scrollVariants}
       >
          <div className="absolute inset-0 bg-black/20 mix-blend-multiply"></div>

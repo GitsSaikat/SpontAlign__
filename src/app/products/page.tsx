@@ -65,7 +65,7 @@ export default function ProductsPage() {
         className="text-center"
         initial="initial"
         whileInView="inView"
-        viewport={{ amount: 0.2 }}
+        viewport={{ amount: 0.1 }} // Adjusted for top content
         variants={scrollVariants}
       >
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
@@ -167,7 +167,7 @@ export default function ProductsPage() {
       </motion.section>
 
        <motion.section
-          className="group bg-card rounded-lg p-8 md:p-12 text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
+          className="group bg-card rounded-lg p-8 md:p-12 text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-secondary/60 dark:hover:bg-secondary/80"
           initial="initial"
           whileInView="inView"
           viewport={{ amount: 0.2 }}

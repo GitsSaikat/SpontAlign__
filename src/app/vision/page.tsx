@@ -2,9 +2,9 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button"; // Ensured Button is imported
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { CheckCircle, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { motion } from 'framer-motion';
 
@@ -38,7 +38,7 @@ export default function VisionPage() {
         className="text-center"
         initial="initial"
         whileInView="inView"
-        viewport={{ amount: 0.2 }}
+        viewport={{ amount: 0.1 }} // Adjusted for top content
         variants={scrollVariants}
       >
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">

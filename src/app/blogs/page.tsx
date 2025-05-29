@@ -26,11 +26,11 @@ export default function BlogsPage() {
         priority
       />
 
-      <motion.div // Wrap content overlay with motion.div
+      <motion.div 
         className="relative z-10 container mx-auto px-6 py-10 md:px-10 md:py-16 space-y-12 bg-card/90 dark:bg-card/85 rounded-xl shadow-2xl max-w-4xl text-center"
         initial="initial"
         whileInView="inView"
-        viewport={{ amount: 0.2 }}
+        viewport={{ amount: 0.1 }} // Adjusted for top content
         variants={scrollVariants}
       >
         <header className="mb-8">

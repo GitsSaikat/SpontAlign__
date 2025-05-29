@@ -77,6 +77,7 @@ export default function ContactPage() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log("Form Submitted:", values);
+    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
     toast({
       title: "Message Sent!",
@@ -92,7 +93,7 @@ export default function ContactPage() {
         className="text-center"
         initial="initial"
         whileInView="inView"
-        viewport={{ amount: 0.2 }}
+        viewport={{ amount: 0.1 }} // Adjusted for top content
         variants={scrollVariants}
       >
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
@@ -228,6 +229,7 @@ export default function ContactPage() {
                         United States
                     </p>
                      <div className="mt-2 h-32 w-full bg-muted rounded flex items-center justify-center text-sm text-muted-foreground">
+                        {/* Placeholder for an embedded map or static map image */}
                         Map Placeholder
                      </div>
                     </div>
@@ -267,6 +269,7 @@ export default function ContactPage() {
                       <Button variant="outline" size="icon" asChild className="btn-transition btn-hover btn-active">
                           <a href="#" aria-label="SpontAlign on LinkedIn"><Linkedin className="h-5 w-5" /></a>
                       </Button>
+                      {/* Assuming GitHub or similar for the third icon, if it's for email use Mail as placeholder or specific icon */}
                       <Button variant="outline" size="icon" asChild className="btn-transition btn-hover btn-active">
                           <a href="#" aria-label="SpontAlign on GitHub"><Mail className="h-5 w-5" /></a>
                       </Button>
