@@ -14,6 +14,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { motion } from 'framer-motion';
 import TypingHeading from '@/components/common/typing-heading';
+import Image from 'next/image'; // Import next/image
 
 // Animation variants
 const sectionVariants = {
@@ -36,59 +37,75 @@ const MotionCard = motion(Card);
 export default function Home() {
   return (
     <div
-      className="container space-y-12 py-12 md:space-y-16 lg:space-y-20 md:py-16 lg:py-20 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/homepage-background.png')" }}
+      className="container space-y-12 py-12 md:space-y-16 lg:space-y-20 md:py-16 lg:py-20"
+      // Removed background image style from here, will apply to a specific element if needed or rely on global background
     >
-      <main className="flex flex-col items-center space-y-12 md:space-y-16 lg:space-y-20 bg-background/80 dark:bg-background/90 p-6 md:p-10 rounded-xl shadow-2xl">
-        {/* Hero Section */}
-        <motion.section
-          className="flex flex-col items-center text-center space-y-6"
-          custom={0}
-          initial="hidden"
-          animate="visible"
-          variants={sectionVariants}
-        >
-          <div className="space-y-6"> {/* Changed from space-y-4 to space-y-6 */}
-            <TypingHeading
-              text="Align Spontaneously"
-              className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight text-primary"
-              typingSpeed={70}
+      <main className="flex flex-col items-center space-y-12 md:space-y-16 lg:space-y-20">
+        {/* New Hero Structure with Image and Overlapping Content */}
+        <div className="relative w-full max-w-5xl mx-auto"> {/* Container for image and overlapping hero */}
+          {/* The new image */}
+          <div className="relative h-64 md:h-80 lg:h-96 w-full mb-[-6rem] md:mb-[-8rem] lg:mb-[-10rem]"> {/* Adjust height and negative margin as needed */}
+            <Image
+              src="/images/home.png" // Ensure this image exists in public/images
+              alt="SpontAlign abstract background"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-xl shadow-lg"
+              data-ai-hint="technology abstract design"
+              priority
             />
-            <motion.p
-              className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl px-4"
+          </div>
+
+          {/* Overlapping Hero Content Section */}
+          <motion.section
+            className="relative z-10 mx-auto max-w-3xl bg-card/95 dark:bg-card/90 p-6 md:p-10 rounded-xl shadow-2xl border-2 border-dashed border-primary transform -rotate-1 hover:rotate-0 transition-transform duration-300 flex flex-col items-center text-center space-y-6"
+            custom={0}
+            initial="hidden"
+            animate="visible"
+            variants={sectionVariants}
+          >
+            <div className="space-y-6">
+              <TypingHeading
+                text="Align Spontaneously"
+                className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight text-primary"
+                typingSpeed={70}
+              />
+              <motion.p
+                className="text-lg md:text-xl lg:text-2xl text-muted-foreground" // Removed max-w-3xl and px-4 as parent constrains width
+                variants={itemVariants}
+              >
+                SpontAlign is an AI research initiative dedicated to building
+                safe, transparent, and beneficial AI systems through research and collaboration.
+              </motion.p>
+            </div>
+            <motion.div
+              className="flex flex-col sm:flex-row justify-center gap-4"
               variants={itemVariants}
             >
-              SpontAlign is an AI research initiative dedicated to building
-              safe, transparent, and beneficial AI systems through research and collaboration.
-            </motion.p>
-          </div>
-          <motion.div
-            className="flex flex-col sm:flex-row justify-center gap-4"
-            variants={itemVariants}
-          >
-            <MotionButton
-              asChild
-              size="lg"
-              className="btn-transition" // Removed btn-hover to let Framer Motion handle it
-              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link href="/vision">
-                Explore Our Vision <ArrowRight className="ml-2" />
-              </Link>
-            </MotionButton>
-            <MotionButton
-              asChild
-              variant="outline"
-              size="lg"
-              className="btn-transition" // Removed btn-hover
-              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link href="/research">Discover Research</Link>
-            </MotionButton>
-          </motion.div>
-        </motion.section>
+              <MotionButton
+                asChild
+                size="lg"
+                className="btn-transition"
+                whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link href="/vision">
+                  Explore Our Vision <ArrowRight className="ml-2" />
+                </Link>
+              </MotionButton>
+              <MotionButton
+                asChild
+                variant="outline"
+                size="lg"
+                className="btn-transition"
+                whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link href="/research">Discover Research</Link>
+              </MotionButton>
+            </motion.div>
+          </motion.section>
+        </div>
 
         {/* Key Areas Summary */}
         <motion.section
@@ -118,7 +135,7 @@ export default function Home() {
                 initial="hidden"
                 animate="visible"
                 variants={itemVariants}
-                custom={index * 0.15} // Stagger delay
+                custom={index * 0.15} 
                 whileHover={{ scale: 1.03, y: -5, transition: { duration: 0.2 } }}
               >
                 <CardHeader>
@@ -136,8 +153,8 @@ export default function Home() {
                   <MotionButton
                     asChild
                     variant="link"
-                    className="p-0 h-auto text-base text-primary btn-transition" // Removed btn-hover
-                    whileHover={{ x: 3, transition: { duration: 0.2 } }} // Example: slight move on hover
+                    className="p-0 h-auto text-base text-primary btn-transition"
+                    whileHover={{ x: 3, transition: { duration: 0.2 } }}
                   >
                     <Link href={item.link}>
                       {item.linkText}{" "}
@@ -169,7 +186,7 @@ export default function Home() {
           <MotionButton
             asChild
             size="lg"
-            className="btn-transition" // Removed btn-hover
+            className="btn-transition"
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
             whileTap={{ scale: 0.95 }}
           >
