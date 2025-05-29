@@ -1,15 +1,21 @@
 
-// This page can now be a Server Component as no client-side hooks are used.
+'use client'; // Ensure this page is a client component for Framer Motion
+
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion'; // Import motion
+
+const scrollVariants = {
+  initial: { opacity: 0, y: 20 },
+  inView: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
 
 export default function BlogsPage() {
   const mediumBlogUrl = "https://medium.com/@saikatbarua1210";
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center py-12">
-      {/* Background Image */}
       <Image
         src="/images/blog.png"
         alt="SpontAlign Blog Background"
@@ -20,9 +26,13 @@ export default function BlogsPage() {
         priority
       />
 
-      {/* Content Overlay */}
-      <div className="relative z-10 container mx-auto px-6 py-10 md:px-10 md:py-16 space-y-12 bg-card/90 dark:bg-card/85 rounded-xl shadow-2xl max-w-4xl text-center">
-        {/* Header Section */}
+      <motion.div // Wrap content overlay with motion.div
+        className="relative z-10 container mx-auto px-6 py-10 md:px-10 md:py-16 space-y-12 bg-card/90 dark:bg-card/85 rounded-xl shadow-2xl max-w-4xl text-center"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
         <header className="mb-8">
           <div>
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-primary">
@@ -39,7 +49,6 @@ export default function BlogsPage() {
           </div>
         </header>
 
-        {/* Call to Action Section */}
         <section>
           <div className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto space-y-6">
             <p>
@@ -62,7 +71,7 @@ export default function BlogsPage() {
             </p>
           </div>
         </section>
-      </div>
+      </motion.div>
     </div>
   );
 }

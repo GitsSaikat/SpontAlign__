@@ -1,15 +1,20 @@
 
-'use client'; // Required for state management (filters)
+'use client';
 
-import { useState, useEffect } from 'react'; // Import useEffect
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { FileText, Filter } from "lucide-react";
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
-// Updated research items data
+const scrollVariants = {
+  initial: { opacity: 0, y: 20 },
+  inView: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
 const allResearchItems = [
   {
     id: 4,
@@ -44,7 +49,7 @@ const allResearchItems = [
   {
     id: 2,
     title: "RESCUED: Robust Quantum Error Correction with Surface Code in Noisy Channels using Ensemble Decoder",
-    year: 2024, 
+    year: 2024,
     topic: "Quantum",
     type: "Paper",
     link: "https://ieeexplore.ieee.org/document/10490966",
@@ -54,7 +59,7 @@ const allResearchItems = [
   {
     id: 3,
     title: "ELMAGIC: Energy-Efficient Lean Model for Reliable Medical Image Generation and Classification using Forward Forward Algorithm",
-    year: 2024, 
+    year: 2024,
     topic: "AI Applications",
     type: "Paper",
     link: "https://ieeexplore.ieee.org/document/10585776",
@@ -67,7 +72,7 @@ const allResearchItems = [
     year: 2024,
     topic: "AI Tools",
     type: "Paper",
-    link: "https://arxiv.org/abs/2411.08932", // Link will be active Nov 2024
+    link: "https://arxiv.org/abs/2411.08932",
     authors: "Saikat Barua, Mostafizur Rahman, Md Jafor Sadek, Rafiul Islam, Shehenaz Khaled, Md Shohrab Hossain",
     shortAbstract: "PyGen is a human-AI collaborative platform for automating Python package creation from abstract ideas."
   },
@@ -75,36 +80,33 @@ const allResearchItems = [
     id: 7,
     title: "QuXAI: Explainers for Hybrid Quantum Machine Learning Models",
     year: 2025,
-    topic: "Interpretability", 
+    topic: "Interpretability",
     type: "Paper",
-    link: "https://arxiv.org/abs/2505.10167", // Link will be active May 2025
+    link: "https://arxiv.org/abs/2505.10167",
     authors: "Saikat Barua, Mostafizur Rahman, Shehenaz Khaled, Md Jafor Sadek, Rafiul Islam, Shahnewaz Siddique",
     shortAbstract: "QuXAI introduces a framework and explainer (Q-MEDLEY) for hybrid quantum-classical machine learning model transparency."
   }
 ];
 
-// Get unique topics and years for filters
 const topics = Array.from(new Set(allResearchItems.map(item => item.topic)));
-const years = Array.from(new Set(allResearchItems.map(item => item.year))).sort((a, b) => b - a); // Sort descending
+const years = Array.from(new Set(allResearchItems.map(item => item.year))).sort((a, b) => b - a);
 
 export default function ResearchPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [selectedYear, setSelectedYear] = useState<string | null>(null);
   const [filteredResearch, setFilteredResearch] = useState(allResearchItems);
-  const [hasMounted, setHasMounted] = useState(false); // Track mount state
+  const [hasMounted, setHasMounted] = useState(false);
 
-  // Defer filtering logic until client-side mount
   useEffect(() => {
-    setHasMounted(true); // Component has mounted
+    setHasMounted(true);
   }, []);
 
   useEffect(() => {
-    // Only filter after mount to avoid hydration mismatch
     if (!hasMounted) return;
 
     const filtered = allResearchItems.filter(item => {
-        const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                               item.authors.toLowerCase().includes(searchTerm.toLowerCase()) ||
                               (item.shortAbstract && item.shortAbstract.toLowerCase().includes(searchTerm.toLowerCase()));
         const matchesTopic = !selectedTopic || item.topic === selectedTopic;
@@ -112,22 +114,32 @@ export default function ResearchPage() {
         return matchesSearch && matchesTopic && matchesYear;
     });
     setFilteredResearch(filtered);
-  }, [searchTerm, selectedTopic, selectedYear, hasMounted]); // Add hasMounted dependency
+  }, [searchTerm, selectedTopic, selectedYear, hasMounted]);
 
 
   return (
     <div className="space-y-12">
-      <section className="text-center">
+      <motion.section
+        className="text-center"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 font-heading">
           Our Research
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto font-body">
           Exploring the frontiers of AI alignment, safety, and interpretability. Discover our publications, projects, and methodologies.
         </p>
-      </section>
+      </motion.section>
 
-      {/* Filters Section */}
-      <section>
+      <motion.section
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
         <Card className="shadow-sm bg-muted/50 dark:bg-muted/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 font-heading">
@@ -178,16 +190,19 @@ export default function ResearchPage() {
             </Button>
           </CardContent>
         </Card>
-      </section>
+      </motion.section>
 
-      {/* Research Items Grid */}
-      <section>
-        {/* Only render the list after mount */}
+      <motion.section
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
         {hasMounted && filteredResearch.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredResearch.map(item => (
-              <Card 
-                key={item.id} 
+              <Card
+                key={item.id}
                 className="group flex flex-col justify-between border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
               >
                 <CardHeader>
@@ -218,18 +233,17 @@ export default function ResearchPage() {
             ))}
           </div>
         ) : (
-           // Render loading state or message before mount/if no results
            <div className="text-center py-16 text-muted-foreground font-body">
             {hasMounted
              ? <>
                  <p className="text-lg">No research items match your criteria.</p>
                  <p>Try adjusting your filters or search term.</p>
                </>
-             : <p className="text-lg">Loading research items...</p> // Show loading before mount
+             : <p className="text-lg">Loading research items...</p>
             }
            </div>
         )}
-      </section>
+      </motion.section>
     </div>
   );
 }

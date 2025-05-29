@@ -8,7 +8,11 @@ import { ArrowRight, ExternalLink, Package } from "lucide-react";
 import Image from "next/image";
 import { motion } from 'framer-motion';
 
-// Updated Product Data
+const scrollVariants = {
+  initial: { opacity: 0, y: 20 },
+  inView: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
 const products = [
   {
     id: 'open-deep-research',
@@ -57,17 +61,28 @@ const stayTunedMessage = {
 export default function ProductsPage() {
   return (
     <div className="space-y-16">
-      <section className="text-center">
+      <motion.section
+        className="text-center"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
           Our Products
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
           Discover the tools and platforms developed by SpontAlign to help build and deploy safer, more aligned AI systems.
         </p>
-      </section>
+      </motion.section>
 
-      {/* Products Grid */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <motion.section
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
         {products.map((product) => (
           <Card
             key={product.id}
@@ -133,10 +148,15 @@ export default function ProductsPage() {
             </CardContent>
           </Card>
         ))}
-      </section>
+      </motion.section>
 
-      {/* Stay Tuned Section */}
-      <section className="text-center py-8">
+      <motion.section
+        className="text-center py-8"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
         <h2 className="text-3xl font-semibold mb-2">{stayTunedMessage.name}</h2>
         <p className="text-lg text-muted-foreground mb-4">{stayTunedMessage.description}</p>
         <Button asChild variant="link" className="text-primary btn-transition btn-hover btn-active text-lg">
@@ -144,11 +164,14 @@ export default function ProductsPage() {
             Follow Our Blog for Updates <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
-      </section>
+      </motion.section>
 
-      {/* Custom Solutions Section */}
        <motion.section
           className="group bg-card rounded-lg p-8 md:p-12 text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
+          initial="initial"
+          whileInView="inView"
+          viewport={{ amount: 0.2 }}
+          variants={scrollVariants}
           animate={{
             scale: [1, 1.015, 1],
             boxShadow: [

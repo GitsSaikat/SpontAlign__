@@ -8,38 +8,50 @@ import { ArrowRight, GraduationCap, Users, Briefcase, ExternalLink } from "lucid
 import Image from "next/image";
 import { motion } from 'framer-motion';
 
+const scrollVariants = {
+  initial: { opacity: 0, y: 20 },
+  inView: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
 export default function MentorshipPage() {
   return (
     <div className="space-y-16">
-      <section className="text-center">
+      <motion.section
+        className="text-center"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
           Mentorship & Collaboration
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
           Fostering the next generation of AI alignment researchers and building bridges within the academic and research communities.
         </p>
-      </section>
+      </motion.section>
 
-      {/* "Our Commitment" Section - Updated Design */}
-      <section className="relative py-10 md:py-16">
-        <div className="relative max-w-4xl mx-auto h-72 md:h-96"> {/* Container for image and text */}
-          {/* Image Background */}
+      <motion.section
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
+        <div className="relative max-w-4xl mx-auto h-72 md:h-96">
           <div className="absolute inset-0 rounded-xl overflow-hidden shadow-2xl">
             <Image
-              src="/images/mentor.png" 
+              src="/images/mentor.png"
               alt="Our Commitment to Collaboration and Mentorship"
               layout="fill"
               objectFit="cover"
-              data-ai-hint="teamwork abstract" 
+              data-ai-hint="teamwork abstract"
               className="rounded-xl"
             />
           </div>
-
-          {/* "Our Commitment" Text Card - Centered and Overlapping */}
           <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8 z-10">
-            <Card 
-              className="w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 max-w-xl 
-                         bg-card/90 dark:bg-card/85 
+            <Card
+              className="w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 max-w-xl
+                         bg-card/90 dark:bg-card/85
                          shadow-xl rounded-lg"
             >
               <CardHeader className="text-center">
@@ -59,11 +71,14 @@ export default function MentorshipPage() {
             </Card>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-
-      {/* Mentorship Programs */}
-      <section>
+      <motion.section
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
         <h2 className="text-3xl font-bold mb-8 text-center">Opportunities</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="group text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
@@ -118,11 +133,14 @@ export default function MentorshipPage() {
             </CardContent>
           </Card>
         </div>
-      </section>
+      </motion.section>
 
-       {/* Community Engagement */}
       <motion.section
         className="group bg-card rounded-lg p-6 md:p-8 border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
         animate={{
           scale: [1, 1.015, 1],
           boxShadow: [
@@ -139,18 +157,23 @@ export default function MentorshipPage() {
         }}
       >
         <h2 className="text-3xl font-bold mb-6 text-center text-primary group-hover:text-primary transition-colors duration-300 ease-in-out">Community Engagement</h2>
-         <div className="max-w-3xl mx-auto text-center text-muted-foreground space-y-4">
-            <p className="group-hover:text-foreground transition-colors duration-300 ease-in-out">
+         <div className="max-w-3xl mx-auto text-center space-y-4">
+            <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300 ease-in-out">
                 SpontAlign actively participates in the broader AI community through conference presentations, open-source contributions, and hosting technical talks and workshops (both online and in-person when possible).
             </p>
-             <p className="group-hover:text-foreground transition-colors duration-300 ease-in-out">
+             <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300 ease-in-out">
                Follow our <Link href="/blogs" className="text-primary hover:underline">Blog</Link> and social media channels for announcements about upcoming events and opportunities to engage with our team.
             </p>
          </div>
       </motion.section>
 
-       {/* Call to Action */}
-        <section className="text-center">
+       <motion.section
+        className="text-center"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+       >
           <h2 className="text-3xl font-bold mb-4">Interested in Learning More?</h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
             Reach out to discuss potential mentorship or collaboration opportunities. We are always open to connecting with passionate individuals and institutions.
@@ -160,7 +183,7 @@ export default function MentorshipPage() {
               Contact Us <ArrowRight className="ml-2" />
             </Link>
           </Button>
-        </section>
+        </motion.section>
     </div>
   );
 }

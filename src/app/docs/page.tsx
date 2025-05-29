@@ -4,31 +4,36 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
+const scrollVariants = {
+  initial: { opacity: 0, y: 20 },
+  inView: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.2, ease: 'easeOut' } },
+};
+
 export default function DocsPage() {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeInOut' }}
       className="relative min-h-screen flex items-center justify-center py-12"
+      initial="initial" // For the parent div, if it needs its own entry, otherwise remove
+      whileInView="inView" // For the parent div, if it needs its own entry, otherwise remove
+      viewport={{ amount: 0.1 }} // For the parent div, if it needs its own entry, otherwise remove
+      variants={{ initial: {opacity: 0}, inView: {opacity:1, transition: {duration: 0.5}}}} // Simplified for overall container
     >
-      {/* Background Image */}
       <Image
-        src="/images/Front.png" // Path relative to public directory
+        src="/images/Front.png"
         alt="SpontAlign Toolkit Background"
         layout="fill"
         objectFit="cover"
-        className="absolute inset-0 -z-10 blur-sm opacity-30 dark:opacity-20" // Adjusted opacity
-        data-ai-hint="abstract technology code" // Updated hint
-        priority // Load image quickly
+        className="absolute inset-0 -z-10 blur-sm opacity-30 dark:opacity-20"
+        data-ai-hint="abstract technology code"
+        priority
       />
 
-      {/* Content Overlay */}
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
         className="relative z-10 container mx-auto px-6 py-10 md:px-10 md:py-16 space-y-8 bg-card/90 dark:bg-card/85 rounded-xl shadow-2xl max-w-3xl"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
       >
         <section className="text-center">
           <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-primary">

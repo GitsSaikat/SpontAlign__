@@ -8,6 +8,11 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion } from 'framer-motion';
 
+const scrollVariants = {
+  initial: { opacity: 0, y: 20 },
+  inView: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
 export default function VisionPage() {
   const goals = [
     "Develop Robust Alignment Techniques",
@@ -29,62 +34,74 @@ export default function VisionPage() {
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-12">
-      <section className="text-center">
+      <motion.section
+        className="text-center"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
           Our Vision: Aligning AI for Humanity
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
           At SpontAlign, we envision a future where artificial intelligence acts as a beneficial partner, augmenting human capabilities and upholding our shared values.
         </p>
-      </section>
+      </motion.section>
 
-      {/* Updated Mission Section - Centered Text Over Image */}
-      <section className="mb-16 md:mb-24">
-        <div className="relative max-w-4xl mx-auto h-72 md:h-96"> {/* Container for image and text */}
-          {/* Image Background */}
+      <motion.section
+        className="mb-16 md:mb-24"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
+        <div className="relative max-w-4xl mx-auto h-72 md:h-96">
           <div className="absolute inset-0 rounded-xl overflow-hidden shadow-2xl">
              <Image
-                src="/images/Mission.png" 
+                src="/images/Mission.png"
                 alt="Conceptual image representing our mission"
                 layout="fill"
                 objectFit="cover"
                 data-ai-hint="mission future concept"
                 className="rounded-xl"
              />
-             {/* Pulsating lights */}
             <div className="postmodern-bg-element animate-pulse-green w-32 h-32 rounded-full blur-2xl -left-10 top-1/4 bg-green-500/30 dark:bg-green-400/20"></div>
             <div className="postmodern-bg-element animate-pulse-cyan w-40 h-40 rounded-full blur-2xl -right-10 bottom-1/4 bg-cyan-500/30 dark:bg-cyan-400/20"></div>
             <div className="postmodern-bg-element animate-pulse-teal w-24 h-24 rounded-full blur-xl left-1/3 -bottom-5 bg-teal-500/30 dark:bg-teal-400/20"></div>
           </div>
-
-          {/* Our Mission Card (Centered and Overlapping) */}
           <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8 z-10">
-            <Card 
-              className="w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 max-w-xl 
-                         bg-card/90 dark:bg-card/85 
+            <Card
+              className="w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 max-w-xl
+                         bg-card/90 dark:bg-card/85
                          shadow-xl rounded-lg"
             >
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl sm:text-3xl text-primary">Our Mission</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 md:space-y-4 text-center text-xs sm:text-sm md:text-base leading-relaxed">
-                <p className="text-muted-foreground">
+                <p className="text-card-foreground">
                   We believe the future economy will be primarily AI-driven and we’re building the bridge that connects AI to people. Our mission is to create benevolent AI systems that serve humanity, even if doing so challenges our own company’s interests.
                 </p>
-                <p className="text-muted-foreground">
+                <p className="text-card-foreground">
                   AI holds the potential to uplift every sector of society, accelerating innovation, solving complex problems, and expanding human capacity. But left unchecked, it could also bring catastrophic risks. That’s why we stand for responsible development, transparent governance, and human-aligned intelligence.
                 </p>
-                <p className="text-muted-foreground">
+                <p className="text-card-foreground">
                   We envision a transhumanist society, empowered by AI not just smarter, but more conscious, compassionate, and capable. Once this is achieved, our mission will be to explore the deep, dark secrets of the Consciousness and the Universe.
                 </p>
               </CardContent>
             </Card>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Goals & Core Values Section - Two Column Layout */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <motion.section
+        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
         <Card className="group shadow-md hover:shadow-xl transition-all duration-300 ease-in-out border hover:border-accent hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center md:text-left group-hover:text-foreground transition-colors duration-300 ease-in-out">Goals</CardTitle>
@@ -116,13 +133,16 @@ export default function VisionPage() {
             </ul>
           </CardContent>
         </Card>
-      </section>
+      </motion.section>
 
-       {/* Join Our Mission Section */}
        <motion.section
           className="group bg-card rounded-lg p-8 md:p-12 text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
+          initial="initial"
+          whileInView="inView"
+          viewport={{ amount: 0.2 }}
+          variants={scrollVariants}
           animate={{
-            scale: [1, 1.015, 1], // Subtle scale pulse
+            scale: [1, 1.015, 1],
             boxShadow: [
               "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
               "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
@@ -152,4 +172,3 @@ export default function VisionPage() {
     </div>
   );
 }
-

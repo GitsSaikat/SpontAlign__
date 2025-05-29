@@ -8,6 +8,11 @@ import { ArrowRight, Check, Building } from "lucide-react";
 import Image from "next/image";
 import { motion } from 'framer-motion';
 
+const scrollVariants = {
+  initial: { opacity: 0, y: 20 },
+  inView: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
 const MotionButton = motion(Button);
 
 const unifiedHoverEffect = {
@@ -15,7 +20,7 @@ const unifiedHoverEffect = {
   iconHoverClass: "group-hover:rotate-[15deg]",
   bgHoverClass: "group-hover:bg-gradient-to-br group-hover:from-primary/10 group-hover:via-background group-hover:to-accent/10",
   textHoverClass: "group-hover:text-foreground",
-  extraContainerClass: "", 
+  extraContainerClass: "",
 };
 
 const useCasesData = [
@@ -55,8 +60,13 @@ const useCasesData = [
 export default function EnterprisePage() {
   return (
     <div className="space-y-16">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden rounded-lg bg-gradient-to-r from-primary to-accent dark:from-primary/80 dark:to-accent text-primary-foreground py-16 md:py-24 px-6 md:px-12 text-center">
+      <motion.section
+        className="relative overflow-hidden rounded-lg bg-gradient-to-r from-primary to-accent dark:from-primary/80 dark:to-accent text-primary-foreground py-16 md:py-24 px-6 md:px-12 text-center"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
          <div className="absolute inset-0 bg-black/20 mix-blend-multiply"></div>
          <div className="relative z-10">
             <Building className="h-16 w-16 mx-auto mb-4 text-white/80" />
@@ -74,7 +84,7 @@ export default function EnterprisePage() {
               asChild
               size="lg"
               variant="secondary"
-              className="btn-transition btn-active text-primary hover:text-primary-foreground" 
+              className="btn-transition btn-active text-primary hover:text-primary-foreground"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -83,11 +93,14 @@ export default function EnterprisePage() {
               </Link>
             </MotionButton>
          </div>
-      </section>
+      </motion.section>
 
-
-      {/* How We Partner */}
-      <section>
+      <motion.section
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
         <h2 className="text-3xl font-bold mb-8 text-center">How We Partner with Businesses</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Card className="group text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
@@ -157,10 +170,15 @@ export default function EnterprisePage() {
             </CardContent>
           </Card>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Potential Use Cases */}
-      <section className="bg-background rounded-lg p-8 md:p-12"> 
+      <motion.section
+        className="bg-background rounded-lg p-8 md:p-12"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
         <h2 className="text-3xl font-bold mb-8 text-center">Potential Use Cases</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {useCasesData.map((item) => (
@@ -182,10 +200,15 @@ export default function EnterprisePage() {
             </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
-        {/* Call to Action */}
-        <section className="text-center">
+        <motion.section
+          className="text-center"
+          initial="initial"
+          whileInView="inView"
+          viewport={{ amount: 0.2 }}
+          variants={scrollVariants}
+        >
           <h2 className="text-3xl font-bold mb-4">Ready to Build Safer AI Together?</h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
             Let's explore how SpontAlign's expertise can enhance your AI initiatives. Contact us today for a consultation.
@@ -195,8 +218,7 @@ export default function EnterprisePage() {
               Contact Enterprise Team <ArrowRight className="ml-2" />
             </Link>
           </Button>
-        </section>
+        </motion.section>
     </div>
   );
 }
-

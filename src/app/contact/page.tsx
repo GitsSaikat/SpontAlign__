@@ -1,3 +1,4 @@
+
 'use client';
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,12 +17,17 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, MapPin, Phone, Send, Linkedin, Twitter } from "lucide-react"; // Added Linkedin, Twitter
+import { Mail, MapPin, Phone, Send, Linkedin, Twitter } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from "react";
+import { motion } from 'framer-motion';
 
+const scrollVariants = {
+  initial: { opacity: 0, y: 20 },
+  inView: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -30,7 +36,7 @@ const formSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
-   subject: z.string().min(1, { message: "Please select a subject." }), // Made subject mandatory
+   subject: z.string().min(1, { message: "Please select a subject." }),
    inquiryType: z.enum(["General Inquiry", "Enterprise Partnership", "Research Collaboration", "Mentorship Program", "Media Request", "Docs Feedback", "Other"]),
    message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
@@ -47,62 +53,63 @@ export default function ContactPage() {
       name: "",
       email: "",
       subject: "",
-      inquiryType: "General Inquiry", // Default value
+      inquiryType: "General Inquiry",
       message: "",
     },
   });
 
-   // Pre-fill subject based on query param
    useEffect(() => {
-     // Ensure searchParams is available and has the 'subject' key
      if (searchParams && searchParams.has('subject')) {
        const subjectParam = searchParams.get('subject');
        if (subjectParam) {
-         // Map param to enum value if necessary, otherwise use directly
          let mappedInquiryType: z.infer<typeof formSchema>['inquiryType'] = "Other";
          if (subjectParam === "AcademicCollaboration") mappedInquiryType = "Research Collaboration";
-         if (subjectParam === "VisitingResearcher") mappedInquiryType = "Research Collaboration"; // or custom
+         if (subjectParam === "VisitingResearcher") mappedInquiryType = "Research Collaboration";
          if (subjectParam === "DocsFeedback") mappedInquiryType = "Docs Feedback";
+         if (subjectParam === "ResearchTeamCollaboration") mappedInquiryType = "Research Collaboration";
 
-         // Safely set form values only if subjectParam is valid
+
          form.setValue('inquiryType', mappedInquiryType);
-         form.setValue('subject', `Regarding: ${subjectParam.replace(/([A-Z])/g, ' $1').trim()}`); // Auto-generate subject
+         form.setValue('subject', `Regarding: ${subjectParam.replace(/([A-Z])/g, ' $1').trim()}`);
        }
      }
-     // Add searchParams and form to dependency array
    }, [searchParams, form]);
 
-
-  // Placeholder submit handler
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // TODO: Implement actual form submission logic (e.g., send to an API endpoint)
     console.log("Form Submitted:", values);
-
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
-
     toast({
       title: "Message Sent!",
       description: "Thank you for contacting us. We'll get back to you shortly.",
-      variant: "default", // Use default variant for success
+      variant: "default",
     });
-
-    form.reset(); // Reset form after successful submission
+    form.reset();
   }
 
   return (
     <div className="space-y-12">
-      <section className="text-center">
+      <motion.section
+        className="text-center"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
           Contact Us
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
           Have questions, partnership inquiries, or feedback? We'd love to hear from you.
         </p>
-      </section>
+      </motion.section>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {/* Contact Form */}
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 gap-12"
+        initial="initial"
+        whileInView="inView"
+        viewport={{ amount: 0.2 }}
+        variants={scrollVariants}
+      >
         <Card className="shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -205,7 +212,6 @@ export default function ContactPage() {
           </CardContent>
         </Card>
 
-        {/* Contact Information */}
         <div className="space-y-8">
            <Card className="shadow-md">
              <CardHeader>
@@ -221,7 +227,6 @@ export default function ContactPage() {
                         Tech City, CA 94000<br />
                         United States
                     </p>
-                     {/* Placeholder for Map */}
                      <div className="mt-2 h-32 w-full bg-muted rounded flex items-center justify-center text-sm text-muted-foreground">
                         Map Placeholder
                      </div>
@@ -255,7 +260,6 @@ export default function ContactPage() {
              </CardHeader>
              <CardContent>
                  <p className="text-muted-foreground mb-4">Follow our progress and join the conversation on social media.</p>
-                 {/* Re-use social links from footer if desired */}
                   <div className="flex items-center space-x-4">
                       <Button variant="outline" size="icon" asChild className="btn-transition btn-hover btn-active">
                          <a href="#" aria-label="SpontAlign on Twitter"> <Twitter className="h-5 w-5" /></a>
@@ -264,13 +268,13 @@ export default function ContactPage() {
                           <a href="#" aria-label="SpontAlign on LinkedIn"><Linkedin className="h-5 w-5" /></a>
                       </Button>
                       <Button variant="outline" size="icon" asChild className="btn-transition btn-hover btn-active">
-                          <a href="#" aria-label="SpontAlign on GitHub"><Mail className="h-5 w-5" /></a>{/* Using Mail as placeholder */}
+                          <a href="#" aria-label="SpontAlign on GitHub"><Mail className="h-5 w-5" /></a>
                       </Button>
                     </div>
              </CardContent>
            </Card>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
