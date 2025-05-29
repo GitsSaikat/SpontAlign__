@@ -3,7 +3,7 @@
 
 import type React from 'react';
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+// Removed motion import as it's no longer used for individual characters
 
 interface TypingHeadingProps {
   text: string;
@@ -17,7 +17,8 @@ const TypingHeading: React.FC<TypingHeadingProps> = ({
   text,
   className,
   typingSpeed = 70,
-  cursorClassName = 'inline-block w-1 h-full bg-current ml-1 animate-pulse',
+  // Updated default cursor class to use a sharper blink and w-0.5 for ~2px width
+  cursorClassName = 'inline-block w-0.5 bg-current ml-1 animate-blink',
   loopDelay = 2000, // Default 2 seconds delay before restart
 }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -64,20 +65,13 @@ const TypingHeading: React.FC<TypingHeadingProps> = ({
 
   return (
     <h1 className={className}>
-      {displayedText.split('').map((char, index) => (
-        <motion.span
-          key={`${char}-${index}`} // Add index to key for repeating characters
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.1, delay: index * (typingSpeed / 2000) }}
-        >
-          {char}
-        </motion.span>
-      ))}
+      {displayedText}
+      {/* Cursor is visible while typing or when typing is complete before loop */}
       {(displayedText.length < text.length || (displayedText.length === text.length && text.length > 0)) && (
         <span
           className={cursorClassName}
           style={{ height: '1em', verticalAlign: 'bottom' }}
+          // The animation (e.g., animate-blink) is handled by the CSS class
         ></span>
       )}
     </h1>

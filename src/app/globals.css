@@ -128,6 +128,15 @@
   .animate-pulse-teal {
     animation: pulse-teal 6s infinite ease-in-out;
   }
+
+  /* Added for typing cursor blink */
+  @keyframes blink-caret {
+    from, to { opacity: 1 }
+    50% { opacity: 0 }
+  }
+  .animate-blink {
+    animation: blink-caret 1s step-end infinite;
+  }
 }
 
 @layer components {
@@ -160,8 +169,8 @@ body, p, span, div, a, li, input, textarea, select, button, label, h1, h2, h3, h
 .text-card-foreground { color: hsl(var(--card-foreground)) !important; }
 .text-popover-foreground { color: hsl(var(--popover-foreground)) !important; }
 .text-primary-foreground { color: hsl(var(--primary-foreground)); } /* Removed !important */
-.text-secondary-foreground { color: hsl(var(--secondary-foreground)) !important; }
-.text-muted-foreground { color: hsl(var(--muted-foreground)) !important; }
+.text-secondary-foreground { color: hsl(var(--secondary-foreground)); /* Removed !important */ }
+.text-muted-foreground { color: hsl(var(--muted-foreground)); /* Removed !important */ }
 .text-accent-foreground { color: hsl(var(--accent-foreground)) !important; } /* Text on accent elements */
 .text-destructive-foreground { color: hsl(var(--destructive-foreground)) !important; } /* Text on destructive elements */
 
@@ -184,4 +193,3 @@ a:not([class*="text-"]) {
 a:hover:not([class*="text-"]) {
   color: hsl(var(--accent)); /* Or a slightly lighter teal for hover */
 }
-
