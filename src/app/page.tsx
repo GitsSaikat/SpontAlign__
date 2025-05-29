@@ -39,7 +39,7 @@ export default function Home() {
     <div
       className="container space-y-12 py-12 md:space-y-16 lg:space-y-20 md:py-16 lg:py-20"
     >
-      <main className="flex flex-col items-center space-y-12 md:space-y-16 lg:space-y-20">
+      <main className="flex flex-col items-center space-y-12 md:space-y-16 lg:space-y-20" style={{ perspective: '1000px' }}>
         {/* New Hero Structure with Image and Overlapping Content */}
         <div className="relative w-full max-w-5xl mx-auto" style={{ perspective: '1000px' }}> {/* Added perspective for 3D effects */}
           {/* The new image */}
@@ -189,6 +189,13 @@ export default function Home() {
           initial="hidden"
           animate="visible"
           variants={sectionVariants}
+          whileHover={{
+            scale: 1.03,
+            rotateX: 2,
+            rotateY: -2,
+            boxShadow: "0px 10px 20px hsl(var(--foreground) / 0.2)", // Using theme foreground with opacity
+            transition: { duration: 0.3, ease: "easeInOut" }
+          }}
         >
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
             Stay Updated
@@ -213,3 +220,4 @@ export default function Home() {
     </div>
   );
 }
+
