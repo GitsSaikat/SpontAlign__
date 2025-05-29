@@ -19,16 +19,20 @@ import Image from 'next/image';
 // Animation variants
 const sectionVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: (delay: number = 0) => ({
+  visible: { // Removed delay parameter, as whileInView handles individual timing
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay }
-  })
+    transition: { duration: 0.6 }
+  }
 };
 
 const itemVariants = {
   hidden: { opacity: 0, y: 15 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  visible: (delay: number = 0) => ({ // Accepts a delay via custom prop
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay }
+  })
 };
 
 const MotionButton = motion(Button);
@@ -66,10 +70,9 @@ export default function Home() {
           {/* Overlapping Hero Content Section */}
           <motion.section
             className="relative z-10 mx-auto max-w-3xl bg-card/95 dark:bg-card/90 p-6 md:p-10 rounded-xl shadow-2xl border-2 border-dashed border-primary transform -rotate-1 hover:rotate-0 transition-transform duration-300 flex flex-col items-center text-center space-y-6"
-            custom={0}
             initial="hidden"
-            animate="visible"
-            variants={sectionVariants}
+            animate="visible" // Hero section animates immediately
+            variants={sectionVariants} // Use sectionVariants without delay here
             whileHover={{ 
               scale: 1.02,
               rotateX: -3,
@@ -85,7 +88,7 @@ export default function Home() {
               />
               <motion.p
                 className="text-lg md:text-xl lg:text-2xl text-muted-foreground"
-                variants={itemVariants}
+                variants={itemVariants} // This will inherit 'visible' from parent section
               >
                 SpontAlign is an AI research initiative dedicated to building
                 safe, transparent, and beneficial AI systems through research and collaboration.
@@ -93,7 +96,7 @@ export default function Home() {
             </div>
             <motion.div
               className="flex flex-col sm:flex-row justify-center gap-4"
-              variants={itemVariants}
+              variants={itemVariants} // This will inherit 'visible' from parent section
             >
               <MotionButton
                 asChild
@@ -123,9 +126,9 @@ export default function Home() {
         {/* Key Areas Summary */}
         <motion.section
           className="space-y-6 w-full max-w-5xl"
-          custom={0.2}
           initial="hidden"
-          animate="visible"
+          whileInView="visible" // Animate when in view
+          viewport={{ once: true, amount: 0.3 }} // Trigger when 30% visible, only once
           variants={sectionVariants}
         >
           <div className="text-center space-y-2">
@@ -146,9 +149,10 @@ export default function Home() {
                 key={item.title}
                 className="shadow-lg transition-shadow duration-300 bg-card/90 dark:bg-card/80"
                 initial="hidden"
-                animate="visible"
+                whileInView="visible" // Animate when in view
+                viewport={{ once: true, amount: 0.1 }} // Trigger when 10% visible, only once
                 variants={itemVariants}
-                custom={index * 0.15} 
+                custom={index * 0.15} // Stagger delay for each card
                 whileHover={{ scale: 1.03, y: -5, transition: { duration: 0.2 } }}
               >
                 <CardHeader>
@@ -185,9 +189,9 @@ export default function Home() {
         {/* Stay Updated Section */}
         <motion.section
           className="bg-secondary/80 dark:bg-secondary/70 rounded-lg p-8 md:p-12 text-center w-full max-w-3xl"
-          custom={0.4}
           initial="hidden"
-          animate="visible"
+          whileInView="visible" // Animate when in view
+          viewport={{ once: true, amount: 0.5 }} // Trigger when 50% visible, only once
           variants={sectionVariants}
           whileHover={{
             scale: 1.03,
