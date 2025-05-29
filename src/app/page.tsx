@@ -14,7 +14,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { motion } from 'framer-motion';
 import TypingHeading from '@/components/common/typing-heading';
-import Image from 'next/image'; // Import next/image
+import Image from 'next/image';
 
 // Animation variants
 const sectionVariants = {
@@ -38,23 +38,30 @@ export default function Home() {
   return (
     <div
       className="container space-y-12 py-12 md:space-y-16 lg:space-y-20 md:py-16 lg:py-20"
-      // Removed background image style from here, will apply to a specific element if needed or rely on global background
     >
       <main className="flex flex-col items-center space-y-12 md:space-y-16 lg:space-y-20">
         {/* New Hero Structure with Image and Overlapping Content */}
-        <div className="relative w-full max-w-5xl mx-auto"> {/* Container for image and overlapping hero */}
+        <div className="relative w-full max-w-5xl mx-auto" style={{ perspective: '1000px' }}> {/* Added perspective for 3D effects */}
           {/* The new image */}
-          <div className="relative h-64 md:h-80 lg:h-96 w-full mb-[-6rem] md:mb-[-8rem] lg:mb-[-10rem]"> {/* Adjust height and negative margin as needed */}
+          <motion.div // Wrapper for image 3D hover effect
+            className="relative h-64 md:h-80 lg:h-96 w-full mb-[-6rem] md:mb-[-8rem] lg:mb-[-10rem]"
+            whileHover={{
+              scale: 1.03,
+              rotateX: 5,
+              rotateY: -5,
+              transition: { duration: 0.3, ease: "easeInOut" }
+            }}
+          >
             <Image
-              src="/images/home.png" // Ensure this image exists in public/images
+              src="/images/home.png"
               alt="SpontAlign abstract background"
               layout="fill"
               objectFit="cover"
               className="rounded-xl shadow-lg"
-              data-ai-hint="technology abstract design"
+              data-ai-hint="technology abstract design" // Re-added data-ai-hint
               priority
             />
-          </div>
+          </motion.div>
 
           {/* Overlapping Hero Content Section */}
           <motion.section
@@ -63,6 +70,12 @@ export default function Home() {
             initial="hidden"
             animate="visible"
             variants={sectionVariants}
+            whileHover={{ // Added 3D hover effect
+              scale: 1.02,
+              rotateX: -3,
+              rotateY: 3,
+              transition: { duration: 0.3, ease: "easeInOut" }
+            }}
           >
             <div className="space-y-6">
               <TypingHeading
@@ -71,7 +84,7 @@ export default function Home() {
                 typingSpeed={70}
               />
               <motion.p
-                className="text-lg md:text-xl lg:text-2xl text-muted-foreground" // Removed max-w-3xl and px-4 as parent constrains width
+                className="text-lg md:text-xl lg:text-2xl text-muted-foreground"
                 variants={itemVariants}
               >
                 SpontAlign is an AI research initiative dedicated to building
