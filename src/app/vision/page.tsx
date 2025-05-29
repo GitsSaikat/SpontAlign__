@@ -62,7 +62,15 @@ export default function VisionPage() {
           className="relative max-w-4xl mx-auto h-72 md:h-96"
           style={{ perspective: '1000px' }} // Added perspective for 3D effect
         >
-          <div className="absolute inset-0 rounded-xl overflow-hidden shadow-2xl">
+          <motion.div 
+            className="absolute inset-0 rounded-xl overflow-hidden shadow-2xl"
+            whileHover={{ 
+              scale: 1.03, 
+              rotateX: -3, 
+              rotateY: 5, 
+              transition: { duration: 0.3, ease: "easeInOut" } 
+            }}
+          >
              <Image
                 src="/images/Mission.png"
                 alt="Conceptual image representing our mission"
@@ -74,7 +82,7 @@ export default function VisionPage() {
             <div className="postmodern-bg-element animate-pulse-green w-32 h-32 rounded-full blur-2xl -left-10 top-1/4 bg-green-500/30 dark:bg-green-400/20"></div>
             <div className="postmodern-bg-element animate-pulse-cyan w-40 h-40 rounded-full blur-2xl -right-10 bottom-1/4 bg-cyan-500/30 dark:bg-cyan-400/20"></div>
             <div className="postmodern-bg-element animate-pulse-teal w-24 h-24 rounded-full blur-xl left-1/3 -bottom-5 bg-teal-500/30 dark:bg-teal-400/20"></div>
-          </div>
+          </motion.div>
           <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8 z-10">
             <MotionCard // Using MotionCard here
               className="w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 max-w-xl
