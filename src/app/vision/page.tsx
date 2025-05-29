@@ -2,7 +2,7 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button"; // Ensured Button is imported
+import { Button } from "@/components/ui/button"; 
 import Link from "next/link";
 import { CheckCircle, ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -12,6 +12,8 @@ const scrollVariants = {
   initial: { opacity: 0, y: 20 },
   inView: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
+
+const MotionCard = motion(Card); // Create a motion-enhanced Card
 
 export default function VisionPage() {
   const goals = [
@@ -38,7 +40,7 @@ export default function VisionPage() {
         className="text-center"
         initial="initial"
         whileInView="inView"
-        viewport={{ amount: 0.1 }} // Adjusted for top content
+        viewport={{ amount: 0.1 }} 
         variants={scrollVariants}
       >
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
@@ -56,7 +58,10 @@ export default function VisionPage() {
         viewport={{ amount: 0.2 }}
         variants={scrollVariants}
       >
-        <div className="relative max-w-4xl mx-auto h-72 md:h-96">
+        <div 
+          className="relative max-w-4xl mx-auto h-72 md:h-96"
+          style={{ perspective: '1000px' }} // Added perspective for 3D effect
+        >
           <div className="absolute inset-0 rounded-xl overflow-hidden shadow-2xl">
              <Image
                 src="/images/Mission.png"
@@ -71,10 +76,16 @@ export default function VisionPage() {
             <div className="postmodern-bg-element animate-pulse-teal w-24 h-24 rounded-full blur-xl left-1/3 -bottom-5 bg-teal-500/30 dark:bg-teal-400/20"></div>
           </div>
           <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8 z-10">
-            <Card
+            <MotionCard // Using MotionCard here
               className="w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 max-w-xl
                          bg-card/90 dark:bg-card/85
                          shadow-xl rounded-lg"
+              whileHover={{ 
+                scale: 1.03, 
+                rotateX: 5, 
+                rotateY: -5, 
+                transition: { duration: 0.3, ease: "easeInOut" } 
+              }} // 3D hover effect
             >
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl sm:text-3xl text-primary">Our Mission</CardTitle>
@@ -90,7 +101,7 @@ export default function VisionPage() {
                   We envision a transhumanist society, empowered by AI not just smarter, but more conscious, compassionate, and capable. Once this is achieved, our mission will be to explore the deep, dark secrets of the Consciousness and the Universe.
                 </p>
               </CardContent>
-            </Card>
+            </MotionCard>
           </div>
         </div>
       </motion.section>
@@ -99,10 +110,16 @@ export default function VisionPage() {
         className="grid grid-cols-1 md:grid-cols-2 gap-8"
         initial="initial"
         whileInView="inView"
-        viewport={{ amount: 0.2 }}
+        viewport={{ amount: 0.1 }}
         variants={scrollVariants}
       >
-        <Card className="group shadow-md hover:shadow-xl transition-all duration-300 ease-in-out border hover:border-accent hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
+        <MotionCard 
+          className="group shadow-md hover:shadow-xl transition-all duration-300 ease-in-out border hover:border-accent hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
+          initial="initial"
+          whileInView="inView"
+          viewport={{ amount: 0.1 }}
+          variants={scrollVariants}
+        >
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center md:text-left group-hover:text-foreground transition-colors duration-300 ease-in-out">Goals</CardTitle>
           </CardHeader>
@@ -116,9 +133,15 @@ export default function VisionPage() {
               ))}
             </ul>
           </CardContent>
-        </Card>
+        </MotionCard>
 
-        <Card className="group shadow-md hover:shadow-xl transition-all duration-300 ease-in-out border hover:border-accent hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
+        <MotionCard 
+          className="group shadow-md hover:shadow-xl transition-all duration-300 ease-in-out border hover:border-accent hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
+          initial="initial"
+          whileInView="inView"
+          viewport={{ amount: 0.1 }}
+          variants={scrollVariants}
+        >
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center md:text-left group-hover:text-foreground transition-colors duration-300 ease-in-out">Core Values</CardTitle>
           </CardHeader>
@@ -132,14 +155,14 @@ export default function VisionPage() {
               ))}
             </ul>
           </CardContent>
-        </Card>
+        </MotionCard>
       </motion.section>
 
        <motion.section
           className="group bg-card rounded-lg p-8 md:p-12 text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
           initial="initial"
           whileInView="inView"
-          viewport={{ amount: 0.2 }}
+          viewport={{ amount: 0.1 }}
           variants={scrollVariants}
           animate={{
             scale: [1, 1.015, 1],
