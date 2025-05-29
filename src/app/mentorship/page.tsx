@@ -13,6 +13,8 @@ const scrollVariants = {
   inView: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
+const MotionCard = motion(Card); // Create a motion-enhanced Card
+
 export default function MentorshipPage() {
   return (
     <div className="space-y-16">
@@ -20,7 +22,7 @@ export default function MentorshipPage() {
         className="text-center"
         initial="initial"
         whileInView="inView"
-        viewport={{ amount: 0.1 }} // Adjusted for top content
+        viewport={{ amount: 0.1 }} 
         variants={scrollVariants}
       >
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
@@ -34,11 +36,22 @@ export default function MentorshipPage() {
       <motion.section
         initial="initial"
         whileInView="inView"
-        viewport={{ amount: 0.2 }}
+        viewport={{ amount: 0.1 }}
         variants={scrollVariants}
       >
-        <div className="relative max-w-4xl mx-auto h-72 md:h-96">
-          <div className="absolute inset-0 rounded-xl overflow-hidden shadow-2xl">
+        <div 
+          className="relative max-w-4xl mx-auto h-72 md:h-96"
+          style={{ perspective: '1000px' }} // Added perspective for 3D effect
+        >
+          <motion.div 
+            className="absolute inset-0 rounded-xl overflow-hidden shadow-2xl"
+            whileHover={{
+              scale: 1.03,
+              rotateX: -3,
+              rotateY: 5,
+              transition: { duration: 0.3, ease: "easeInOut" }
+            }}
+          >
             <Image
               src="/images/mentor.png"
               alt="Our Commitment to Collaboration and Mentorship"
@@ -47,12 +60,18 @@ export default function MentorshipPage() {
               data-ai-hint="teamwork abstract"
               className="rounded-xl"
             />
-          </div>
+          </motion.div>
           <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8 z-10">
-            <Card
+            <MotionCard // Using MotionCard here
               className="w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 max-w-xl
                          bg-card/90 dark:bg-card/85
                          shadow-xl rounded-lg"
+              whileHover={{ 
+                scale: 1.03,
+                rotateX: 5,
+                rotateY: -5,
+                transition: { duration: 0.3, ease: "easeInOut" }
+              }} // 3D hover effect for the card
             >
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl sm:text-3xl text-primary">Our Commitment</CardTitle>
@@ -68,7 +87,7 @@ export default function MentorshipPage() {
                   Friendship means little when it’s convenient. We’re interested in those who walk the long road with us, those exploring not just what AI is, but what it could become.
                 </p>
               </CardContent>
-            </Card>
+            </MotionCard>
           </div>
         </div>
       </motion.section>
@@ -84,8 +103,8 @@ export default function MentorshipPage() {
           <Card className="group text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
             <CardHeader>
                 <GraduationCap className="h-10 w-10 text-primary mb-2 mx-auto transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-[5deg]"/>
-              <CardTitle>Research Internships</CardTitle>
-              <CardDescription>For Students</CardDescription>
+              <CardTitle className="group-hover:text-foreground transition-colors duration-300 ease-in-out">Research Internships</CardTitle>
+              <CardDescription className="group-hover:text-foreground transition-colors duration-300 ease-in-out">For Students</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground mb-4 group-hover:text-foreground transition-colors duration-300 ease-in-out">
@@ -101,8 +120,8 @@ export default function MentorshipPage() {
           <Card className="group text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
             <CardHeader>
                 <Users className="h-10 w-10 text-primary mb-2 mx-auto transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-[5deg]"/>
-              <CardTitle>Academic Collaborations</CardTitle>
-              <CardDescription>For Institutions & Faculty</CardDescription>
+              <CardTitle className="group-hover:text-foreground transition-colors duration-300 ease-in-out">Academic Collaborations</CardTitle>
+              <CardDescription className="group-hover:text-foreground transition-colors duration-300 ease-in-out">For Institutions & Faculty</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground mb-4 group-hover:text-foreground transition-colors duration-300 ease-in-out">
@@ -118,8 +137,8 @@ export default function MentorshipPage() {
           <Card className="group text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80">
             <CardHeader>
                  <Briefcase className="h-10 w-10 text-primary mb-2 mx-auto transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-[5deg]"/>
-              <CardTitle>Research Team Collaborations</CardTitle>
-              <CardDescription>For AI Labs & Independent Groups</CardDescription>
+              <CardTitle className="group-hover:text-foreground transition-colors duration-300 ease-in-out">Research Team Collaborations</CardTitle>
+              <CardDescription className="group-hover:text-foreground transition-colors duration-300 ease-in-out">For AI Labs & Independent Groups</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground mb-4 group-hover:text-foreground transition-colors duration-300 ease-in-out">
@@ -139,7 +158,7 @@ export default function MentorshipPage() {
         className="group bg-card rounded-lg p-6 md:p-8 border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
         initial="initial"
         whileInView="inView"
-        viewport={{ amount: 0.2 }}
+        viewport={{ amount: 0.1 }}
         variants={scrollVariants}
         animate={{
           scale: [1, 1.015, 1],
@@ -171,7 +190,7 @@ export default function MentorshipPage() {
         className="text-center"
         initial="initial"
         whileInView="inView"
-        viewport={{ amount: 0.2 }}
+        viewport={{ amount: 0.1 }}
         variants={scrollVariants}
        >
           <h2 className="text-3xl font-bold mb-4">Interested in Learning More?</h2>
@@ -187,3 +206,4 @@ export default function MentorshipPage() {
     </div>
   );
 }
+
