@@ -2,7 +2,7 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button"; 
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CheckCircle, ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -40,7 +40,7 @@ export default function VisionPage() {
         className="text-center"
         initial="initial"
         whileInView="inView"
-        viewport={{ amount: 0.1 }} 
+        viewport={{ amount: 0.1 }}
         variants={scrollVariants}
       >
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
@@ -55,20 +55,20 @@ export default function VisionPage() {
         className="mb-16 md:mb-24"
         initial="initial"
         whileInView="inView"
-        viewport={{ amount: 0.2 }}
+        viewport={{ amount: 0.1 }} // Adjusted from 0.2 to 0.1
         variants={scrollVariants}
       >
-        <div 
+        <div
           className="relative max-w-4xl mx-auto h-72 md:h-96"
           style={{ perspective: '1000px' }} // Added perspective for 3D effect
         >
-          <motion.div 
+          <motion.div
             className="absolute inset-0 rounded-xl overflow-hidden shadow-2xl"
-            whileHover={{ 
-              scale: 1.03, 
-              rotateX: -3, 
-              rotateY: 5, 
-              transition: { duration: 0.3, ease: "easeInOut" } 
+            whileHover={{
+              scale: 1.03,
+              rotateX: -3,
+              rotateY: 5,
+              transition: { duration: 0.3, ease: "easeInOut" }
             }}
           >
              <Image
@@ -88,11 +88,11 @@ export default function VisionPage() {
               className="w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 max-w-xl
                          bg-card/90 dark:bg-card/85
                          shadow-xl rounded-lg"
-              whileHover={{ 
-                scale: 1.03, 
-                rotateX: 5, 
-                rotateY: -5, 
-                transition: { duration: 0.3, ease: "easeInOut" } 
+              whileHover={{
+                scale: 1.03,
+                rotateX: 5,
+                rotateY: -5,
+                transition: { duration: 0.3, ease: "easeInOut" }
               }} // 3D hover effect
             >
               <CardHeader className="text-center">
@@ -121,7 +121,7 @@ export default function VisionPage() {
         viewport={{ amount: 0.1 }}
         variants={scrollVariants}
       >
-        <MotionCard 
+        <MotionCard
           className="group shadow-md hover:shadow-xl transition-all duration-300 ease-in-out border hover:border-accent hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
           initial="initial"
           whileInView="inView"
@@ -143,7 +143,7 @@ export default function VisionPage() {
           </CardContent>
         </MotionCard>
 
-        <MotionCard 
+        <MotionCard
           className="group shadow-md hover:shadow-xl transition-all duration-300 ease-in-out border hover:border-accent hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
           initial="initial"
           whileInView="inView"
@@ -170,7 +170,7 @@ export default function VisionPage() {
           className="group bg-card rounded-lg p-8 md:p-12 text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
           initial="initial"
           whileInView="inView"
-          viewport={{ amount: 0.1 }}
+          viewport={{ amount: 0.1 }} // Adjusted from 0.2 to 0.1
           variants={scrollVariants}
           animate={{
             scale: [1, 1.015, 1],
