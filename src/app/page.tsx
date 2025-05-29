@@ -44,7 +44,7 @@ export default function Home() {
         <div className="relative w-full max-w-5xl mx-auto" style={{ perspective: '1000px' }}> {/* Added perspective for 3D effects */}
           {/* The new image */}
           <motion.div // Wrapper for image 3D hover effect
-            className="relative h-64 md:h-80 lg:h-96 w-full mb-[-6rem] md:mb-[-8rem] lg:mb-[-10rem]"
+            className="relative h-64 md:h-80 lg:h-96 w-full -mb-[9.5rem] md:-mb-[12rem] lg:-mb-[14.5rem]" // Updated negative margin-bottom
             whileHover={{
               scale: 1.03,
               rotateX: 5,
@@ -58,7 +58,7 @@ export default function Home() {
               layout="fill"
               objectFit="cover"
               className="rounded-xl shadow-lg"
-              data-ai-hint="technology abstract design" // Re-added data-ai-hint
+              data-ai-hint="technology abstract design"
               priority
             />
           </motion.div>
@@ -70,7 +70,7 @@ export default function Home() {
             initial="hidden"
             animate="visible"
             variants={sectionVariants}
-            whileHover={{ // Added 3D hover effect
+            whileHover={{ 
               scale: 1.02,
               rotateX: -3,
               rotateY: 3,
