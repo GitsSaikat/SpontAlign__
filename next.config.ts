@@ -1,9 +1,9 @@
-
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
   typescript: {
+    // !! WARN !!
     ignoreBuildErrors: true,
   },
   eslint: {
@@ -25,8 +25,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  basePath: '/SpontAlign', // Add this line for GitHub Pages deployment
 };
 
 export default nextConfig;
-
-    
