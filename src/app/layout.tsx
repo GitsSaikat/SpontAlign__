@@ -17,6 +17,26 @@ export const metadata: Metadata = {
     'SpontAlign: Pioneering the future of AI through innovative research, enterprise solutions, and mentorship.',
   keywords:
     'AI, Artificial Intelligence, Research, Startup, Technology, Enterprise AI, Machine Learning, Deep Learning, SpontAlign',
+  openGraph: {
+    title: 'SpontAlign - AI Research Startup',
+    description: 'Pioneering the future of AI through innovative research, enterprise solutions, and mentorship.',
+    images: [
+      {
+        url: '/images/spontalign_thumbnail.png', // Assuming the image is in public/images
+        // You can also specify width and height if known:
+        // width: 1200,
+        // height: 630,
+        alt: 'SpontAlign AI Research Startup',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SpontAlign - AI Research Startup',
+    description: 'Pioneering the future of AI through innovative research, enterprise solutions, and mentorship.',
+    images: ['/images/spontalign_thumbnail.png'], // Assuming the image is in public/images
+  },
 };
 
 export default function RootLayout({
