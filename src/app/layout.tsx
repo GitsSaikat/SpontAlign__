@@ -17,13 +17,11 @@ export const metadata: Metadata = {
     'SpontAlign: Pioneering the future of AI through innovative research, enterprise solutions, and mentorship.',
   keywords:
     'AI, Artificial Intelligence, Research, Startup, Technology, Enterprise AI, Machine Learning, Deep Learning, SpontAlign',
-  icons: [
-    {
-      rel: 'icon', // Keep rel as icon
-      url: '/images/spontalign_thumbnail.png', // Path to your favicon image
-      sizes: '16x16',
-    },
-  ],
+  icons: {
+    icon: [
+      '/images/spontalign_thumbnail.png',
+    ],
+  },
   openGraph: {
     title: 'SpontAlign - AI Research Startup',
     description: 'Pioneering the future of AI through innovative research, enterprise solutions, and mentorship.',
