@@ -91,19 +91,20 @@ export default function ContactPage() {
                     <div>
                     <h3 className="font-semibold">Our Office</h3>
                     <p className="text-muted-foreground">
-                        123 Innovation Drive<br />
-                        Tech City, CA 94000<br />
-                        United States
+                        Block I, Bashundhara<br />
+                        Dhaka<br />
+                        Bangladesh
                     </p>
                      <div className="mt-2 h-40 w-full bg-muted rounded flex items-center justify-center text-sm text-muted-foreground overflow-hidden">
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3172.306908863011!2d-122.0840!3d37.4220!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fba024251be6d%3A0xdb008ef809e832f7!2sGoogleplex!5e0!3m2!1sen!2sus!4v1627890998001!5m2!1sen!2sus" 
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d874.1991272497958!2d90.43754988704269!3d23.821047116481832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1748570050248!5m2!1sen!2sbd" 
                             width="100%" 
                             height="100%" 
                             style={{border:0}} 
                             allowFullScreen={true} 
                             loading="lazy"
-                            title="Office Location Map (Placeholder)"
+                            title="Office Location Map"
+                            referrerPolicy="no-referrer-when-downgrade"
                         ></iframe>
                      </div>
                     </div>
@@ -112,19 +113,16 @@ export default function ContactPage() {
                     <Mail className="h-6 w-6 text-primary flex-shrink-0" />
                     <div>
                     <h3 className="font-semibold">Email Us</h3>
-                    <a href="mailto:info@spontalign.com" className="text-primary hover:underline">
-                        info@spontalign.com
-                    </a><br/>
-                     <a href="mailto:partnerships@spontalign.com" className="text-primary hover:underline">
-                        partnerships@spontalign.com
+                    <a href="mailto:contact@spontalign.com" className="text-primary hover:underline">
+                        contact@spontalign.com
                     </a>
                     </div>
                 </div>
                  <div className="flex items-center gap-4">
                     <Phone className="h-6 w-6 text-primary flex-shrink-0" />
                     <div>
-                    <h3 className="font-semibold">Call Us (Placeholder)</h3>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                    <h3 className="font-semibold">Call Us</h3>
+                    <p className="text-muted-foreground">+8801640570105</p>
                     </div>
                 </div>
              </CardContent>
@@ -144,7 +142,7 @@ export default function ContactPage() {
                           <a href="#" aria-label="SpontAlign on LinkedIn"><Linkedin className="h-5 w-5" /></a>
                       </Button>
                       <Button variant="outline" size="icon" asChild className="btn-transition btn-hover btn-active">
-                          <a href="mailto:info@spontalign.com" aria-label="Email SpontAlign"><Mail className="h-5 w-5" /></a>
+                          <a href="mailto:contact@spontalign.com" aria-label="Email SpontAlign"><Mail className="h-5 w-5" /></a>
                       </Button>
                     </div>
              </CardContent>
