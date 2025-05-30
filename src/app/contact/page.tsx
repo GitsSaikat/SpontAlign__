@@ -2,12 +2,12 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, MapPin, Phone, Send, Linkedin, Twitter, Building2 } from "lucide-react"; // Added Building2
-import { Button } from "@/components/ui/button"; // Keep for social buttons
-import Link from 'next/link'; // Keep for social buttons
+import { Mail, MapPin, Phone, Send, Linkedin, Twitter, Building2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useToast } from "@/hooks/use-toast"; // Keep if other parts of the page might use toasts
-import { useEffect } from "react"; // Keep if needed for other effects
+import { useToast } from "@/hooks/use-toast";
+import { useEffect } from "react";
 
 const scrollVariants = {
   initial: { opacity: 0, y: 20 },
@@ -15,9 +15,8 @@ const scrollVariants = {
 };
 
 export default function ContactPage() {
-  const { toast } = useToast(); // Keep if toast might be used elsewhere on this page
+  const { toast } = useToast();
 
-  // Example: Show a toast when the page loads (you can remove this if not needed)
   useEffect(() => {
     // toast({
     //   title: "Contact Us",
@@ -51,18 +50,18 @@ export default function ContactPage() {
         viewport={{ amount: 0.2 }}
         variants={scrollVariants}
       >
-        <Card className="shadow-lg">
+        <Card className="shadow-lg flex flex-col"> {/* Added flex flex-col */}
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
                 <Send className="h-6 w-6" /> Send Us a Message
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="aspect-w-1 aspect-h-1 md:aspect-w-3 md:aspect-h-4 lg:aspect-w-4 lg:aspect-h-5 min-h-[600px] md:min-h-[700px]">
+          <CardContent className="flex flex-col flex-grow"> {/* Added flex flex-col flex-grow */}
+            <div className="flex-grow"> {/* This div now grows to fill available space */}
               <iframe
                 src={googleFormEmbedUrl}
                 width="100%"
-                height="100%"
+                height="100%" // Iframe will fill its parent div
                 frameBorder="0"
                 marginHeight={0}
                 marginWidth={0}
@@ -72,7 +71,7 @@ export default function ContactPage() {
                 Loading…
               </iframe>
             </div>
-            <p className="text-xs text-muted-foreground mt-2 text-center">
+            <p className="text-xs text-muted-foreground mt-2 text-center shrink-0"> {/* shrink-0 to prevent this p from growing */}
               If you have trouble with the embedded form, you can also access it directly <a href="https://docs.google.com/forms/d/e/1FAIpQLSedUiu4mo6afC5tkNH8Cjdgq3WF2l3PX602dux1jGUH7c0W4g/viewform" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">here</a>.
             </p>
           </CardContent>
@@ -82,7 +81,7 @@ export default function ContactPage() {
            <Card className="shadow-md">
              <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                    <Building2 className="h-6 w-6 text-primary" /> {/* Changed to Building2 */}
+                    <Building2 className="h-6 w-6 text-primary" />
                     Contact Information
                 </CardTitle>
              </CardHeader>
@@ -131,7 +130,7 @@ export default function ContactPage() {
              </CardContent>
            </Card>
 
-            <Card className="bg-card border shadow-md"> {/* Changed background for better contrast */}
+            <Card className="bg-card border shadow-md">
              <CardHeader>
                 <CardTitle>Connect With Us</CardTitle>
              </CardHeader>
