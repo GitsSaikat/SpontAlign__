@@ -29,8 +29,8 @@ export const metadata: Metadata = {
       {
         url: '/images/spontalign_thumbnail.png', // Assuming the image is in public/images
         // You can also specify width and height if known:
-        // width: 1200,
-        // height: 630,
+         width: 16,
+         height: 16,
         alt: 'SpontAlign AI Research Startup',
       },
     ],
