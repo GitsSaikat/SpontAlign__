@@ -105,7 +105,7 @@ export default function ContactPage() {
                     <div>
                     <h3 className="font-semibold">Our Office</h3>
                     <p className="text-muted-foreground">
-                        Block I, Bashundhara<br />
+                        Road no 4, Block I, Bashundhara<br />
                         Dhaka<br />
                         Bangladesh
                     </p>
