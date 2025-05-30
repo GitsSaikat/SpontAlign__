@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     'AI, Artificial Intelligence, Research, Startup, Technology, Enterprise AI, Machine Learning, Deep Learning, SpontAlign',
   icons: {
     icon: [
-      '/images/spontalign_thumbnail.png',
+      'public/images/favicon.ico',
     ],
   },
   openGraph: {
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
       {
         url: '/images/spontalign_thumbnail.png', // Assuming the image is in public/images
         // You can also specify width and height if known:
-         width: 48,
-         height: 48,
+        //  width: 48,
+        //  height: 48,
         alt: 'SpontAlign AI Research Startup',
       },
     ],
