@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     'AI, Artificial Intelligence, Research, Startup, Technology, Enterprise AI, Machine Learning, Deep Learning, SpontAlign',
   icons: [
     {
-      rel: 'icon',
+      rel: 'icon', // Keep rel as icon
       url: '/images/spontalign_thumbnail.png', // Path to your favicon image
       sizes: '16x16',
     },
