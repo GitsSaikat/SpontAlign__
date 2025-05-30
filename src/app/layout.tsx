@@ -18,9 +18,7 @@ export const metadata: Metadata = {
   keywords:
     'AI, Artificial Intelligence, Research, Startup, Technology, Enterprise AI, Machine Learning, Deep Learning, SpontAlign',
   icons: {
-    icon: [
-      'public/images/favicon.ico',
-    ],
+    icon: '/images/favicon.ico',
   },
   openGraph: {
     title: 'SpontAlign - AI Research Startup',
