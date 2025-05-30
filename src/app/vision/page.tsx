@@ -72,7 +72,7 @@ export default function VisionPage() {
             }}
           >
              <Image
-                src="/home/user/SpontAlign/public/images/Mission.png"
+                src="SpontAlign/images/Mission.png"
                 alt="Conceptual image representing our mission"
                 layout="fill"
                 objectFit="cover"
