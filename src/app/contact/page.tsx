@@ -14,6 +14,20 @@ const scrollVariants = {
   inView: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
+// Crunchbase SVG Icon (simple version)
+const CrunchbaseIcon = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M20.26 15.76V8.24A5.76 5.76 0 0014.49 2.5h-4.98a5.76 5.76 0 00-5.76 5.76v7.52A5.76 5.76 0 009.51 21.5h4.98a5.76 5.76 0 005.77-5.74zm-3.71-1.52a.74.74 0 01-.74.74h-2.04v2.05a.74.74 0 01-1.48 0v-2.05H9.51a.74.74 0 010-1.48h2.78V9.51a.74.74 0 111.48 0v2.77h2.04a.74.74 0 01.74.74z" />
+  </svg>
+);
+
+
 export default function ContactPage() {
   const { toast } = useToast();
 
@@ -136,13 +150,13 @@ export default function ContactPage() {
                  <p className="text-muted-foreground mb-4">Follow our progress and join the conversation on social media.</p>
                   <div className="flex items-center space-x-4">
                       <Button variant="outline" size="icon" asChild className="btn-transition btn-hover btn-active">
-                         <a href="#" aria-label="SpontAlign on Twitter"> <Twitter className="h-5 w-5" /></a>
+                         <a href="#" aria-label="SpontAlign on Twitter" > <Twitter className="h-5 w-5" /></a>
                       </Button>
                       <Button variant="outline" size="icon" asChild className="btn-transition btn-hover btn-active">
-                          <a href="#" aria-label="SpontAlign on LinkedIn"><Linkedin className="h-5 w-5" /></a>
+                          <a href="#" aria-label="SpontAlign on LinkedIn" ><Linkedin className="h-5 w-5" /></a>
                       </Button>
                       <Button variant="outline" size="icon" asChild className="btn-transition btn-hover btn-active">
-                          <a href="mailto:contact@spontalign.com" aria-label="Email SpontAlign"><Mail className="h-5 w-5" /></a>
+                          <a href="#" aria-label="SpontAlign on Crunchbase"><CrunchbaseIcon /></a>
                       </Button>
                     </div>
              </CardContent>
