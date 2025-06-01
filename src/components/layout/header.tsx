@@ -52,8 +52,8 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              // Use font-body, more muted text, subtle hover
-              className="text-base font-body text-muted-foreground transition-colors hover:text-foreground"
+              // Use font-body, more muted text, subtle hover, added glow and scale
+              className="text-base font-body text-muted-foreground transition-all duration-300 ease-in-out hover:text-foreground hover:drop-shadow-[0_0_6px_hsl(var(--primary))] hover:scale-105"
               
             >
               {item.label}
@@ -95,8 +95,8 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  // Larger text, font-body, clearer indication of current page might be needed
-                  className="text-lg font-body font-medium text-foreground transition-colors hover:text-primary"
+                  // Larger text, font-body, clearer indication of current page might be needed, added glow and scale
+                  className="text-lg font-body font-medium text-foreground transition-all duration-300 ease-in-out hover:text-primary hover:drop-shadow-[0_0_6px_hsl(var(--primary))] hover:scale-105"
                   onClick={() => setIsMobileMenuOpen(false)}
                   
                 >
