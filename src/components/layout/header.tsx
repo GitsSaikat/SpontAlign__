@@ -32,7 +32,7 @@ export function Header() {
         {/* Added ml-6 for left spacing */}
         <Link
           href="/"
-          className="flex items-center mr-8 ml-6 transition-all duration-300 ease-in-out drop-shadow-[0_0_5px_hsl(var(--primary)/0.4)] hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.7)]"
+          className="flex items-center mr-8 ml-6 transition-all duration-300 ease-in-out drop-shadow-[0_0_5px_hsl(var(--accent)/0.5)] hover:drop-shadow-[0_0_10px_hsl(var(--accent)/0.8)]"
           suppressHydrationWarning
         >
            <Image
