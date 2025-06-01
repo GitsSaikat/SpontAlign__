@@ -8,7 +8,7 @@ const CrunchbaseIcon = () => (
     height="20" // Matches h-5 w-5 (20px)
     viewBox="0 0 24 24"
     fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
+    xmlns="public/images/crunchbase.jpg"
     className="h-5 w-5" // Explicitly set size for consistency
   >
     <path d="M20.26 15.76V8.24A5.76 5.76 0 0014.49 2.5h-4.98a5.76 5.76 0 00-5.76 5.76v7.52A5.76 5.76 0 009.51 21.5h4.98a5.76 5.76 0 005.77-5.74zm-3.71-1.52a.74.74 0 01-.74.74h-2.04v2.05a.74.74 0 01-1.48 0v-2.05H9.51a.74.74 0 010-1.48h2.78V9.51a.74.74 0 111.48 0v2.77h2.04a.74.74 0 01.74.74z" />

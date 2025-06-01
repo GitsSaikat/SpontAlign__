@@ -2,7 +2,7 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, MapPin, Phone, Send, Linkedin, Twitter, Building2 } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Linkedin, Twitter, Building2, Github } from "lucide-react"; // Added Github
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -166,6 +166,9 @@ export default function ContactPage() {
                           </Button>
                           <Button variant="outline" size="icon" asChild className="btn-transition btn-hover btn-active">
                               <a href="#" aria-label="SpontAlign on LinkedIn" ><Linkedin className="h-5 w-5" /></a>
+                          </Button>
+                          <Button variant="outline" size="icon" asChild className="btn-transition btn-hover btn-active">
+                              <a href="https://github.com/GitsSaikat" target="_blank" rel="noopener noreferrer" aria-label="SpontAlign on GitHub"><Github className="h-5 w-5" /></a>
                           </Button>
                           <Button variant="outline" size="icon" asChild className="btn-transition btn-hover btn-active">
                               <a href="#" aria-label="SpontAlign on Crunchbase"><CrunchbaseIcon /></a>
