@@ -33,7 +33,14 @@ export function Footer() {
           <Link href="#" aria-label="SpontAlign on LinkedIn" className="text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
             <Linkedin className="h-5 w-5" />
           </Link>
-          <Link href="#" aria-label="SpontAlign on GitHub" className="text-muted-foreground hover:text-foreground transition-colors" prefetch={false}>
+          <Link 
+            href="https://github.com/GitsSaikat" 
+            aria-label="SpontAlign on GitHub" 
+            className="text-muted-foreground hover:text-foreground transition-colors" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            prefetch={false}
+          >
             <Github className="h-5 w-5" />
           </Link>
         </div>
