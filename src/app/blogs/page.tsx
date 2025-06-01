@@ -17,7 +17,7 @@ export default function BlogsPage() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center py-12">
       <Image
-        src="/images/blog.png"
+        src="/images/blogback.png"
         alt="SpontAlign Blog Background"
         layout="fill"
         objectFit="cover"
