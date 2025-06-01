@@ -19,12 +19,12 @@ export default function DocsPage() {
       variants={{ initial: {opacity: 0}, inView: {opacity:1, transition: {duration: 0.5}}}} 
     >
       <Image
-        src="/images/Front.png"
-        alt="SpontAlign Toolkit Background"
+        src="/images/docsback.png"
+        alt="SpontAlign Docs Background"
         layout="fill"
         objectFit="cover"
         className="absolute inset-0 -z-10 blur-sm opacity-30 dark:opacity-20"
-        data-ai-hint="abstract technology code"
+        data-ai-hint="documentation abstract code"
         priority
       />
 
