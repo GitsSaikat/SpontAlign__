@@ -69,7 +69,7 @@ export default function VisionPage() {
             variants={scrollVariants}
           >
             <div
-              className="relative max-w-4xl mx-auto h-72 md:h-96" 
+              className="relative max-w-4xl mx-auto h-96 md:h-[36rem]" 
               style={{ perspective: '1000px' }}
             >
               <motion.div
@@ -89,7 +89,7 @@ export default function VisionPage() {
               </motion.div>
               <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8 z-10">
                 <MotionCard
-                  className="flex flex-col max-h-full w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 max-w-xl
+                  className="flex flex-col w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 max-w-xl
                              bg-card/90 dark:bg-card/85
                              shadow-xl rounded-lg"
                   whileHover={{
@@ -102,7 +102,7 @@ export default function VisionPage() {
                   <CardHeader className="text-center shrink-0">
                     <CardTitle className="text-2xl sm:text-3xl text-primary">Our Mission</CardTitle>
                   </CardHeader>
-                  <CardContent className="flex-grow overflow-y-auto space-y-3 md:space-y-4 text-center text-xs sm:text-sm md:text-base leading-relaxed">
+                  <CardContent className="flex-grow space-y-3 md:space-y-4 text-center text-xs sm:text-sm md:text-base leading-relaxed">
                     <p className="text-card-foreground">
                       We believe the future economy will be primarily AI-driven and we’re building the bridge that connects AI to people. Our mission is to create benevolent AI systems that serve humanity, even if doing so challenges our own company’s interests.
                     </p>
