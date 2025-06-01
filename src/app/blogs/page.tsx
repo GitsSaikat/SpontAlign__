@@ -26,7 +26,7 @@ export default function BlogsPage() {
         priority
       />
 
-      <motion.div 
+      <motion.div
         className="relative z-10 container mx-auto px-6 py-10 md:px-10 md:py-16 space-y-12 bg-card/90 dark:bg-card/85 rounded-xl shadow-2xl max-w-4xl text-center"
         initial="initial"
         whileInView="inView"
@@ -54,7 +54,12 @@ export default function BlogsPage() {
             <p>
               To explore more, please visit the link below and dive into our collection of insights, ideas, and explorations:
             </p>
-            <div className="flex items-center justify-center space-x-3 py-2">
+            <motion.div
+              className="flex items-center justify-center space-x-3 py-2"
+              style={{ perspective: '800px' }}
+              whileHover={{ scale: 1.1, rotateX: 10, rotateY: -5 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+            >
               <ChevronRight className="h-6 w-6 text-primary animate-nudge-right" />
               <a
                 href={mediumBlogUrl}
@@ -65,7 +70,7 @@ export default function BlogsPage() {
                 Epoch
               </a>
               <ChevronLeft className="h-6 w-6 text-primary animate-nudge-left" />
-            </div>
+            </motion.div>
             <p>
               Let your curiosity lead the way.
             </p>
