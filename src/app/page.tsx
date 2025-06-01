@@ -78,7 +78,7 @@ export default function Home() {
 
             {/* Overlapping Hero Content Section */}
             <motion.section
-              className="relative z-10 mx-auto max-w-3xl bg-card/95 dark:bg-card/90 p-6 md:p-10 rounded-xl shadow-2xl border-2 border-dashed border-primary transform -rotate-1 hover:rotate-0 transition-transform duration-300 flex flex-col items-center text-center space-y-6"
+              className="relative z-10 mx-auto max-w-4xl bg-card/95 dark:bg-card/90 p-6 md:p-10 rounded-xl shadow-2xl border-2 border-dashed border-primary transform -rotate-1 hover:rotate-0 transition-transform duration-300 flex flex-col items-center text-center space-y-6"
               initial="hidden"
               animate="visible"
               variants={sectionVariants}
