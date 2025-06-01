@@ -32,7 +32,7 @@ export function Header() {
         {/* Added ml-6 for left spacing */}
         <Link
           href="/"
-          className="flex items-center mr-8 ml-6 transition-all duration-300 ease-in-out"
+          className="flex items-center mr-8 ml-6" // Removed transition classes
           suppressHydrationWarning
         >
            <Image
