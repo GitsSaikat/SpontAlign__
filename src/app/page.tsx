@@ -197,7 +197,7 @@ export default function Home() {
 
           {/* Stay Updated Section */}
           <motion.section
-            className="bg-secondary/80 dark:bg-secondary/70 rounded-lg p-8 md:p-12 text-center w-full max-w-3xl"
+            className="bg-card/90 dark:bg-card/80 rounded-lg p-8 md:p-12 text-center w-full max-w-3xl"
             initial="hidden"
             whileInView="visible"
             viewport={{ amount: 0.5 }}
