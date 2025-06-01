@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -29,7 +30,11 @@ export function Header() {
       <div className="container flex h-auto items-center justify-between py-2 max-w-screen-xl" suppressHydrationWarning> {/* Thin vertical padding */}
         {/* Logo */}
         {/* Added ml-6 for left spacing */}
-        <Link href="/" className="flex items-center mr-8 ml-6" suppressHydrationWarning> {/* Added ml-6 */}
+        <Link
+          href="/"
+          className="flex items-center mr-8 ml-6 transition-all duration-300 ease-in-out drop-shadow-[0_0_5px_hsl(var(--primary)/0.4)] hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.7)]"
+          suppressHydrationWarning
+        >
            <Image
               src="/images/logo_up.png" // Path relative to public directory
               alt="SpontAlign Logo"
