@@ -55,21 +55,16 @@ export default function VisionPage() {
         className="mb-16 md:mb-24"
         initial="initial"
         whileInView="inView"
-        viewport={{ amount: 0.1 }} // Adjusted from 0.2 to 0.1
+        viewport={{ amount: 0.1 }}
         variants={scrollVariants}
       >
         <div
           className="relative max-w-4xl mx-auto h-72 md:h-96"
-          style={{ perspective: '1000px' }} // Added perspective for 3D effect
+          style={{ perspective: '1000px' }} 
         >
           <motion.div
             className="absolute inset-0 rounded-xl overflow-hidden shadow-2xl"
-            whileHover={{
-              scale: 1.03,
-              rotateX: -3,
-              rotateY: 5,
-              transition: { duration: 0.3, ease: "easeInOut" }
-            }}
+            // Removed whileHover from here
           >
              <Image
                 src="/images/Mission.png"
@@ -84,7 +79,7 @@ export default function VisionPage() {
             <div className="postmodern-bg-element animate-pulse-teal w-24 h-24 rounded-full blur-xl left-1/3 -bottom-5 bg-teal-500/30 dark:bg-teal-400/20"></div>
           </motion.div>
           <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8 z-10">
-            <MotionCard // Using MotionCard here
+            <MotionCard 
               className="w-11/12 sm:w-5/6 md:w-3/4 lg:w-2/3 max-w-xl
                          bg-card/90 dark:bg-card/85
                          shadow-xl rounded-lg"
@@ -93,7 +88,7 @@ export default function VisionPage() {
                 rotateX: 5,
                 rotateY: -5,
                 transition: { duration: 0.3, ease: "easeInOut" }
-              }} // 3D hover effect
+              }} 
             >
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl sm:text-3xl text-primary">Our Mission</CardTitle>
@@ -170,7 +165,7 @@ export default function VisionPage() {
           className="group bg-card rounded-lg p-8 md:p-12 text-center border hover:border-accent transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-105 hover:bg-secondary/60 dark:hover:bg-secondary/80"
           initial="initial"
           whileInView="inView"
-          viewport={{ amount: 0.1 }} // Adjusted from 0.2 to 0.1
+          viewport={{ amount: 0.1 }}
           variants={scrollVariants}
           animate={{
             scale: [1, 1.015, 1],
