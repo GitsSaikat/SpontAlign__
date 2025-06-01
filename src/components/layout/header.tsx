@@ -32,7 +32,7 @@ export function Header() {
         {/* Added ml-6 for left spacing */}
         <Link
           href="/"
-          className="flex items-center mr-8 ml-6 transition-all duration-300 ease-in-out drop-shadow-[0_0_5px_hsl(var(--accent)/0.5)] hover:drop-shadow-[0_0_10px_hsl(var(--accent)/0.8)]"
+          className="flex items-center mr-8 ml-6 transition-all duration-300 ease-in-out"
           suppressHydrationWarning
         >
            <Image
@@ -40,8 +40,7 @@ export function Header() {
               alt="SpontAlign Logo"
               width={180} // Set the width of your logo
               height={24} // Adjust height for aspect ratio
-              priority // Load logo quickly
-              style={{ objectFit: 'contain', height: 'auto' }} // Maintain aspect ratio
+              style={{ objectFit: 'contain' }}
               quality={100}
               suppressHydrationWarning
            />
@@ -80,7 +79,7 @@ export function Header() {
                     alt="SpontAlign Logo"
                     width={150}
                     height={20}
-                    style={{ objectFit: 'contain', height: 'auto' }}
+                    style={{ objectFit: 'contain' }}
                     quality={100}
                     suppressHydrationWarning
                     />
