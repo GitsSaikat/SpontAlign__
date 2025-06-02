@@ -76,7 +76,7 @@ export default function VisionPage() {
                 className="absolute inset-0 rounded-xl overflow-hidden shadow-2xl"
               >
                  <Image
-                    src="/images/Mission.png"
+                    src="/SpontAlign__/images/Mission.png"
                     alt="Conceptual image representing our mission"
                     layout="fill"
                     objectFit="cover"
