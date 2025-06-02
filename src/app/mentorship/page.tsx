@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,7 +18,7 @@ export default function MentorshipPage() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center py-12">
       <Image
-        src="/images/mentorshipback.png"
+        src="/SpontAlign__/images/mentorshipback.png"
         alt="SpontAlign Mentorship Background"
         layout="fill"
         objectFit="cover"
@@ -63,7 +62,7 @@ export default function MentorshipPage() {
                 }}
               >
                 <Image
-                  src="/images/mentor.png"
+                  src="/SpontAlign__/images/mentor.png"
                   alt="Our Commitment to Collaboration and Mentorship"
                   layout="fill"
                   objectFit="cover"

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -61,7 +60,7 @@ export default function EnterprisePage() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center py-12">
       <Image
-        src="/images/enterpriseback.png"
+        src="/SpontAlign__/images/enterpriseback.png"
         alt="SpontAlign Enterprise Background"
         layout="fill"
         objectFit="cover"

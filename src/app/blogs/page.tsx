@@ -1,4 +1,3 @@
-
 'use client'; // Ensure this page is a client component for Framer Motion
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -17,7 +16,7 @@ export default function BlogsPage() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center py-12">
       <Image
-        src="/images/blogback.png"
+        src="/SpontAlign__/images/blogback.png"
         alt="SpontAlign Blog Background"
         layout="fill"
         objectFit="cover"

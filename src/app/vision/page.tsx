@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -37,7 +36,7 @@ export default function VisionPage() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center py-12">
       <Image
-        src="/images/ourvision.png"
+        src="/SpontAlign__/images/ourvision.png"
         alt="SpontAlign Vision Background"
         layout="fill"
         objectFit="cover"

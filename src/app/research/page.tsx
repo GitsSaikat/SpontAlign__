@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -121,7 +120,7 @@ export default function ResearchPage() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center py-12">
       <Image
-        src="/images/researchback.png"
+        src="/SpontAlign__/images/researchback.png"
         alt="SpontAlign Research Background"
         layout="fill"
         objectFit="cover"

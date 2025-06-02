@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from 'next/image';
@@ -19,7 +18,7 @@ export default function DocsPage() {
       variants={{ initial: {opacity: 0}, inView: {opacity:1, transition: {duration: 0.5}}}} 
     >
       <Image
-        src="/images/docsback.png"
+        src="/SpontAlign__/images/docsback.png"
         alt="SpontAlign Docs Background"
         layout="fill"
         objectFit="cover"

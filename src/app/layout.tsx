@@ -18,17 +18,14 @@ export const metadata: Metadata = {
   keywords:
     'AI, Artificial Intelligence, Research, Startup, Technology, Enterprise AI, Machine Learning, Deep Learning, SpontAlign',
   icons: {
-    icon: '/images/favicon.ico',
+    icon: '/SpontAlign__/images/favicon.ico',
   },
   openGraph: {
     title: 'SpontAlign - AI Research Startup',
     description: 'Pioneering the future of AI through innovative research, enterprise solutions, and mentorship.',
     images: [
       {
-        url: '/images/spontalign_thumbnail.png', // Assuming the image is in public/images
-        // You can also specify width and height if known:
-        //  width: 48,
-        //  height: 48,
+        url: '/SpontAlign__/images/spontalign_thumbnail.png',
         alt: 'SpontAlign AI Research Startup',
       },
     ],
@@ -38,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'SpontAlign - AI Research Startup',
     description: 'Pioneering the future of AI through innovative research, enterprise solutions, and mentorship.',
-    images: ['/images/spontalign_thumbnail.png'], // Assuming the image is in public/images
+    images: ['/SpontAlign__/images/spontalign_thumbnail.png'],
   },
 };
 

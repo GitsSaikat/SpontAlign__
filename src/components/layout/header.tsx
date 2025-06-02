@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -36,10 +35,10 @@ export function Header() {
           suppressHydrationWarning
         >
            <Image
-              src="/images/logo_up.png" // Path relative to public directory
+              src="/SpontAlign__/images/logo_up.png"
               alt="SpontAlign Logo"
-              width={180} // Set the width of your logo
-              height={24} // Adjust height for aspect ratio
+              width={180}
+              height={24}
               style={{ objectFit: 'contain' }}
               quality={100}
               suppressHydrationWarning
@@ -75,7 +74,7 @@ export function Header() {
              <div className="flex justify-between items-center mb-8"> {/* Increased bottom margin */}
                  <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)} suppressHydrationWarning>
                   <Image
-                    src="/images/logo_up.png"
+                    src="/SpontAlign__/images/logo_up.png"
                     alt="SpontAlign Logo"
                     width={150}
                     height={20}

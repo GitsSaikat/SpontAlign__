@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -44,7 +43,7 @@ export default function ContactPage() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center py-12">
       <Image
-        src="/images/contactback.png"
+        src="/SpontAlign__/images/contactback.png"
         alt="SpontAlign Contact Background"
         layout="fill"
         objectFit="cover"
