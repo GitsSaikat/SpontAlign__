@@ -42,7 +42,7 @@ export default function Home() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center py-12">
       <Image
-        src="/images/homeback.png"
+        src="/SpontAlign__/images/homeback.png"
         alt="SpontAlign Home Background"
         layout="fill"
         objectFit="cover"
