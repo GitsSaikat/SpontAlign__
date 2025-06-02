@@ -66,7 +66,7 @@ export default function Home() {
               }}
             >
               <Image
-                src="/images/home.png"
+                src="/SpontAlign__/images/home.png"
                 alt="SpontAlign abstract background"
                 layout="fill"
                 objectFit="cover"
